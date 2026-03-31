@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ouro Motos - Tabloide Promocional</title>
     <style>
-        /* ========== ESTILO PARA IMPRESSÃO ========== */
+        /* ========== CONFIGURAÇÃO PARA IMPRESSÃO A4 ========== */
         * {
             margin: 0;
             padding: 0;
@@ -22,18 +22,20 @@
             padding: 20px;
         }
         
-        /* Container do tabloide (tamanho A4 para impressão) */
+        /* Tamanho A4 para impressão */
         .tabloide {
-            max-width: 1100px;
-            width: 100%;
+            width: 210mm;
             background: white;
             box-shadow: 0 10px 40px rgba(0,0,0,0.2);
             margin: 0 auto;
         }
         
-        /* Páginas internas */
+        /* Páginas frente e verso */
         .pagina {
+            width: 210mm;
+            min-height: 297mm;
             background: white;
+            position: relative;
             page-break-after: always;
             break-after: page;
         }
@@ -43,201 +45,305 @@
             break-after: auto;
         }
         
-        /* ========== CAPA ========== */
-        .capa {
+        .verso {
+            background: white;
+        }
+        
+        /* Conteúdo interno com margens para impressão */
+        .conteudo {
+            padding: 12mm 10mm;
+            height: 100%;
+            min-height: 297mm;
             position: relative;
-            min-height: 297mm; /* Altura A4 */
-            background: linear-gradient(135deg, #0A2F5A 0%, #0A3B6E 50%, #E3221F 100%);
+        }
+        
+        /* ========== ESTILOS GLOBAIS ========== */
+        .destaque-vermelho {
+            color: #E3221F;
+            font-weight: 800;
+        }
+        
+        .bg-vermelho {
+            background: #E3221F;
             color: white;
-            padding: 40px;
+        }
+        
+        .bg-azul {
+            background: #0A2F5A;
+            color: white;
+        }
+        
+        /* ========== CAPA (FRENTE) ========== */
+        .capa {
+            background: linear-gradient(135deg, #0A2F5A 0%, #0A2F5A 70%, #E3221F 100%);
+            color: white;
+        }
+        
+        .capa .conteudo {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
         
-        .capa::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.05"><path fill="white" d="M50 10 L60 40 L90 40 L65 55 L75 85 L50 65 L25 85 L35 55 L10 40 L40 40 Z"/></svg>') repeat;
-            background-size: 60px;
-            pointer-events: none;
-        }
-        
-        .capa-header {
+        /* Espaço para logo */
+        .logo-area {
             text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .capa-logo {
-            font-size: 48px;
-            font-weight: 900;
-            letter-spacing: 4px;
             margin-bottom: 20px;
-            border-bottom: 3px solid #F5A623;
-            display: inline-block;
-            padding-bottom: 10px;
         }
         
-        .capa-tagline {
-            font-size: 18px;
-            letter-spacing: 2px;
-            margin-top: 10px;
-            opacity: 0.9;
+        .logo-placeholder {
+            width: 100%;
+            max-width: 180px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
         }
         
+        .logo-placeholder img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .logo-placeholder .sem-imagem {
+            font-size: 12px;
+            color: rgba(255,255,255,0.6);
+        }
+        
+        /* Título principal */
         .capa-titulo {
             text-align: center;
-            margin: 60px 0;
-            position: relative;
-            z-index: 1;
+            margin: 20px 0;
         }
         
         .capa-titulo h1 {
-            font-size: 48px;
+            font-size: 42px;
             font-weight: 900;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            letter-spacing: -1px;
+            line-height: 1.1;
+            margin-bottom: 15px;
+        }
+        
+        .capa-titulo .destaque-amarelo {
+            color: #F5A623;
         }
         
         .capa-titulo h2 {
-            font-size: 28px;
+            font-size: 22px;
             font-weight: 600;
-            color: #F5A623;
-            margin-bottom: 30px;
+            margin-top: 10px;
         }
         
-        .capa-destaque {
-            background: rgba(0,0,0,0.3);
-            display: inline-block;
-            padding: 15px 30px;
+        /* Selo 25 anos */
+        .selo {
+            background: rgba(245,166,35,0.2);
+            border: 2px solid #F5A623;
             border-radius: 50px;
-            font-size: 20px;
-            font-weight: bold;
-            margin-top: 20px;
+            padding: 8px 20px;
+            display: inline-block;
+            margin: 15px 0;
         }
         
+        .selo span {
+            font-weight: 800;
+            font-size: 14px;
+        }
+        
+        /* QR Code área */
+        .qr-area {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .qr-code {
+            background: #000;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 10px;
+            text-align: center;
+        }
+        
+        .qr-placeholder {
+            background: #1a1a1a;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            font-size: 10px;
+            color: #fff;
+        }
+        
+        .qr-placeholder i {
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+        
+        .whats-numero {
+            font-size: 16px;
+            font-weight: 800;
+            color: #25D366;
+            margin-top: 5px;
+        }
+        
+        /* Rodapé capa */
         .capa-footer {
             text-align: center;
-            position: relative;
-            z-index: 1;
             border-top: 1px solid rgba(255,255,255,0.3);
-            padding-top: 30px;
-            margin-top: 40px;
+            padding-top: 15px;
+            font-size: 11px;
         }
         
-        .capa-footer p {
-            font-size: 14px;
-            margin: 5px 0;
-        }
-        
-        /* ========== PÁGINA INTERNA ========== */
-        .pagina-interna {
-            padding: 40px;
+        /* ========== VERSO (PÁGINA 2) ========== */
+        .verso .conteudo {
             background: white;
-            min-height: 297mm;
         }
         
-        .cabecalho-pagina {
+        /* Cabeçalho da página */
+        .cabecalho {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid #E3221F;
-            padding-bottom: 15px;
-            margin-bottom: 30px;
+            border-bottom: 3px solid #E3221F;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
         }
         
-        .cabecalho-pagina .logo {
-            font-size: 24px;
+        .cabecalho .logo-pequeno {
             font-weight: 800;
+            font-size: 18px;
             color: #0A2F5A;
         }
         
-        .cabecalho-pagina .data {
-            font-size: 12px;
+        .cabecalho .data {
+            font-size: 10px;
             color: #666;
         }
         
-        /* Seção de informações */
-        .info-section {
-            display: flex;
-            gap: 30px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
+        /* Seção unidades */
+        .unidades {
+            background: #F8FAFE;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border-left: 5px solid #E3221F;
         }
         
-        .info-card {
-            flex: 1;
-            background: #F8FAFE;
+        .unidades h3 {
+            color: #0A2F5A;
+            font-size: 16px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .grid-unidades {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        
+        .unidade-item {
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+        
+        .unidade-item strong {
+            color: #0A2F5A;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .unidade-item p {
+            font-size: 11px;
+            margin: 3px 0;
+        }
+        
+        /* Seção facilidades */
+        .facilidades {
+            background: linear-gradient(135deg, #0A2F5A, #134B7A);
+            color: white;
             padding: 20px;
             border-radius: 12px;
-            border-left: 4px solid #E3221F;
+            margin-bottom: 25px;
+            text-align: center;
         }
         
-        .info-card h3 {
-            color: #0A2F5A;
-            margin-bottom: 15px;
+        .facilidades h3 {
             font-size: 18px;
+            margin-bottom: 15px;
         }
         
-        .info-card p {
-            margin: 8px 0;
-            color: #333;
-            line-height: 1.5;
+        .grid-facilidades {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 10px;
         }
         
-        .info-card i {
-            color: #E3221F;
-            margin-right: 8px;
+        .facilidade-item {
+            text-align: center;
         }
         
-        /* Grade de ofertas */
-        .ofertas-titulo {
-            font-size: 28px;
+        .facilidade-item i {
+            font-size: 24px;
+            color: #F5A623;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+        
+        .facilidade-item p {
+            font-size: 11px;
+            font-weight: 600;
+        }
+        
+        /* Título motos em destaque */
+        .titulo-motos {
+            text-align: center;
+            margin: 25px 0 20px;
+        }
+        
+        .titulo-motos h2 {
+            font-size: 24px;
             font-weight: 800;
             color: #0A2F5A;
-            margin: 40px 0 20px;
-            text-align: center;
-            position: relative;
+            display: inline-block;
+            border-bottom: 3px solid #E3221F;
+            padding-bottom: 5px;
         }
         
-        .ofertas-titulo:after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 3px;
-            background: #E3221F;
-            margin: 10px auto 0;
-        }
-        
-        .grid-ofertas {
+        /* Grade de motos */
+        .grid-motos {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin: 30px 0;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
         }
         
-        .card-oferta {
-            background: white;
+        .card-moto {
             border: 1px solid #e0e0e0;
             border-radius: 12px;
             overflow: hidden;
-            transition: transform 0.2s;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            background: white;
         }
         
-        .card-oferta:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
-        
-        .foto-placeholder {
-            background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
-            height: 200px;
+        .foto-moto {
+            background: #f5f5f5;
+            height: 140px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -245,174 +351,175 @@
             overflow: hidden;
         }
         
-        .foto-placeholder i {
+        .foto-moto i {
             font-size: 48px;
-            color: #999;
+            color: #ccc;
         }
         
-        .foto-placeholder .moto-bg {
-            font-size: 80px;
+        .foto-moto .moto-icon {
+            font-size: 70px;
             opacity: 0.3;
             position: absolute;
         }
         
-        .info-oferta {
-            padding: 20px;
+        .info-moto {
+            padding: 12px;
+            text-align: center;
         }
         
-        .info-oferta h4 {
-            font-size: 18px;
-            font-weight: 700;
-            color: #0A2F5A;
-            margin-bottom: 10px;
-        }
-        
-        .info-oferta p {
-            color: #666;
+        .info-moto h4 {
             font-size: 14px;
-            margin-bottom: 15px;
-            line-height: 1.4;
+            font-weight: 800;
+            color: #0A2F5A;
+            margin-bottom: 5px;
         }
         
-        .preco {
-            font-size: 24px;
+        .info-moto p {
+            font-size: 10px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        
+        .preco-moto {
+            font-size: 18px;
             font-weight: 800;
             color: #E3221F;
-            margin: 15px 0;
+            margin: 8px 0;
         }
         
-        .preco span {
-            font-size: 14px;
+        .preco-moto span {
+            font-size: 10px;
             font-weight: normal;
             color: #999;
         }
         
-        .btn-oferta {
-            display: inline-block;
+        .btn-whats-mini {
             background: #25D366;
             color: white;
             text-decoration: none;
-            padding: 8px 20px;
-            border-radius: 25px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 10px;
             font-weight: 600;
-            font-size: 14px;
-            transition: background 0.2s;
-        }
-        
-        .btn-oferta:hover {
-            background: #128C7E;
-        }
-        
-        /* Rodapé da página */
-        .rodape-pagina {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-            text-align: center;
-            font-size: 11px;
-            color: #999;
-        }
-        
-        /* Seção de destaques */
-        .destaques {
-            background: linear-gradient(135deg, #0A2F5A, #134B7A);
-            color: white;
-            padding: 30px;
-            border-radius: 12px;
-            margin: 40px 0;
-            text-align: center;
-        }
-        
-        .destaques h3 {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-        
-        .destaques-grid {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-        
-        .destaque-item {
-            text-align: center;
-        }
-        
-        .destaque-item i {
-            font-size: 32px;
-            color: #F5A623;
-            margin-bottom: 10px;
             display: inline-block;
         }
         
-        .destaque-item p {
+        /* QR Code WhatsApp Vendas (grande) */
+        .qr-destaque {
+            background: #F8FAFE;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            margin: 20px 0;
+            border: 2px solid #E3221F;
+        }
+        
+        .qr-destaque h4 {
+            color: #0A2F5A;
+            margin-bottom: 10px;
             font-size: 14px;
         }
         
-        /* Espaço para fotos (instruções) */
-        .instrucoes-foto {
-            background: #FFF9E6;
-            border: 2px dashed #F5A623;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 20px 0;
-            text-align: center;
-            font-size: 12px;
-            color: #8B691B;
+        .qr-grande {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
         }
         
-        /* Responsividade para impressão */
+        .qr-code-grande {
+            background: #1a1a1a;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            border-radius: 8px;
+        }
+        
+        .qr-code-grande i {
+            font-size: 32px;
+            color: white;
+        }
+        
+        .qr-code-grande span {
+            font-size: 8px;
+            color: white;
+            margin-top: 5px;
+        }
+        
+        .whats-grande {
+            text-align: left;
+        }
+        
+        .whats-grande .numero {
+            font-size: 18px;
+            font-weight: 800;
+            color: #25D366;
+        }
+        
+        /* Rodapé */
+        .rodape {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            text-align: center;
+            font-size: 9px;
+            color: #999;
+        }
+        
+        /* Instruções para fotos */
+        .instrucao-foto {
+            background: #FFF9E6;
+            border: 1px dashed #F5A623;
+            padding: 6px;
+            border-radius: 6px;
+            font-size: 8px;
+            text-align: center;
+            color: #8B691B;
+            margin-top: 5px;
+        }
+        
+        /* Ajustes para impressão */
         @media print {
             body {
                 background: white;
                 padding: 0;
                 margin: 0;
             }
-            
             .tabloide {
                 box-shadow: none;
-                max-width: 100%;
+                margin: 0;
+                width: 100%;
             }
-            
             .pagina {
+                width: 100%;
+                min-height: 0;
                 page-break-after: always;
-                break-after: page;
             }
-            
-            .btn-oferta, .card-oferta:hover {
-                transform: none;
-            }
-            
-            .foto-placeholder {
+            .qr-placeholder, .qr-code-grande {
                 background: #f0f0f0;
-                border: 1px solid #ddd;
+                border: 1px solid #ccc;
             }
-            
-            .instrucoes-foto {
+            .qr-placeholder i, .qr-code-grande i {
+                color: #666;
+            }
+            .instrucao-foto {
                 display: none;
             }
         }
         
-        @media (max-width: 768px) {
-            .capa {
-                padding: 20px;
+        @media (max-width: 220mm) {
+            body {
+                padding: 0;
             }
-            
-            .capa-titulo h1 {
-                font-size: 32px;
+            .tabloide {
+                width: 100%;
             }
-            
-            .pagina-interna {
-                padding: 20px;
-            }
-            
-            .info-section {
-                flex-direction: column;
-            }
-            
-            .grid-ofertas {
-                grid-template-columns: 1fr;
+            .pagina {
+                width: 100%;
             }
         }
     </style>
@@ -420,246 +527,200 @@
 </head>
 <body>
     <div class="tabloide">
-        <!-- CAPA -->
+        <!-- FRENTE (CAPA) -->
         <div class="pagina capa">
-            <div class="capa-header">
-                <div class="capa-logo">OURO MOTOS</div>
-                <div class="capa-tagline">25 ANOS DE CONFIANÇA</div>
-            </div>
-            
-            <div class="capa-titulo">
-                <h1>O MAIOR ESTOQUE<br>DE MOTOS DA REGIÃO</h1>
-                <h2>Motos • Carros • Quadriciclos</h2>
-                <div class="capa-destaque">
-                    <i class="fas fa-trophy"></i> MAIS DE 25 ANOS DE TRADIÇÃO
+            <div class="conteudo">
+                <!-- Logo -->
+                <div class="logo-area">
+                    <div class="logo-placeholder">
+                        <img src="logo.png" alt="Ouro Motos" onerror="this.style.display='none'; this.nextSibling.style.display='block';">
+                        <div class="sem-imagem" style="display: none;">[LOGO OURO MOTOS]</div>
+                        <div class="instrucao-foto">Arquivo: logo.png</div>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="capa-footer">
-                <p><i class="fas fa-map-marker-alt"></i> Ouro Preto | Mariana | Itabirito</p>
-                <p><i class="fab fa-whatsapp"></i> (31) 98751-2118 | (31) 3551-2202</p>
-                <p><i class="fas fa-motorcycle"></i> www.ouromotos.com.br</p>
+                
+                <!-- Título principal -->
+                <div class="capa-titulo">
+                    <h1>O MAIOR ESTOQUE<br>DE <span class="destaque-amarelo">MOTOS</span><br>DA REGIÃO</h1>
+                    <h2>Motos • Carros • Quadriciclos</h2>
+                    <div class="selo">
+                        <span><i class="fas fa-trophy"></i> 25 ANOS DE CONFIANÇA</span>
+                    </div>
+                </div>
+                
+                <!-- QR Code WhatsApp Vendas (grande) -->
+                <div class="qr-area">
+                    <div class="qr-placeholder">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>QR CODE</span>
+                    </div>
+                    <div class="whats-numero">
+                        <i class="fab fa-whatsapp"></i> (31) 98751-2118
+                    </div>
+                    <div class="instrucao-foto" style="background: rgba(255,255,255,0.2); color: white; border-color: white;">
+                        Escaneie o QR Code e fale com nossa equipe de vendas!
+                    </div>
+                </div>
+                
+                <!-- Rodapé capa -->
+                <div class="capa-footer">
+                    <p><i class="fas fa-map-marker-alt"></i> Ouro Preto | Mariana | Itabirito | Ouro Branco</p>
+                    <p><i class="fas fa-motorcycle"></i> www.ouromotos.com.br</p>
+                </div>
             </div>
         </div>
         
-        <!-- PÁGINA 2 - INFORMAÇÕES E OFERTAS -->
-        <div class="pagina pagina-interna">
-            <div class="cabecalho-pagina">
-                <div class="logo">⚡ OURO MOTOS</div>
-                <div class="data">Abril 2025 • Edição Especial</div>
-            </div>
-            
-            <!-- Seção de informações da loja -->
-            <div class="info-section">
-                <div class="info-card">
+        <!-- VERSO (PÁGINA 2) -->
+        <div class="pagina verso">
+            <div class="conteudo">
+                <!-- Cabeçalho -->
+                <div class="cabecalho">
+                    <div class="logo-pequeno">⚡ OURO MOTOS</div>
+                    <div class="data">Abril 2025 • Edição Especial</div>
+                </div>
+                
+                <!-- NOSSAS UNIDADES -->
+                <div class="unidades">
                     <h3><i class="fas fa-store"></i> NOSSAS UNIDADES</h3>
-                    <p><i class="fas fa-location-dot"></i> <strong>Ouro Preto:</strong> (31) 3551-2202</p>
-                    <p><i class="fas fa-location-dot"></i> <strong>Mariana:</strong> (31) 3558-2215</p>
-                    <p><i class="fas fa-location-dot"></i> <strong>Itabirito:</strong> (31) 98864-7364</p>
-                    <p style="margin-top: 10px;"><i class="fab fa-whatsapp"></i> <strong>WhatsApp Vendas:</strong> (31) 98751-2118</p>
-                </div>
-                
-                <div class="info-card">
-                    <h3><i class="fas fa-credit-card"></i> FACILIDADES DE PAGAMENTO</h3>
-                    <p>✅ Cartão de crédito em até 24x</p>
-                    <p>✅ Financiamento em até 48x</p>
-                    <p>✅ Consórcio contemplável</p>
-                    <p>✅ Aceitamos seu veículo na troca</p>
-                    <p>✅ Entrada facilitada*</p>
-                    <p style="font-size: 10px; margin-top: 10px;">*Sujeito a análise de crédito</p>
-                </div>
-                
-                <div class="info-card">
-                    <h3><i class="fas fa-clock"></i> ATENDIMENTO</h3>
-                    <p>Segunda a Sexta: 8h às 18h</p>
-                    <p>Sábado: 8h às 12h</p>
-                    <p style="margin-top: 10px;"><i class="fas fa-tools"></i> Peças e Acessórios com atendimento especializado</p>
-                    <p><i class="fas fa-key"></i> Aluguel de motos e carros - Consulte condições</p>
-                </div>
-            </div>
-            
-            <!-- Espaço para fotos - Instruções -->
-            <div class="instrucoes-foto">
-                <i class="fas fa-camera"></i> <strong>ESPAÇO RESERVADO PARA FOTOS</strong><br>
-                Cole aqui fotos da fachada da loja, equipe, estoque e estrutura. Solicite as imagens ao setor de marketing.
-            </div>
-            
-            <!-- Título das ofertas -->
-            <div class="ofertas-titulo">
-                🏍️ OFERTAS IMPERDÍVEIS 🏍️
-            </div>
-            
-            <!-- Grade de ofertas de motos -->
-            <div class="grid-ofertas">
-                <!-- Oferta 1 -->
-                <div class="card-oferta">
-                    <div class="foto-placeholder">
-                        <i class="fas fa-motorcycle"></i>
-                        <div class="moto-bg">🏍️</div>
-                    </div>
-                    <div class="info-oferta">
-                        <h4>Honda Fan 160</h4>
-                        <p>Zero KM • Placa e IPVA Grátis • Financiamento facilitado</p>
-                        <div class="preco">R$ XX.***<span>/ à vista</span></div>
-                        <a href="#" class="btn-oferta"><i class="fab fa-whatsapp"></i> Consulte</a>
+                    <div class="grid-unidades">
+                        <div class="unidade-item">
+                            <strong>🏍️ Ouro Preto</strong>
+                            <p><i class="fas fa-phone"></i> (31) 3551-2202</p>
+                            <p><i class="fab fa-whatsapp"></i> Peças e Acessórios</p>
+                        </div>
+                        <div class="unidade-item">
+                            <strong>🏍️ Ouro Branco</strong>
+                            <p><i class="fas fa-phone"></i> (31) 98785-8472</p>
+                            <p><i class="fab fa-whatsapp"></i> Peças e Acessórios</p>
+                        </div>
+                        <div class="unidade-item">
+                            <strong>🏍️ Mariana</strong>
+                            <p><i class="fas fa-phone"></i> (31) 3558-2215</p>
+                            <p><i class="fab fa-whatsapp"></i> Peças e Acessórios</p>
+                        </div>
+                        <div class="unidade-item">
+                            <strong>🏍️ Itabirito</strong>
+                            <p><i class="fas fa-phone"></i> (31) 98864-7364</p>
+                            <p><i class="fab fa-whatsapp"></i> Peças e Acessórios</p>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Oferta 2 -->
-                <div class="card-oferta">
-                    <div class="foto-placeholder">
-                        <i class="fas fa-motorcycle"></i>
-                        <div class="moto-bg">🏍️</div>
-                    </div>
-                    <div class="info-oferta">
-                        <h4>Haojue DK 150</h4>
-                        <p>Subsídio Santander • Taxas a partir de 1,19% a.m. • Até 90 dias para começar a pagar</p>
-                        <div class="preco">R$ XX.***<span>/ à vista</span></div>
-                        <a href="#" class="btn-oferta"><i class="fab fa-whatsapp"></i> Consulte</a>
-                    </div>
-                </div>
-                
-                <!-- Oferta 3 -->
-                <div class="card-oferta">
-                    <div class="foto-placeholder">
-                        <i class="fas fa-motorcycle"></i>
-                        <div class="moto-bg">🏍️</div>
-                    </div>
-                    <div class="info-oferta">
-                        <h4>Zontes 350R</h4>
-                        <p>Linha Premium • Subsídio especial Santander • Condições exclusivas</p>
-                        <div class="preco">R$ XX.***<span>/ à vista</span></div>
-                        <a href="#" class="btn-oferta"><i class="fab fa-whatsapp"></i> Consulte</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Destaques da loja -->
-            <div class="destaques">
-                <h3>POR QUE ESCOLHER A OURO MOTOS?</h3>
-                <div class="destaques-grid">
-                    <div class="destaque-item">
-                        <i class="fas fa-trophy"></i>
-                        <p>25+ anos de tradição</p>
-                    </div>
-                    <div class="destaque-item">
-                        <i class="fas fa-boxes"></i>
-                        <p>Maior estoque da região</p>
-                    </div>
-                    <div class="destaque-item">
-                        <i class="fas fa-handshake"></i>
-                        <p>Troca de veículos</p>
-                    </div>
-                    <div class="destaque-item">
-                        <i class="fas fa-headset"></i>
-                        <p>Atendimento especializado</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Rodapé -->
-            <div class="rodape-pagina">
-                <p>📞 Fale com nossa equipe de vendas: (31) 98751-2118 | <i class="fab fa-whatsapp"></i> WhatsApp</p>
-                <p>📍 Ouro Preto | Mariana | Itabirito | Siga-nos @ouromotos</p>
-                <p style="margin-top: 10px;">*Os preços e condições estão sujeitos a alterações sem aviso prévio. Consulte nossa equipe para mais detalhes.</p>
-            </div>
-        </div>
-        
-        <!-- PÁGINA 3 - MAIS OFERTAS E SERVIÇOS (OPCIONAL) -->
-        <div class="pagina pagina-interna">
-            <div class="cabecalho-pagina">
-                <div class="logo">⚡ OURO MOTOS</div>
-                <div class="data">Abril 2025 • Edição Especial</div>
-            </div>
-            
-            <div class="ofertas-titulo">
-                🚗 CARROS E QUADRICICLOS 🚗
-            </div>
-            
-            <!-- Grade de ofertas de carros -->
-            <div class="grid-ofertas">
-                <div class="card-oferta">
-                    <div class="foto-placeholder">
-                        <i class="fas fa-car"></i>
-                        <div class="moto-bg">🚗</div>
-                    </div>
-                    <div class="info-oferta">
-                        <h4>Veículos Seminovos</h4>
-                        <p>Grande variedade de carros seminovos com procedência e garantia</p>
-                        <div class="preco">R$ XX.***<span>/ à vista</span></div>
-                        <a href="#" class="btn-oferta"><i class="fab fa-whatsapp"></i> Consulte</a>
+                <!-- FACILIDADES DE PAGAMENTO (destaque) -->
+                <div class="facilidades">
+                    <h3><i class="fas fa-rocket"></i> FACILIDADES QUE IMPULSIONAM</h3>
+                    <div class="grid-facilidades">
+                        <div class="facilidade-item">
+                            <i class="fas fa-credit-card"></i>
+                            <p>Cartão<br>até 24x</p>
+                        </div>
+                        <div class="facilidade-item">
+                            <i class="fas fa-building"></i>
+                            <p>Financiamento<br>até 48x</p>
+                        </div>
+                        <div class="facilidade-item">
+                            <i class="fas fa-hand-holding-usd"></i>
+                            <p>Sem entrada*<br><span style="font-size: 8px;">*sujeito a análise</span></p>
+                        </div>
+                        <div class="facilidade-item">
+                            <i class="fas fa-handshake"></i>
+                            <p>Consórcio<br>contemplável</p>
+                        </div>
+                        <div class="facilidade-item">
+                            <i class="fas fa-exchange-alt"></i>
+                            <p>Aceitamos<br>seu veículo na troca</p>
+                        </div>
+                        <div class="facilidade-item">
+                            <i class="fas fa-key"></i>
+                            <p>Aluguel<br>de veículos</p>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="card-oferta">
-                    <div class="foto-placeholder">
-                        <i class="fas fa-truck-pickup"></i>
-                        <div class="moto-bg">🚙</div>
+                <!-- MOTOS EM DESTAQUE -->
+                <div class="titulo-motos">
+                    <h2>🏍️ MOTOS EM DESTAQUE 🏍️</h2>
+                </div>
+                
+                <div class="grid-motos">
+                    <!-- Moto 1: Haojue T350 -->
+                    <div class="card-moto">
+                        <div class="foto-moto">
+                            <i class="fas fa-motorcycle"></i>
+                            <div class="moto-icon">🏍️</div>
+                            <div class="instrucao-foto">Arquivo: haojue_t350.jpg</div>
+                        </div>
+                        <div class="info-moto">
+                            <h4>Haojue T350</h4>
+                            <p>Subsídio Santander • Taxas especiais</p>
+                            <div class="preco-moto">R$ XX.***<span>/ à vista</span></div>
+                            <a href="#" class="btn-whats-mini"><i class="fab fa-whatsapp"></i> Consulte</a>
+                        </div>
                     </div>
-                    <div class="info-oferta">
-                        <h4>SUVs e Picapes</h4>
-                        <p>As melhores opções para quem busca espaço e conforto</p>
-                        <div class="preco">R$ XX.***<span>/ à vista</span></div>
-                        <a href="#" class="btn-oferta"><i class="fab fa-whatsapp"></i> Consulte</a>
+                    
+                    <!-- Moto 2: Sahara Rally -->
+                    <div class="card-moto">
+                        <div class="foto-moto">
+                            <i class="fas fa-motorcycle"></i>
+                            <div class="moto-icon">🏍️</div>
+                            <div class="instrucao-foto">Arquivo: sahara_rally.jpg</div>
+                        </div>
+                        <div class="info-moto">
+                            <h4>Sahara Rally</h4>
+                            <p>Aventureira e potente • Pronta para qualquer terreno</p>
+                            <div class="preco-moto">R$ XX.***<span>/ à vista</span></div>
+                            <a href="#" class="btn-whats-mini"><i class="fab fa-whatsapp"></i> Consulte</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Moto 3: Fan 160 -->
+                    <div class="card-moto">
+                        <div class="foto-moto">
+                            <i class="fas fa-motorcycle"></i>
+                            <div class="moto-icon">🏍️</div>
+                            <div class="instrucao-foto">Arquivo: fan_160.jpg</div>
+                        </div>
+                        <div class="info-moto">
+                            <h4>Honda Fan 160</h4>
+                            <p>Zero KM • Placa e IPVA Grátis</p>
+                            <div class="preco-moto">R$ XX.***<span>/ à vista</span></div>
+                            <a href="#" class="btn-whats-mini"><i class="fab fa-whatsapp"></i> Consulte</a>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="card-oferta">
-                    <div class="foto-placeholder">
-                        <i class="fas fa-motorcycle"></i>
-                        <div class="moto-bg">🛺</div>
+                <!-- QR CODE WHATSAPP VENDAS (DESTAQUE) -->
+                <div class="qr-destaque">
+                    <h4><i class="fab fa-whatsapp"></i> FALE COM NOSSA EQUIPE DE VENDAS</h4>
+                    <div class="qr-grande">
+                        <div class="qr-code-grande">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>QR CODE</span>
+                        </div>
+                        <div class="whats-grande">
+                            <div class="numero">(31) 98751-2118</div>
+                            <p style="font-size: 11px; margin-top: 5px;">Clique ou escaneie o QR Code</p>
+                            <p style="font-size: 9px; color: #666;">Atendimento: Seg a Sex 8h-18h | Sáb 8h-12h</p>
+                        </div>
                     </div>
-                    <div class="info-oferta">
-                        <h4>Quadriciclos</h4>
-                        <p>Diversão e aventura para toda a família</p>
-                        <div class="preco">R$ XX.***<span>/ à vista</span></div>
-                        <a href="#" class="btn-oferta"><i class="fab fa-whatsapp"></i> Consulte</a>
+                    <div class="instrucao-foto" style="margin-top: 10px; background: #F0F0F0;">
+                        Imagem do QR Code será gerada automaticamente
                     </div>
-                </div>
-            </div>
-            
-            <!-- Serviços adicionais -->
-            <div class="info-section" style="margin-top: 20px;">
-                <div class="info-card">
-                    <h3><i class="fas fa-key"></i> ALUGUEL DE VEÍCULOS</h3>
-                    <p>Motos e carros para locação diária</p>
-                    <p>Condições especiais para clientes</p>
-                    <p>WhatsApp: (31) 99224-7414</p>
                 </div>
                 
-                <div class="info-card">
-                    <h3><i class="fas fa-tools"></i> PEÇAS E ACESSÓRIOS</h3>
-                    <p>Peças originais e acessórios para sua moto</p>
-                    <p>Atendimento especializado em todas as unidades</p>
-                    <p><i class="fab fa-whatsapp"></i> WhatsApp: (31) 3551-2202 (Ouro Preto)</p>
+                <!-- Rodapé -->
+                <div class="rodape">
+                    <p>📍 Ouro Preto | Mariana | Itabirito | Ouro Branco</p>
+                    <p><i class="fab fa-whatsapp"></i> Vendas: (31) 98751-2118 | Peças e Acessórios: (31) 3551-2202</p>
+                    <p>📧 www.ouromotos.com.br | Siga-nos @ouromotos</p>
+                    <p style="margin-top: 5px;">*Imagens meramente ilustrativas. Consulte condições e disponibilidade.</p>
                 </div>
-            </div>
-            
-            <!-- Espaço reservado para fotos -->
-            <div class="instrucoes-foto">
-                <i class="fas fa-camera"></i> <strong>ESPAÇO RESERVADO PARA FOTOS DOS VEÍCULOS</strong><br>
-                Insira aqui imagens dos principais modelos em destaque neste mês.
-            </div>
-            
-            <!-- Evento especial -->
-            <div style="background: #E3221F; color: white; padding: 20px; border-radius: 12px; text-align: center; margin: 30px 0;">
-                <i class="fas fa-calendar-alt" style="font-size: 24px;"></i>
-                <h3 style="margin: 10px 0;">🚨 2º Feirão de Veículos de Mariana 🚨</h3>
-                <p>Dias 11 e 12 de Abril no Terminal Rodoviário</p>
-                <p>Condições exclusivas no nosso estande!</p>
-                <p style="margin-top: 10px;"><i class="fab fa-whatsapp"></i> Garanta sua prévia: (31) 98751-2118</p>
-            </div>
-            
-            <div class="rodape-pagina">
-                <p>📞 Vendas: (31) 98751-2118 | Peças e Acessórios: (31) 3551-2202 | Aluguel: (31) 99224-7414</p>
-                <p>📍 Siga-nos no Instagram: @ouromotos | Visite nosso site: www.ouromotos.com.br</p>
-                <p style="margin-top: 10px;">Tabloide promocional - Imagens meramente ilustrativas. Consulte condições e disponibilidade.</p>
             </div>
         </div>
     </div>
     
-    <div style="position: fixed; bottom: 20px; right: 20px; background: #0A2F5A; color: white; padding: 10px 15px; border-radius: 8px; font-size: 12px; z-index: 1000;">
-        <i class="fas fa-print"></i> Para imprimir: Ctrl+P ou Cmd+P
+    <div style="position: fixed; bottom: 20px; right: 20px; background: #0A2F5A; color: white; padding: 8px 12px; border-radius: 8px; font-size: 11px; z-index: 1000; font-family: Arial;">
+        <i class="fas fa-print"></i> Imprimir: Ctrl+P | Frente e Verso
     </div>
 </body>
 </html>
