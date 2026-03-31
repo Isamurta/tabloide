@@ -1,326 +1,940 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ouro Motos - Tabloide Especial 25 Anos</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Russo+One&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        :root {
-            --azul: #0A2F5A;
-            --vermelho: #E3221F;
-            --amarelo: #F5A623;
-            --branco: #ffffff;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ouro Motos – Tabloide A4 Frente &amp; Verso</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<style>
+/* ==================== RESET & BASE ==================== */
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --azul:#0A2F5A;
+  --azul-escuro:#071e3d;
+  --azul-medio:#0d3d6e;
+  --vermelho:#E3221F;
+  --vermelho-escuro:#b51a18;
+  --dourado:#F5A623;
+  --dourado-claro:#ffc84d;
+  --branco:#fff;
+  --cinza-claro:#f4f4f4;
+  --verde-whats:#25D366;
+}
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            background: #ccc;
-            font-family: 'Open Sans', sans-serif;
-        }
+body{
+  font-family:'Montserrat',sans-serif;
+  background:#c8c8c8;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:30px;
+  padding:30px 20px;
+  min-height:100vh;
+}
 
-        /* Configuração A4 */
-        .folha {
-            width: 210mm;
-            height: 297mm;
-            background: var(--branco);
-            margin: 10mm auto;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
-            page-break-after: always;
-        }
+/* ==================== PÁGINA A4 ==================== */
+.pagina{
+  width:210mm;
+  min-height:297mm;
+  position:relative;
+  overflow:hidden;
+  page-break-after:always;
+  break-after:page;
+  box-shadow:0 20px 60px rgba(0,0,0,0.4);
+}
+.pagina:last-child{page-break-after:auto;break-after:auto;}
 
-        /* CAPA (FRENTE) */
-        .capa {
-            background: linear-gradient(180deg, var(--azul) 0%, #061b36 100%);
-            color: var(--branco);
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            padding: 10mm;
-        }
+/* ==================== FRENTE ==================== */
+.frente{
+  background: linear-gradient(160deg,#071e3d 0%,#0A2F5A 40%,#0d3d6e 70%,#8b1717 100%);
+}
 
-        .header-capa {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
+.frente::before{
+  content:'';
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 0%, rgba(245,166,35,.15) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 100% 100%, rgba(227,34,31,.25) 0%, transparent 60%);
+  pointer-events:none;
+}
 
-        .logo-box {
-            background: white;
-            padding: 10px;
-            border-radius: 0 0 15px 15px;
-            width: 180px;
-        }
+.frente::after{
+  content:'';
+  position:absolute;
+  top:-40px;right:-40px;
+  width:220px;height:220px;
+  background:rgba(245,166,35,.06);
+  border-radius:50%;
+  border:3px solid rgba(245,166,35,.12);
+  pointer-events:none;
+}
 
-        .selo-25-anos {
-            background: var(--amarelo);
-            color: var(--azul);
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-family: 'Russo One', sans-serif;
-            transform: rotate(5deg);
-            box-shadow: 5px 5px 0 var(--vermelho);
-            border: 2px solid white;
-        }
+.frente-inner{
+  position:relative;
+  z-index:2;
+  padding:10mm 10mm 8mm;
+  display:flex;
+  flex-direction:column;
+  min-height:297mm;
+}
 
-        .titulo-principal {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 55px;
-            line-height: 0.9;
-            text-transform: uppercase;
-            margin: 20px 0;
-            text-shadow: 4px 4px 0 var(--vermelho);
-        }
+.frente-topo{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:6mm;
+}
 
-        .destaque-amarelo { color: var(--amarelo); }
+.logo-box{
+  background:rgba(255,255,255,.1);
+  border:2px solid rgba(245,166,35,.5);
+  border-radius:12px;
+  padding:8px 14px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  backdrop-filter:blur(4px);
+}
+.logo-icon{
+  font-size:28px;
+  color:var(--dourado);
+}
+.logo-text{
+  font-family:'Russo One',sans-serif;
+  color:var(--branco);
+  font-size:16px;
+  line-height:1.1;
+}
+.logo-text span{
+  font-family:'Montserrat',sans-serif;
+  font-size:9px;
+  font-weight:600;
+  color:var(--dourado);
+  display:block;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
 
-        .container-moto-principal {
-            flex-grow: 1;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+.badge-anos{
+  background:linear-gradient(135deg,var(--dourado),var(--dourado-claro));
+  color:var(--azul-escuro);
+  border-radius:50%;
+  width:72px;height:72px;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  font-family:'Russo One',sans-serif;
+  box-shadow:0 4px 20px rgba(245,166,35,.6), 0 0 0 4px rgba(245,166,35,.25);
+  text-align:center;
+  line-height:1;
+}
+.badge-anos .num{font-size:24px;}
+.badge-anos .txt{font-family:'Montserrat',sans-serif;font-size:7px;font-weight:800;letter-spacing:1px;text-transform:uppercase;}
 
-        .moto-placeholder {
-            width: 90%;
-            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.8));
-        }
+.faixa-promo{
+  background:var(--vermelho);
+  background:linear-gradient(90deg,var(--vermelho-escuro),var(--vermelho),var(--vermelho-escuro));
+  text-align:center;
+  padding:6px 20px;
+  border-radius:40px;
+  margin-bottom:5mm;
+  box-shadow:0 4px 16px rgba(227,34,31,.5);
+  position:relative;
+  overflow:hidden;
+}
+.faixa-promo::before{
+  content:'★';
+  position:absolute;left:14px;top:50%;transform:translateY(-50%);
+  color:rgba(255,255,255,.4);font-size:14px;
+}
+.faixa-promo::after{
+  content:'★';
+  position:absolute;right:14px;top:50%;transform:translateY(-50%);
+  color:rgba(255,255,255,.4);font-size:14px;
+}
+.faixa-promo p{
+  font-family:'Russo One',sans-serif;
+  color:#fff;
+  font-size:11px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+}
 
-        .balao-oferta {
-            position: absolute;
-            top: 10%;
-            right: 0;
-            background: var(--vermelho);
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            font-weight: 900;
-            border: 4px dashed white;
-            transform: rotate(-10deg);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-        }
+.hero-titulo{
+  text-align:center;
+  margin:2mm 0 4mm;
+}
+.hero-titulo .sub{
+  font-size:13px;font-weight:800;
+  color:var(--dourado);
+  letter-spacing:4px;
+  text-transform:uppercase;
+  display:block;
+  margin-bottom:4px;
+}
+.hero-titulo h1{
+  font-family:'Russo One',sans-serif;
+  font-size:46px;
+  color:#fff;
+  line-height:1.0;
+  text-transform:uppercase;
+  text-shadow:3px 4px 0 rgba(0,0,0,.4), 0 0 40px rgba(245,166,35,.3);
+  letter-spacing:-1px;
+}
+.hero-titulo h1 em{
+  color:var(--dourado);
+  font-style:normal;
+  display:block;
+  font-size:52px;
+  text-shadow:3px 4px 0 rgba(0,0,0,.5), 0 0 50px rgba(245,166,35,.5);
+}
+.hero-titulo h2{
+  margin-top:6px;
+  font-size:16px;
+  font-weight:700;
+  color:rgba(255,255,255,.85);
+  letter-spacing:2px;
+}
 
-        .footer-capa {
-            background: var(--amarelo);
-            color: var(--azul);
-            margin: 0 -10mm -10mm -10mm;
-            padding: 15px;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            border-top: 5px solid var(--vermelho);
-        }
+.divisor{
+  display:flex;align-items:center;gap:8px;
+  margin:4mm 0;
+}
+.divisor-line{flex:1;height:2px;background:linear-gradient(90deg,transparent,var(--dourado),transparent);}
+.divisor-star{color:var(--dourado);font-size:14px;}
 
-        /* VERSO */
-        .verso {
-            background: #f4f4f4;
-            padding: 10mm;
-        }
+.produto-area{
+  background:rgba(255,255,255,.05);
+  border:2px dashed rgba(255,255,255,.2);
+  border-radius:16px;
+  min-height:95px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  gap:6px;
+  margin:3mm 0;
+  color:rgba(255,255,255,.4);
+  font-size:11px;
+  letter-spacing:1px;
+}
+.produto-area i{font-size:32px;color:rgba(255,255,255,.2);}
 
-        .faixa-topo {
-            background: var(--azul);
-            color: white;
-            padding: 10px;
-            margin: -10mm -10mm 15px -10mm;
-            text-align: center;
-            font-family: 'Russo One', sans-serif;
-        }
+.vantagens-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin:3mm 0;
+}
+.vantagem-card{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(245,166,35,.3);
+  border-radius:10px;
+  padding:10px 8px;
+  text-align:center;
+  color:#fff;
+}
+.vantagem-card i{
+  font-size:20px;
+  color:var(--dourado);
+  margin-bottom:4px;
+  display:block;
+}
+.vantagem-card p{font-size:9.5px;font-weight:700;line-height:1.3;}
+.vantagem-card small{font-size:8px;color:rgba(255,255,255,.6);display:block;}
 
-        .grid-unidades {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 5px;
-            margin-bottom: 20px;
-        }
+.qr-section{
+  background:rgba(255,255,255,.95);
+  border-radius:16px;
+  padding:10px 16px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin:3mm 0;
+  box-shadow:0 8px 30px rgba(0,0,0,.3);
+}
+.qr-section img{
+  width:90px;height:90px;
+  border-radius:8px;
+  display:block;
+  flex-shrink:0;
+}
+.qr-info{flex:1;}
+.qr-info .qr-cta{
+  font-family:'Russo One',sans-serif;
+  font-size:12px;
+  color:var(--azul);
+  text-transform:uppercase;
+  line-height:1.2;
+  margin-bottom:4px;
+}
+.qr-info .qr-num{
+  font-family:'Russo One',sans-serif;
+  font-size:20px;
+  color:var(--verde-whats);
+  display:flex;align-items:center;gap:5px;
+}
+.qr-info .qr-num i{font-size:18px;}
+.qr-info small{font-size:9px;color:#555;display:block;margin-top:2px;}
+.qr-badge{
+  background:var(--verde-whats);
+  color:#fff;
+  font-size:9px;
+  font-weight:800;
+  padding:3px 8px;
+  border-radius:20px;
+  margin-top:4px;
+  display:inline-block;
+  letter-spacing:1px;
+}
 
-        .unidade-card {
-            background: white;
-            padding: 8px;
-            border-radius: 5px;
-            text-align: center;
-            font-size: 11px;
-            border-bottom: 3px solid var(--azul);
-        }
+.produtos-lista{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin:2mm 0;
+}
+.produto-pill{
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:20px;
+  padding:5px 12px;
+  font-size:10px;
+  font-weight:700;
+  color:#fff;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+.produto-pill.ativo{
+  background:var(--dourado);
+  color:var(--azul-escuro);
+  border-color:var(--dourado);
+}
 
-        .secao-titulo {
-            background: var(--vermelho);
-            color: white;
-            padding: 5px 20px;
-            display: inline-block;
-            skew: -10deg;
-            font-family: 'Russo One';
-            margin-bottom: 15px;
-            transform: skewX(-15deg);
-        }
+.frente-rodape{
+  margin-top:auto;
+  padding-top:5mm;
+  border-top:1px solid rgba(255,255,255,.2);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.frente-rodape .locais{
+  font-size:10px;
+  color:rgba(255,255,255,.8);
+  font-weight:600;
+  letter-spacing:.5px;
+}
+.frente-rodape .locais i{color:var(--dourado);margin-right:4px;}
+.frente-rodape .site{
+  font-size:10px;
+  color:var(--dourado);
+  font-weight:700;
+}
 
-        .grid-motos {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-        }
+/* ==================== VERSO ==================== */
+.verso{ background:#fff; }
 
-        .moto-card {
-            background: white;
-            border: 2px solid #ddd;
-            border-radius: 15px;
-            overflow: hidden;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
+.verso-inner{
+  padding:8mm 10mm;
+  display:flex;
+  flex-direction:column;
+  min-height:297mm;
+}
 
-        .moto-card img { width: 100%; height: 130px; object-fit: contain; background: #eee; }
+.verso-header{
+  background:linear-gradient(135deg,var(--azul) 0%,var(--azul-medio) 100%);
+  border-radius:14px;
+  padding:10px 16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:5mm;
+  box-shadow:0 6px 20px rgba(10,47,90,.35);
+}
+.verso-header .logo-v{
+  font-family:'Russo One',sans-serif;
+  color:#fff;
+  font-size:22px;
+  display:flex;align-items:center;gap:8px;
+}
+.verso-header .logo-v i{color:var(--dourado);}
+.verso-header .edicao{
+  text-align:right;
+  color:rgba(255,255,255,.75);
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:1px;
+}
+.verso-header .edicao span{
+  display:block;
+  color:var(--dourado);
+  font-size:12px;
+  font-weight:800;
+}
 
-        .preco-tag {
-            background: var(--azul);
-            color: white;
-            padding: 10px;
-            font-size: 20px;
-            font-weight: 900;
-            text-align: center;
-        }
+.secao-titulo{
+  background:linear-gradient(90deg,var(--vermelho),var(--vermelho-escuro));
+  color:#fff;
+  font-family:'Russo One',sans-serif;
+  font-size:12px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  padding:7px 16px;
+  border-radius:8px;
+  margin-bottom:3mm;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  box-shadow:0 3px 12px rgba(227,34,31,.35);
+}
+.secao-titulo.azul{
+  background:linear-gradient(90deg,var(--azul),var(--azul-medio));
+  box-shadow:0 3px 12px rgba(10,47,90,.35);
+}
 
-        .facilidades-bar {
-            background: var(--azul);
-            color: white;
-            display: flex;
-            justify-content: space-around;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 10px;
-        }
+.grid-unidades{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:8px;
+  margin-bottom:5mm;
+}
+.unidade-card{
+  border:2px solid var(--azul);
+  border-radius:12px;
+  overflow:hidden;
+  background:#fff;
+  box-shadow:0 3px 12px rgba(10,47,90,.12);
+}
+.unidade-card-header{
+  background:linear-gradient(90deg,var(--azul),var(--azul-medio));
+  padding:6px 12px;
+  display:flex;align-items:center;gap:6px;
+  color:#fff;
+  font-weight:800;
+  font-size:12px;
+}
+.unidade-card-header i{color:var(--dourado);}
+.unidade-card-body{ padding:8px 12px; }
+.unidade-card-body p{
+  font-size:10.5px;
+  color:#333;
+  display:flex;align-items:center;gap:5px;
+  margin-bottom:3px;
+}
+.unidade-card-body p i{ width:12px; color:var(--azul); font-size:10px; }
+.unidade-card-body .whats-tag{
+  background:#e8f5e9;
+  color:var(--verde-whats);
+  font-size:9px;
+  font-weight:800;
+  padding:2px 7px;
+  border-radius:10px;
+  display:inline-flex;
+  align-items:center;gap:3px;
+  margin-top:3px;
+}
 
-        .item-facilidade { text-align: center; font-size: 10px; }
-        .item-facilidade i { display: block; font-size: 20px; color: var(--amarelo); margin-bottom: 5px; }
+.grid-facilidades{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:7px;
+  margin-bottom:5mm;
+}
+.facilidade-card{
+  border:2px solid #e8edf4;
+  border-radius:12px;
+  padding:10px 6px;
+  text-align:center;
+  background:linear-gradient(145deg,#f8faff,#fff);
+  box-shadow:0 2px 8px rgba(10,47,90,.08);
+}
+.fac-icon{
+  width:40px;height:40px;
+  background:linear-gradient(135deg,var(--azul),var(--azul-medio));
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 6px;
+  color:#fff;
+  font-size:16px;
+  box-shadow:0 3px 10px rgba(10,47,90,.3);
+}
+.fac-icon.red{background:linear-gradient(135deg,var(--vermelho),var(--vermelho-escuro));}
+.fac-icon.gold{background:linear-gradient(135deg,var(--dourado),var(--dourado-claro));}
+.facilidade-card h5{
+  font-size:10px;
+  font-weight:800;
+  color:var(--azul);
+  line-height:1.2;
+  margin-bottom:2px;
+}
+.facilidade-card small{ font-size:8px; color:#888; }
+.fac-badge{
+  background:var(--vermelho);
+  color:#fff;
+  font-size:9px;
+  font-weight:800;
+  padding:2px 7px;
+  border-radius:10px;
+  display:inline-block;
+  margin-top:4px;
+}
+.fac-badge.gold{background:var(--dourado);color:var(--azul-escuro);}
 
-        .cta-final {
-            background: white;
-            border: 4px solid var(--vermelho);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            padding: 15px;
-            margin-top: 20px;
-        }
+.grid-motos{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-bottom:5mm;
+}
+.moto-card{
+  border-radius:14px;
+  overflow:hidden;
+  border:2px solid #dce4ee;
+  background:#fff;
+  box-shadow:0 4px 16px rgba(10,47,90,.12);
+  position:relative;
+}
+.moto-card-foto{
+  background:linear-gradient(160deg,#eef2f8,#dce4f0);
+  height:80px;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+  overflow:hidden;
+}
+.moto-card-foto i{font-size:34px;color:rgba(10,47,90,.2);}
+.moto-card-foto .foto-label{
+  position:absolute;bottom:4px;right:6px;
+  font-size:7px;color:rgba(10,47,90,.45);
+  font-style:italic;
+}
+.moto-tag{
+  position:absolute;top:6px;left:6px;
+  background:var(--vermelho);
+  color:#fff;
+  font-size:7.5px;
+  font-weight:800;
+  padding:2px 7px;
+  border-radius:6px;
+  letter-spacing:.5px;
+  text-transform:uppercase;
+}
+.moto-tag.verde{background:#2e7d32;}
+.moto-tag.gold{background:var(--dourado);color:var(--azul-escuro);}
+.moto-card-info{padding:8px 9px;}
+.moto-card-info h4{
+  font-family:'Russo One',sans-serif;
+  font-size:12px;
+  color:var(--azul);
+  margin-bottom:3px;
+  line-height:1.1;
+}
+.moto-card-info .desc{
+  font-size:8.5px;
+  color:#666;
+  margin-bottom:6px;
+  line-height:1.3;
+}
+.moto-preco{
+  background:linear-gradient(90deg,var(--vermelho),var(--vermelho-escuro));
+  color:#fff;
+  border-radius:8px;
+  padding:5px 8px;
+  display:flex;
+  align-items:baseline;
+  gap:3px;
+}
+.moto-preco .cifrao{font-size:10px;font-weight:800;}
+.moto-preco .valor{
+  font-family:'Russo One',sans-serif;
+  font-size:17px;
+  line-height:1;
+}
+.moto-preco .condicao{font-size:8px;margin-left:auto;opacity:.85;}
+.parcela{ font-size:8px; color:#555; margin-top:4px; text-align:center; }
 
-        .qr-code {
-            width: 100px;
-            height: 100px;
-            margin-right: 20px;
-        }
+.qr-verso{
+  background:linear-gradient(135deg,var(--azul),var(--azul-medio));
+  border-radius:16px;
+  padding:12px 16px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-top:auto;
+  box-shadow:0 8px 30px rgba(10,47,90,.35);
+}
+.qr-verso img{
+  width:80px;height:80px;
+  border-radius:10px;
+  background:#fff;
+  padding:4px;
+  flex-shrink:0;
+}
+.qr-verso-info{flex:1;color:#fff;}
+.qr-verso-info h3{
+  font-family:'Russo One',sans-serif;
+  font-size:14px;
+  text-transform:uppercase;
+  line-height:1.2;
+  margin-bottom:4px;
+}
+.qr-verso-info h3 i{color:var(--verde-whats);margin-right:5px;}
+.qr-verso-info .num-big{
+  font-family:'Russo One',sans-serif;
+  font-size:22px;
+  color:var(--dourado);
+}
+.qr-verso-info p{font-size:9px;opacity:.8;margin-top:2px;}
+.qr-verso-cta{
+  background:var(--verde-whats);
+  color:#fff;
+  font-size:10px;
+  font-weight:800;
+  padding:6px 14px;
+  border-radius:20px;
+  text-decoration:none;
+  letter-spacing:.5px;
+  white-space:nowrap;
+  display:flex;align-items:center;gap:5px;
+}
 
-        @media print {
-            body { background: none; }
-            .folha { margin: 0; box-shadow: none; }
-            .no-print { display: none; }
-        }
-    </style>
+.verso-rodape{
+  border-top:2px solid #eee;
+  padding-top:4mm;
+  margin-top:4mm;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:9px;
+  color:#555;
+}
+.verso-rodape .locais-v{ font-weight:700; color:var(--azul); }
+.verso-rodape .legal{ color:#aaa; font-size:8px; text-align:right; max-width:110mm; }
+
+/* ==================== PRINT ==================== */
+@media print{
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  body{background:#fff;padding:0;gap:0;}
+  .pagina{box-shadow:none;}
+  .btn-imprimir{display:none!important;}
+}
+
+/* ==================== BOTÃO IMPRIMIR ==================== */
+.btn-imprimir{
+  position:fixed;bottom:24px;right:24px;
+  background:linear-gradient(135deg,var(--azul),var(--azul-medio));
+  color:#fff;
+  border:none;
+  border-radius:30px;
+  padding:12px 22px;
+  font-family:'Montserrat',sans-serif;
+  font-size:13px;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow:0 6px 24px rgba(10,47,90,.5);
+  display:flex;align-items:center;gap:8px;
+  letter-spacing:.5px;
+  z-index:100;
+}
+.btn-imprimir:hover{background:linear-gradient(135deg,var(--vermelho),var(--vermelho-escuro));}
+
+.starburst{
+  position:relative;
+  display:inline-flex;
+  align-items:center;justify-content:center;
+  width:80px;height:80px;
+  flex-shrink:0;
+}
+.starburst svg{position:absolute;inset:0;}
+.starburst-text{
+  position:relative;
+  z-index:1;
+  text-align:center;
+  font-family:'Russo One',sans-serif;
+  font-size:10px;
+  color:#fff;
+  text-shadow:0 1px 2px rgba(0,0,0,.4);
+  line-height:1.1;
+}
+.starburst-text span{font-size:22px;display:block;line-height:1;}
+</style>
 </head>
 <body>
 
-    <div class="folha capa">
-        <div class="header-capa">
-            <div class="logo-box">
-                <strong style="color:var(--azul)">OURO MOTOS</strong>
-            </div>
-            <div class="selo-25-anos">
-                25 ANOS DE CONFIANÇA!
-            </div>
+<!-- FRENTE -->
+<div class="pagina frente">
+  <div class="frente-inner">
+    <div class="frente-topo">
+      <div class="logo-box">
+        <i class="fas fa-shield-halved logo-icon"></i>
+        <div class="logo-text">
+          OURO MOTOS
+          <span>Concessionária Oficial</span>
         </div>
-
-        <h1 class="titulo-principal">
-            O MAIOR <span class="destaque-amarelo">ESTOQUE</span><br>DE MOTOS DA REGIÃO
-        </h1>
-
-        <div class="container-moto-principal">
-            <div class="balao-oferta">
-                <span style="font-size: 12px;">A PARTIR DE</span>
-                <span style="font-size: 22px;">R$ XX.XXX</span>
-                <span style="font-size: 10px;">À VISTA</span>
-            </div>
-            <img src="moto_principal.png" alt="Moto Principal" class="moto-placeholder" onerror="this.src='https://via.placeholder.com/600x400?text=Sua+Moto+PNG+Aqui'">
+      </div>
+      <div class="starburst">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="50,2 61,35 97,35 68,57 79,91 50,70 21,91 32,57 3,35 39,35" fill="#E3221F" stroke="#b51a18" stroke-width="1.5"/>
+          <polygon points="50,10 59,37 88,37 65,54 74,83 50,66 26,83 35,54 12,37 41,37" fill="#F5A623" opacity=".7"/>
+        </svg>
+        <div class="starburst-text">
+          <span>25</span>ANOS DE<br>CONFIANÇA
         </div>
-
-        <div class="footer-capa">
-            <div><i class="fab fa-whatsapp"></i> (31) 98751-2118</div>
-            <div><i class="fas fa-globe"></i> www.ouromotos.com.br</div>
-            <div>@ouromotos</div>
-        </div>
+      </div>
     </div>
 
-    <div class="folha verso">
-        <div class="faixa-topo">EDIÇÃO ESPECIAL - OFERTAS VÁLIDAS ATÉ 30/04/2026</div>
-
-        <div class="grid-unidades">
-            <div class="unidade-card"><strong>OURO PRETO</strong><br>(31) 3551-2202</div>
-            <div class="unidade-card"><strong>MARIANA</strong><br>(31) 3558-2215</div>
-            <div class="unidade-card"><strong>ITABIRITO</strong><br>(31) 98864-7364</div>
-            <div class="unidade-card"><strong>OURO BRANCO</strong><br>(31) 98785-8472</div>
-        </div>
-
-        <div class="secao-titulo">OFERTAS DESTAQUE</div>
-
-        <div class="grid-motos">
-            <div class="moto-card">
-                <img src="haojue.png" onerror="this.src='https://via.placeholder.com/200x150?text=Haojue+T350'">
-                <div style="padding: 10px; flex-grow: 1; text-align: center;">
-                    <h3 style="color:var(--azul)">Haojue T350</h3>
-                    <p style="font-size: 10px;">Subsídio Santander</p>
-                </div>
-                <div class="preco-tag">R$ XX.XXX</div>
-            </div>
-            <div class="moto-card">
-                <img src="sahara.png" onerror="this.src='https://via.placeholder.com/200x150?text=Sahara+Rally'">
-                <div style="padding: 10px; flex-grow: 1; text-align: center;">
-                    <h3 style="color:var(--azul)">Sahara Rally</h3>
-                    <p style="font-size: 10px;">Pronta Entrega</p>
-                </div>
-                <div class="preco-tag">R$ XX.XXX</div>
-            </div>
-            <div class="moto-card">
-                <img src="fan.png" onerror="this.src='https://via.placeholder.com/200x150?text=Honda+Fan+160'">
-                <div style="padding: 10px; flex-grow: 1; text-align: center;">
-                    <h3 style="color:var(--azul)">Honda Fan 160</h3>
-                    <p style="font-size: 10px;">IPVA 2026 GRÁTIS</p>
-                </div>
-                <div class="preco-tag">R$ XX.XXX</div>
-            </div>
-        </div>
-
-        <div class="facilidades-bar">
-            <div class="item-facilidade"><i class="fas fa-credit-card"></i>CARTÃO ATÉ 24X</div>
-            <div class="item-facilidade"><i class="fas fa-university"></i>FINANC. ATÉ 48X</div>
-            <div class="item-facilidade"><i class="fas fa-star"></i>SEM ENTRADA*</div>
-            <div class="item-facilidade"><i class="fas fa-sync"></i>TROCA FÁCIL</div>
-        </div>
-
-        <div class="cta-final">
-            <img class="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wa.me/5531987512118" alt="WhatsApp QR Code">
-            <div>
-                <h2 style="color:var(--vermelho); font-family: 'Russo One';">FALE COM UM CONSULTOR!</h2>
-                <p>Aponte a câmera do celular para o QR Code e garanta sua moto nova agora.</p>
-                <h1 style="color:var(--azul)">(31) 98751-2118</h1>
-            </div>
-        </div>
-
-        <p style="font-size: 8px; text-align: center; margin-top: 15px; color: #666;">
-            *Crédito sujeito a aprovação. Imagens ilustrativas. Reservamo-nos o direito de corrigir erros de digitação.
-        </p>
+    <div class="faixa-promo">
+      <p>🏍️ &nbsp; FIM DE SEMANA DE OFERTAS ESPECIAIS &nbsp; 🏍️</p>
     </div>
 
-    <button class="no-print" onclick="window.print()" style="position:fixed; bottom:20px; right:20px; padding:15px 30px; background:var(--vermelho); color:white; border:none; border-radius:50px; font-weight:bold; cursor:pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
-        <i class="fas fa-print"></i> GERAR PDF PARA IMPRESSÃO
-    </button>
+    <div class="hero-titulo">
+      <span class="sub">Abril 2025 · Edição Especial</span>
+      <h1>O MAIOR ESTOQUE<br>DE <em>MOTOS</em><br>DA REGIÃO</h1>
+      <h2>Motos &bull; Carros &bull; Quadriciclos</h2>
+    </div>
+
+    <div class="divisor">
+      <div class="divisor-line"></div>
+      <div class="divisor-star">★</div>
+      <div class="divisor-line"></div>
+    </div>
+
+    <div class="produto-area">
+      <i class="fas fa-motorcycle"></i>
+      <span>[ FOTO DO PRODUTO PRINCIPAL ]</span>
+      <small>Arquivo: produto_principal.jpg • Resolução mínima 800×600px</small>
+    </div>
+
+    <div class="vantagens-grid">
+      <div class="vantagem-card">
+        <i class="fas fa-credit-card"></i>
+        <p>Cartão até<br><strong>24x</strong></p>
+        <small>sem juros</small>
+      </div>
+      <div class="vantagem-card">
+        <i class="fas fa-building-columns"></i>
+        <p>Financiamento<br><strong>48x</strong></p>
+        <small>com banco parceiro</small>
+      </div>
+      <div class="vantagem-card">
+        <i class="fas fa-hand-holding-dollar"></i>
+        <p>Sem<br><strong>Entrada*</strong></p>
+        <small>*sujeito a análise</small>
+      </div>
+    </div>
+
+    <div class="qr-section">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://wa.me/5531987512118&color=0A2F5A&bgcolor=FFFFFF" alt="QR Code WhatsApp Ouro Motos">
+      <div class="qr-info">
+        <div class="qr-cta">📲 Escaneie e fale<br>com vendas agora!</div>
+        <div class="qr-num"><i class="fab fa-whatsapp" style="color:var(--verde-whats);"></i> (31) 98751-2118</div>
+        <small>Atendimento: Seg–Sex 8h–18h | Sáb 8h–12h</small>
+        <span class="qr-badge">RESPOSTA IMEDIATA</span>
+      </div>
+    </div>
+
+    <div class="produtos-lista">
+      <span class="produto-pill ativo">🏍️ Motos</span>
+      <span class="produto-pill">🚗 Carros</span>
+      <span class="produto-pill">🚜 Quadriciclos</span>
+      <span class="produto-pill">🔧 Peças</span>
+    </div>
+
+    <div class="frente-rodape">
+      <div class="locais">
+        <i class="fas fa-location-dot"></i>
+        Ouro Preto &nbsp;|&nbsp; Mariana &nbsp;|&nbsp; Itabirito &nbsp;|&nbsp; Ouro Branco
+      </div>
+      <div class="site">
+        <i class="fas fa-globe"></i> www.ouromotos.com.br
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VERSO -->
+<div class="pagina verso">
+  <div class="verso-inner">
+    <div class="verso-header">
+      <div class="logo-v">
+        <i class="fas fa-shield-halved"></i> OURO MOTOS
+      </div>
+      <div class="edicao">
+        <span>Edição Especial</span>
+        Abril 2025
+      </div>
+    </div>
+
+    <div class="secao-titulo azul">
+      <i class="fas fa-store"></i> NOSSAS UNIDADES
+    </div>
+    <div class="grid-unidades">
+      <div class="unidade-card">
+        <div class="unidade-card-header"><i class="fas fa-store"></i> Ouro Preto</div>
+        <div class="unidade-card-body">
+          <p><i class="fas fa-phone"></i> (31) 3551-2202</p>
+          <p><i class="fas fa-motorcycle"></i> Vendas, Peças e Acessórios</p>
+          <span class="whats-tag"><i class="fab fa-whatsapp"></i> (31) 98751-2118</span>
+        </div>
+      </div>
+      <div class="unidade-card">
+        <div class="unidade-card-header"><i class="fas fa-store"></i> Mariana</div>
+        <div class="unidade-card-body">
+          <p><i class="fas fa-phone"></i> (31) 3558-2215</p>
+          <p><i class="fas fa-motorcycle"></i> Vendas, Peças e Acessórios</p>
+          <span class="whats-tag"><i class="fab fa-whatsapp"></i> (31) 98751-2118</span>
+        </div>
+      </div>
+      <div class="unidade-card">
+        <div class="unidade-card-header"><i class="fas fa-store"></i> Itabirito</div>
+        <div class="unidade-card-body">
+          <p><i class="fas fa-phone"></i> (31) 98864-7364</p>
+          <p><i class="fas fa-motorcycle"></i> Vendas, Peças e Acessórios</p>
+          <span class="whats-tag"><i class="fab fa-whatsapp"></i> (31) 98751-2118</span>
+        </div>
+      </div>
+      <div class="unidade-card">
+        <div class="unidade-card-header"><i class="fas fa-store"></i> Ouro Branco</div>
+        <div class="unidade-card-body">
+          <p><i class="fas fa-phone"></i> (31) 98785-8472</p>
+          <p><i class="fas fa-motorcycle"></i> Vendas, Peças e Acessórios</p>
+          <span class="whats-tag"><i class="fab fa-whatsapp"></i> (31) 98751-2118</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="secao-titulo">
+      <i class="fas fa-rocket"></i> FACILIDADES QUE IMPULSIONAM
+    </div>
+    <div class="grid-facilidades">
+      <div class="facilidade-card">
+        <div class="fac-icon"><i class="fas fa-credit-card"></i></div>
+        <h5>Cartão até 24x</h5>
+        <small>sem juros*</small>
+        <span class="fac-badge">24 VEZES</span>
+      </div>
+      <div class="facilidade-card">
+        <div class="fac-icon red"><i class="fas fa-building-columns"></i></div>
+        <h5>Financiamento com banco</h5>
+        <small>parceiro Santander</small>
+        <span class="fac-badge">48 MESES</span>
+      </div>
+      <div class="facilidade-card">
+        <div class="fac-icon gold"><i class="fas fa-hand-holding-dollar"></i></div>
+        <h5>Sem entrada*</h5>
+        <small>*sujeito a análise</small>
+        <span class="fac-badge gold">R$ 0,00</span>
+      </div>
+      <div class="facilidade-card">
+        <div class="fac-icon"><i class="fas fa-handshake"></i></div>
+        <h5>Consórcio contemplável</h5>
+        <small>parcelas acessíveis</small>
+        <span class="fac-badge">FÁCIL</span>
+      </div>
+      <div class="facilidade-card">
+        <div class="fac-icon red"><i class="fas fa-right-left"></i></div>
+        <h5>Troco seu veículo</h5>
+        <small>avaliação na hora</small>
+        <span class="fac-badge">TROCA</span>
+      </div>
+      <div class="facilidade-card">
+        <div class="fac-icon gold"><i class="fas fa-key"></i></div>
+        <h5>Aluguel de veículos</h5>
+        <small>diária ou mensal</small>
+        <span class="fac-badge gold">LOCAÇÃO</span>
+      </div>
+    </div>
+
+    <div class="secao-titulo">
+      <i class="fas fa-motorcycle"></i> MOTOS EM DESTAQUE – ZERO KM
+    </div>
+    <div class="grid-motos">
+      <div class="moto-card">
+        <div class="moto-card-foto">
+          <span class="moto-tag">Subsídio</span>
+          <i class="fas fa-motorcycle"></i>
+          <span class="foto-label">haojue_t350.jpg</span>
+        </div>
+        <div class="moto-card-info">
+          <h4>Haojue T350</h4>
+          <div class="desc">Subsídio Santander<br>Taxas especiais 2025</div>
+          <div class="moto-preco">
+            <span class="cifrao">R$</span>
+            <span class="valor">XX.***</span>
+            <span class="condicao">/ à vista</span>
+          </div>
+          <div class="parcela">ou financie em até 48x</div>
+        </div>
+      </div>
+      <div class="moto-card">
+        <div class="moto-card-foto">
+          <span class="moto-tag verde">Trail</span>
+          <i class="fas fa-motorcycle"></i>
+          <span class="foto-label">sahara_rally.jpg</span>
+        </div>
+        <div class="moto-card-info">
+          <h4>Sahara Rally</h4>
+          <div class="desc">Aventureira e potente<br>Pronta para qualquer terreno</div>
+          <div class="moto-preco">
+            <span class="cifrao">R$</span>
+            <span class="valor">XX.***</span>
+            <span class="condicao">/ à vista</span>
+          </div>
+          <div class="parcela">ou financie em até 48x</div>
+        </div>
+      </div>
+      <div class="moto-card">
+        <div class="moto-card-foto">
+          <span class="moto-tag gold">Zero KM</span>
+          <i class="fas fa-motorcycle"></i>
+          <span class="foto-label">fan_160.jpg</span>
+        </div>
+        <div class="moto-card-info">
+          <h4>Honda Fan 160</h4>
+          <div class="desc">Zero KM · Placa inclusa<br>IPVA Grátis 2025</div>
+          <div class="moto-preco">
+            <span class="cifrao">R$</span>
+            <span class="valor">XX.***</span>
+            <span class="condicao">/ à vista</span>
+          </div>
+          <div class="parcela">ou financie em até 48x</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qr-verso">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://wa.me/5531987512118&color=FFFFFF&bgcolor=0A2F5A" alt="QR Code WhatsApp">
+      <div class="qr-verso-info">
+        <h3><i class="fab fa-whatsapp"></i> FALE COM NOSSA<br>EQUIPE DE VENDAS</h3>
+        <div class="num-big">(31) 98751-2118</div>
+        <p>Clique ou escaneie o QR Code &bull; Horário: Seg–Sex 8h–18h | Sáb 8h–12h</p>
+      </div>
+      <a href="https://wa.me/5531987512118" class="qr-verso-cta">
+        <i class="fab fa-whatsapp"></i> CHAMAR<br>AGORA
+      </a>
+    </div>
+
+    <div class="verso-rodape">
+      <div class="locais-v">
+        <i class="fas fa-location-dot" style="color:var(--vermelho);"></i>
+        Ouro Preto | Mariana | Itabirito | Ouro Branco &nbsp;·&nbsp;
+        <i class="fas fa-globe" style="color:var(--azul);"></i> www.ouromotos.com.br &nbsp;·&nbsp;
+        <i class="fab fa-instagram" style="color:var(--vermelho);"></i> @ouromotos
+      </div>
+      <div class="legal">
+        *Imagens meramente ilustrativas. Consulte condições e disponibilidade de estoque.<br>
+        Ofertas válidas enquanto durarem os estoques. Sujeito a análise de crédito.
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="btn-imprimir" onclick="window.print()">
+  <i class="fas fa-print"></i> Imprimir / Exportar PDF
+</button>
 
 </body>
 </html>
