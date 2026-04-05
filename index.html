@@ -121,13 +121,14 @@
     background: var(--red-bg);
   }
 
-  /* GRID 5x4 = 20 MOTOS POR PÁGINA */
+  /* GRID 4x5 = 20 MOTOS POR PÁGINA (4 colunas, 5 linhas) */
   .moto-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 2.5mm;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, auto);
+    gap: 3mm;
     flex: 1;
-    align-content: start;
+    align-content: stretch;
   }
 
   /* CARD COMPACTO - SEM ESPAÇOS VAZIOS */
@@ -138,6 +139,7 @@
     overflow: hidden;
     border-radius: 4px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    height: 100%;
   }
 
   .card-img-wrap {
@@ -164,7 +166,7 @@
     background: var(--yellow-accent);
     color: var(--black);
     font-family: 'Anton', sans-serif;
-    font-size: 5pt;
+    font-size: 5.5pt;
     padding: 0.5mm 2mm;
     letter-spacing: 0.5px;
     z-index: 2;
@@ -181,7 +183,7 @@
   .card-title {
     font-family: 'Oswald', sans-serif;
     font-weight: 800;
-    font-size: 6.5pt;
+    font-size: 7pt;
     color: var(--white);
     text-transform: uppercase;
     white-space: nowrap;
@@ -191,7 +193,7 @@
 
   .card-year {
     font-family: 'Anton', sans-serif;
-    font-size: 8pt;
+    font-size: 8.5pt;
     color: var(--yellow-accent);
     line-height: 1.1;
     margin-top: 1px;
@@ -584,7 +586,7 @@ function isTopModel(title) {
   return upper.includes('CG') || upper.includes('XRE') || upper.includes('PCX') || upper.includes('LANDER') || upper.includes('SAHARA') || upper.includes('CB 500') || upper.includes('TITAN');
 }
 
-const PER_PAGE = 20; // 5 colunas x 4 linhas = 20 motos por página
+const PER_PAGE = 20; // 4 colunas x 5 linhas = 20 motos por página
 const container = document.getElementById('moto-pages');
 const totalPages = Math.ceil(motos.length / PER_PAGE);
 
