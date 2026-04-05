@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OURO MOTOS - Catálogo Oficial | Consórcio + Estoque</title>
+<title>OURO MOTOS - Catálogo Oficial | Estoque + Consórcio</title>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Oswald:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   * {
@@ -119,31 +119,28 @@
     background: var(--red-bg);
   }
 
-  /* GRID DE MOTOS (4 por linha = 8 por página) */
+  /* GRID DE MOTOS - 4x4 = 16 motos por página */
   .moto-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 4mm;
+    gap: 3mm;
     flex: 1;
     align-content: start;
   }
 
-  /* CARD DE MOTO - IMAGEM GRANDE (70% do card) */
+  /* CARD DE MOTO - IMAGEM DESTACADA */
   .moto-card {
     background: var(--white);
     display: flex;
     flex-direction: column;
     overflow: hidden;
     border-radius: 6px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    transition: transform 0.1s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
   }
 
   .card-img-wrap {
-    flex: 0 0 auto;
-    height: 0;
-    padding-bottom: 70%; /* 70% da largura = imagem ocupa 70% do card */
     position: relative;
+    padding-bottom: 70%; /* proporção da imagem */
     background: #1a1a1a;
     overflow: hidden;
   }
@@ -156,38 +153,35 @@
     height: 100%;
     object-fit: cover;
     object-position: center;
-    display: block;
   }
 
   .card-badge {
     position: absolute;
-    top: 3mm;
-    left: 3mm;
+    top: 2mm;
+    left: 2mm;
     background: var(--yellow-accent);
     color: var(--black);
     font-family: 'Anton', sans-serif;
-    font-size: 8pt;
-    padding: 2mm 4mm;
-    letter-spacing: 1px;
+    font-size: 6pt;
+    padding: 1mm 3mm;
+    letter-spacing: 0.5px;
     z-index: 2;
     font-weight: bold;
     border-radius: 3px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
   }
 
   .card-info {
     background: var(--black);
-    padding: 3mm 3mm;
+    padding: 2mm 2mm;
     text-align: center;
   }
 
   .card-title {
     font-family: 'Oswald', sans-serif;
     font-weight: 800;
-    font-size: 9pt;
+    font-size: 7.5pt;
     color: var(--white);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -195,11 +189,10 @@
 
   .card-year {
     font-family: 'Anton', sans-serif;
-    font-size: 11pt;
+    font-size: 9pt;
     color: var(--yellow-accent);
     line-height: 1.2;
-    margin-top: 2px;
-    letter-spacing: 1px;
+    margin-top: 1px;
   }
 
   /* CAPA */
@@ -216,7 +209,6 @@
     align-items: center;
     justify-content: center;
     padding: 8mm 8mm;
-    position: relative;
   }
 
   .cover-main-title {
@@ -230,9 +222,7 @@
     margin-bottom: 4mm;
   }
 
-  .cover-main-title span {
-    color: var(--yellow-accent);
-  }
+  .cover-main-title span { color: var(--yellow-accent); }
 
   .cover-sub {
     font-family: 'Oswald', sans-serif;
@@ -243,7 +233,6 @@
     text-transform: uppercase;
     background: rgba(0,0,0,0.3);
     padding: 2mm 8mm;
-    display: inline-block;
     margin-bottom: 6mm;
   }
 
@@ -256,39 +245,27 @@
     border-radius: 8px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.3);
   }
+  .cover-img-area img { width: 100%; height: 100%; object-fit: cover; }
 
-  .cover-img-area img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .cover-stats {
-    display: flex;
-    gap: 5mm;
-    margin-top: 6mm;
-  }
-
-  .cover-stat {
-    background: rgba(0,0,0,0.55);
-    padding: 3mm 6mm;
+  /* BLOCO DE FINANCIAMENTO E TROCA */
+  .financing-box {
+    background: rgba(0,0,0,0.65);
+    padding: 4mm 8mm;
+    border-radius: 12px;
+    margin: 6mm auto;
     text-align: center;
-    border-radius: 6px;
-    border-left: 3px solid var(--yellow-accent);
+    width: 90%;
+    border-left: 5px solid var(--yellow-accent);
   }
-
-  .cover-stat-num {
-    font-family: 'Anton', sans-serif;
-    font-size: 20pt;
-    color: var(--yellow-accent);
-    display: block;
-  }
-
-  .cover-stat-label {
-    font-family: 'Oswald', sans-serif;
-    font-size: 7pt;
-    font-weight: 600;
+  .financing-box p {
     color: white;
+    font-size: 12pt;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+  .financing-box span {
+    color: var(--yellow-accent);
+    font-size: 14pt;
   }
 
   .cover-bottom {
@@ -299,7 +276,6 @@
     align-items: center;
     border-top: 2px solid var(--yellow-accent);
   }
-
   .cover-address {
     font-family: 'Oswald', sans-serif;
     font-size: 7pt;
@@ -308,28 +284,19 @@
   }
 
   /* PÁGINA DE CONSÓRCIO */
-  .consortium-page {
-    background: linear-gradient(135deg, #B20000 0%, #7A0000 100%);
-  }
-
+  .consortium-page { background: linear-gradient(135deg, #B20000 0%, #7A0000 100%); }
   .consortium-hero {
     background: rgba(0,0,0,0.25);
     padding: 10mm 8mm;
     text-align: center;
     border-bottom: 3px solid var(--yellow-accent);
   }
-
   .consortium-title {
     font-family: 'Anton', sans-serif;
     font-size: 34pt;
     color: var(--white);
-    letter-spacing: 2px;
   }
-
-  .consortium-title span {
-    color: var(--yellow-accent);
-  }
-
+  .consortium-title span { color: var(--yellow-accent); }
   .consortium-sub {
     font-family: 'Oswald', sans-serif;
     font-size: 16pt;
@@ -337,7 +304,6 @@
     color: var(--yellow-bright);
     margin-top: 4mm;
   }
-
   .consortium-price {
     background: var(--black);
     display: inline-block;
@@ -346,41 +312,34 @@
     border-radius: 50px;
     border: 2px solid var(--yellow-accent);
   }
-
   .consortium-price .big-price {
     font-family: 'Anton', sans-serif;
     font-size: 32pt;
     color: var(--yellow-accent);
   }
-
   .table-examples {
     display: flex;
     justify-content: center;
     gap: 12mm;
     margin: 8mm 0;
   }
-
   .example-card {
     background: rgba(0,0,0,0.5);
     padding: 6mm 10mm;
     border-radius: 12px;
     text-align: center;
-    min-width: 100px;
   }
-
   .example-card h3 {
     font-family: 'Anton', sans-serif;
     font-size: 16pt;
     color: var(--yellow-accent);
   }
-
   .example-card p {
     font-family: 'Oswald', sans-serif;
     font-size: 18pt;
     font-weight: 800;
     color: white;
   }
-
   .consortium-footer {
     margin-top: auto;
     background: var(--black);
@@ -398,11 +357,6 @@
     align-items: center;
     text-align: center;
   }
-
-  .backcover-logo {
-    margin-bottom: 15mm;
-  }
-
   .backcover-logo .big-logo {
     font-family: 'Anton', sans-serif;
     font-size: 52pt;
@@ -412,7 +366,6 @@
     display: inline-block;
     letter-spacing: 4px;
   }
-
   .backcover-whatsapp {
     font-family: 'Anton', sans-serif;
     font-size: 28pt;
@@ -425,14 +378,6 @@
     align-items: center;
     gap: 6mm;
   }
-
-  .backcover-site {
-    font-family: 'Oswald', sans-serif;
-    font-size: 14pt;
-    color: var(--yellow-accent);
-    margin: 4mm 0;
-  }
-
   .qrcode-placeholder {
     width: 55mm;
     height: 55mm;
@@ -444,13 +389,7 @@
     border-radius: 12px;
     padding: 4mm;
   }
-
-  .qrcode-placeholder img {
-    width: 100%;
-    height: auto;
-  }
-
-  /* UTILITÁRIOS */
+  .qrcode-placeholder img { width: 100%; height: auto; }
   .section-label {
     background: var(--black);
     color: var(--yellow-accent);
@@ -464,18 +403,9 @@
   }
 
   @media print {
-    @page {
-      size: A4;
-      margin: 0;
-    }
-    body {
-      background: none;
-      margin: 0;
-    }
-    .page {
-      margin: 0;
-      box-shadow: none;
-    }
+    @page { size: A4; margin: 0; }
+    body { background: none; margin: 0; }
+    .page { margin: 0; box-shadow: none; }
   }
 </style>
 </head>
@@ -484,10 +414,7 @@
 <!-- ================= CAPA ================= -->
 <div class="page cover-page">
   <div class="page-header">
-    <div class="logo-area">
-      <div class="logo-badge">OURO MOTOS</div>
-      <div class="logo-sub">MULTIMARCAS<br>OURO PRETO • MG</div>
-    </div>
+    <div class="logo-area"><div class="logo-badge">OURO MOTOS</div><div class="logo-sub">MULTIMARCAS<br>OURO PRETO • MG</div></div>
     <div class="header-tag">EDIÇÃO OFICIAL</div>
     <div class="header-phone">(31) 3551-2202<span>CONSULTE JÁ</span></div>
   </div>
@@ -498,10 +425,11 @@
       <div class="cover-img-area">
         <img src="https://s3.carro57.com.br/FC/5526/7913974_0_W_80e64a6b07.jpeg" alt="Honda Sahara 300 Rally" onerror="this.src='https://s3.carro57.com.br/FC/5526/7351548_0_W_d43fc1fb48.jpeg'">
       </div>
-      <div class="cover-stats">
-        <div class="cover-stat"><span class="cover-stat-num">100+</span><span class="cover-stat-label">MOTOS EM ESTOQUE</span></div>
-        <div class="cover-stat"><span class="cover-stat-num">12x</span><span class="cover-stat-label">SEM JUROS</span></div>
-        <div class="cover-stat"><span class="cover-stat-num">CARTA</span><span class="cover-stat-label">CONSÓRCIO</span></div>
+      
+      <!-- BLOCO CORRIGIDO: Até 48x sem entrada + Aceitamos troca -->
+      <div class="financing-box">
+        <p>✅ FINANCIAMENTO <span>ATÉ 48 VEZES</span> SEM ENTRADA ✅</p>
+        <p style="font-size: 10pt; margin-top: 2mm;">✅ ACEITAMOS SEU VEÍCULO NA TROCA ✅</p>
       </div>
     </div>
     <div class="cover-bottom">
@@ -513,13 +441,10 @@
 <!-- ================= PÁGINAS DE ESTOQUE ================= -->
 <div id="moto-pages"></div>
 
-<!-- ================= PÁGINA DE CONSÓRCIO (PENÚLTIMA) ================= -->
+<!-- ================= PÁGINA DE CONSÓRCIO ================= -->
 <div class="page consortium-page">
   <div class="page-header">
-    <div class="logo-area">
-      <div class="logo-badge">OURO MOTOS</div>
-      <div class="logo-sub">MULTIMARCAS<br>OURO PRETO • MG</div>
-    </div>
+    <div class="logo-area"><div class="logo-badge">OURO MOTOS</div><div class="logo-sub">MULTIMARCAS<br>OURO PRETO • MG</div></div>
     <div class="header-tag">CONSÓRCIO</div>
     <div class="header-phone">(31) 3551-2202<span>FALE CONOSCO</span></div>
   </div>
@@ -527,64 +452,36 @@
     <div class="consortium-hero">
       <div class="consortium-title">CARTA DE <span>CONSÓRCIO</span></div>
       <div class="consortium-sub">DISPONÍVEL IMEDIATA</div>
-      <div class="consortium-price">
-        <span class="big-price">Parcelas a partir de R$ 299/mês*</span>
-      </div>
+      <div class="consortium-price"><span class="big-price">Parcelas a partir de R$ 299/mês*</span></div>
     </div>
-
     <div class="table-examples">
-      <div class="example-card">
-        <h3>HONDA CG 160</h3>
-        <p>R$ 349/mês</p>
-        <small style="color:#FFD700;">*exemplo consórcio</small>
-      </div>
-      <div class="example-card">
-        <h3>HONDA XRE 300</h3>
-        <p>R$ 499/mês</p>
-        <small style="color:#FFD700;">*exemplo consórcio</small>
-      </div>
-      <div class="example-card">
-        <h3>YAMAHA LANDER</h3>
-        <p>R$ 479/mês</p>
-        <small style="color:#FFD700;">*taxa administrativa</small>
-      </div>
+      <div class="example-card"><h3>HONDA CG 160</h3><p>R$ 349/mês</p><small style="color:#FFD700;">*exemplo consórcio</small></div>
+      <div class="example-card"><h3>HONDA XRE 300</h3><p>R$ 499/mês</p><small style="color:#FFD700;">*exemplo consórcio</small></div>
+      <div class="example-card"><h3>YAMAHA LANDER</h3><p>R$ 479/mês</p><small style="color:#FFD700;">*taxa administrativa</small></div>
     </div>
-
     <div style="background: rgba(0,0,0,0.4); padding: 5mm; margin: 5mm; border-radius: 12px; text-align: center;">
       <p style="color: white; font-size: 9pt; font-weight: 600;">✅ Sem juros bancários ✅ Entrega rápida ✅ Parcelas reduzidas</p>
       <p style="color: #FFD700; font-size: 8pt;">Consulte condições para sua moto dos sonhos</p>
     </div>
-
-    <div class="consortium-footer">
-      <span style="color: white;">📞 (31) 3551-2202 | WhatsApp (31) 98751-2118</span>
-    </div>
+    <div class="consortium-footer"><span style="color: white;">📞 (31) 3551-2202 | WhatsApp (31) 98751-2118</span></div>
   </div>
 </div>
 
-<!-- ================= CONTRACAPA (ÚLTIMA) ================= -->
+<!-- ================= CONTRACAPA ================= -->
 <div class="page backcover-page">
   <div style="flex:1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 8mm;">
-    <div class="backcover-logo">
-      <div class="big-logo">OURO MOTOS</div>
-    </div>
-    
-    <div class="backcover-whatsapp">
-      📱 (31) 98751-2116
-    </div>
-    
-    <div class="backcover-site">
-      ouromotos.com.br
-    </div>
-
+    <div class="backcover-logo"><div class="big-logo">OURO MOTOS</div></div>
+    <div class="backcover-whatsapp">📱 (31) 98751-2118</div>
     <div class="qrcode-placeholder">
-      <img src="https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=https://wa.me/5531987512116?text=Olá%20vim%20pelo%20catálogo%20e%20quero%20comprar%20minha%20moto!&choe=UTF-8" alt="QR Code WhatsApp" style="width:100%;">
+      <img src="https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=https://wa.me/5531987512118?text=Olá,%20vim%20pelo%20catálogo%20e%20quero%20comprar%20minha%20moto!" alt="QR Code WhatsApp">
     </div>
-    <p style="color: white; font-size: 7pt; margin-top: 5mm;">Aponte a câmera e fale diretamente com a gente</p>
+    <p style="color: white; font-size: 8pt; margin-top: 5mm;">Aponte a câmera e fale diretamente com a gente</p>
+    <p style="color: #FFD700; font-size: 7pt; margin-top: 4mm;">ouromotos.com.br</p>
   </div>
 </div>
 
 <script>
-// DADOS DAS MOTOS (CSV processado)
+// DADOS DAS MOTOS (mesmo CSV, sem duplicação)
 const motos = [
   {title:"HONDA CG 160 TITAN EX 2017", year:"2017", img:"https://s3.carro57.com.br/FC/5526/7962610_0_W_0dc1293d1b.jpeg"},
   {title:"HONDA XRE 300 2017", year:"2017", img:"https://s3.carro57.com.br/FC/5526/7943604_2_W_248ccdeaef.jpeg"},
@@ -679,7 +576,7 @@ function isTopModel(title) {
   return upper.includes('CG') || upper.includes('XRE') || upper.includes('PCX') || upper.includes('LANDER') || upper.includes('SAHARA') || upper.includes('CB 500') || upper.includes('TITAN');
 }
 
-const PER_PAGE = 8; // 4x2 = 8 motos por página (cards maiores e imagem destacada)
+const PER_PAGE = 16; // 4x4 = 16 motos por página (máximo aproveitamento)
 const container = document.getElementById('moto-pages');
 const totalPages = Math.ceil(motos.length / PER_PAGE);
 
@@ -694,10 +591,7 @@ for (let p = 0; p < totalPages; p++) {
   const header = document.createElement('div');
   header.className = 'page-header';
   header.innerHTML = `
-    <div class="logo-area">
-      <div class="logo-badge">OURO MOTOS</div>
-      <div class="logo-sub">MULTIMARCAS<br>OURO PRETO • MG</div>
-    </div>
+    <div class="logo-area"><div class="logo-badge">OURO MOTOS</div><div class="logo-sub">MULTIMARCAS<br>OURO PRETO • MG</div></div>
     <div class="header-tag">ESTOQUE OFICIAL</div>
     <div class="header-phone">(31) 3551-2202<span>PÁG. ${pageNum} DE ${totalPages}</span></div>
   `;
