@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OURO MOTOS - Catálogo Oficial | Estoque + Consórcio</title>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Oswald:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
   * {
     margin: 0;
@@ -21,6 +22,7 @@
     --white: #FFFFFF;
     --black: #111111;
     --gray-light: #F8F8F8;
+    --whatsapp: #25D366;
   }
 
   body {
@@ -50,7 +52,7 @@
   /* CABEÇALHO PADRONIZADO */
   .page-header {
     background: var(--red-primary);
-    padding: 4mm 6mm;
+    padding: 3mm 5mm;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -61,15 +63,15 @@
   .logo-area {
     display: flex;
     align-items: baseline;
-    gap: 3mm;
+    gap: 2mm;
   }
 
   .logo-badge {
     background: var(--yellow-accent);
     color: var(--black);
     font-family: 'Anton', sans-serif;
-    font-size: 22pt;
-    padding: 1mm 5mm;
+    font-size: 18pt;
+    padding: 1mm 4mm;
     letter-spacing: 2px;
     line-height: 1;
     font-weight: 800;
@@ -78,9 +80,9 @@
   .logo-sub {
     color: var(--white);
     font-family: 'Oswald', sans-serif;
-    font-size: 7pt;
+    font-size: 6pt;
     font-weight: 600;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
     text-transform: uppercase;
     line-height: 1.2;
   }
@@ -89,16 +91,16 @@
     background: var(--yellow-accent);
     color: var(--black);
     font-family: 'Anton', sans-serif;
-    font-size: 9pt;
-    padding: 2mm 5mm;
-    letter-spacing: 1.5px;
+    font-size: 8pt;
+    padding: 1.5mm 4mm;
+    letter-spacing: 1px;
   }
 
   .header-phone {
     color: var(--yellow-accent);
     font-family: 'Oswald', sans-serif;
     font-weight: 800;
-    font-size: 9pt;
+    font-size: 8pt;
     text-align: right;
     line-height: 1.3;
   }
@@ -106,41 +108,41 @@
   .header-phone span {
     display: block;
     color: var(--white);
-    font-size: 6pt;
+    font-size: 5pt;
     font-weight: 500;
   }
 
   /* CONTEÚDO PRINCIPAL */
   .page-content {
     flex: 1;
-    padding: 4mm 5mm 3mm;
+    padding: 3mm 4mm 2mm;
     display: flex;
     flex-direction: column;
     background: var(--red-bg);
   }
 
-  /* GRID DE MOTOS - 4x4 = 16 motos por página */
+  /* GRID 5x4 = 20 MOTOS POR PÁGINA */
   .moto-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 3mm;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2.5mm;
     flex: 1;
     align-content: start;
   }
 
-  /* CARD DE MOTO - IMAGEM DESTACADA */
+  /* CARD COMPACTO - SEM ESPAÇOS VAZIOS */
   .moto-card {
     background: var(--white);
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    border-radius: 6px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
   }
 
   .card-img-wrap {
     position: relative;
-    padding-bottom: 70%; /* proporção da imagem */
+    padding-bottom: 65%;
     background: #1a1a1a;
     overflow: hidden;
   }
@@ -157,29 +159,29 @@
 
   .card-badge {
     position: absolute;
-    top: 2mm;
-    left: 2mm;
+    top: 1.5mm;
+    left: 1.5mm;
     background: var(--yellow-accent);
     color: var(--black);
     font-family: 'Anton', sans-serif;
-    font-size: 6pt;
-    padding: 1mm 3mm;
+    font-size: 5pt;
+    padding: 0.5mm 2mm;
     letter-spacing: 0.5px;
     z-index: 2;
     font-weight: bold;
-    border-radius: 3px;
+    border-radius: 2px;
   }
 
   .card-info {
     background: var(--black);
-    padding: 2mm 2mm;
+    padding: 1.5mm 2mm;
     text-align: center;
   }
 
   .card-title {
     font-family: 'Oswald', sans-serif;
     font-weight: 800;
-    font-size: 7.5pt;
+    font-size: 6.5pt;
     color: var(--white);
     text-transform: uppercase;
     white-space: nowrap;
@@ -189,18 +191,26 @@
 
   .card-year {
     font-family: 'Anton', sans-serif;
-    font-size: 9pt;
+    font-size: 8pt;
     color: var(--yellow-accent);
-    line-height: 1.2;
+    line-height: 1.1;
     margin-top: 1px;
   }
 
-  /* CAPA */
-  .cover-page .page-content {
-    padding: 0;
-    background: var(--red-primary);
+  .section-label {
+    background: var(--black);
+    color: var(--yellow-accent);
+    font-family: 'Anton', sans-serif;
+    font-size: 9pt;
+    letter-spacing: 2px;
+    padding: 1.5mm 5mm;
+    margin-bottom: 3mm;
+    display: inline-block;
+    align-self: flex-start;
   }
 
+  /* CAPA */
+  .cover-page .page-content { padding: 0; background: var(--red-primary); }
   .cover-hero {
     background: linear-gradient(145deg, var(--red-primary) 0%, #8B0000 100%);
     flex: 1;
@@ -208,142 +218,135 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 8mm 8mm;
+    padding: 6mm 8mm;
   }
-
   .cover-main-title {
     font-family: 'Anton', sans-serif;
-    font-size: 48pt;
+    font-size: 44pt;
     color: var(--white);
     text-align: center;
     line-height: 0.85;
-    letter-spacing: 3px;
-    text-shadow: 4px 4px 0 rgba(0,0,0,0.4);
-    margin-bottom: 4mm;
+    text-shadow: 3px 3px 0 rgba(0,0,0,0.4);
+    margin-bottom: 3mm;
   }
-
   .cover-main-title span { color: var(--yellow-accent); }
-
   .cover-sub {
     font-family: 'Oswald', sans-serif;
-    font-size: 14pt;
-    font-weight: 800;
-    color: var(--yellow-bright);
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    background: rgba(0,0,0,0.3);
-    padding: 2mm 8mm;
-    margin-bottom: 6mm;
-  }
-
-  .cover-img-area {
-    width: 140mm;
-    height: 70mm;
-    border: 3px solid var(--yellow-accent);
-    margin: 4mm auto;
-    overflow: hidden;
-    border-radius: 8px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-  }
-  .cover-img-area img { width: 100%; height: 100%; object-fit: cover; }
-
-  /* BLOCO DE FINANCIAMENTO E TROCA */
-  .financing-box {
-    background: rgba(0,0,0,0.65);
-    padding: 4mm 8mm;
-    border-radius: 12px;
-    margin: 6mm auto;
-    text-align: center;
-    width: 90%;
-    border-left: 5px solid var(--yellow-accent);
-  }
-  .financing-box p {
-    color: white;
     font-size: 12pt;
     font-weight: 800;
-    letter-spacing: 1px;
+    color: var(--yellow-bright);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    background: rgba(0,0,0,0.3);
+    padding: 2mm 6mm;
+    margin-bottom: 5mm;
   }
-  .financing-box span {
-    color: var(--yellow-accent);
-    font-size: 14pt;
+  .cover-img-area {
+    width: 130mm;
+    height: 60mm;
+    border: 3px solid var(--yellow-accent);
+    margin: 3mm auto;
+    overflow: hidden;
+    border-radius: 6px;
   }
-
+  .cover-img-area img { width: 100%; height: 100%; object-fit: cover; }
+  .financing-box {
+    background: rgba(0,0,0,0.7);
+    padding: 3mm 6mm;
+    border-radius: 8px;
+    margin: 4mm auto;
+    text-align: center;
+    width: 95%;
+    border-left: 4px solid var(--yellow-accent);
+  }
+  .financing-box p { color: white; font-size: 10pt; font-weight: 800; }
+  .financing-box span { color: var(--yellow-accent); font-size: 11pt; }
   .cover-bottom {
     background: var(--black);
-    padding: 3mm 6mm;
+    padding: 2.5mm 5mm;
     display: flex;
     justify-content: space-between;
-    align-items: center;
     border-top: 2px solid var(--yellow-accent);
   }
-  .cover-address {
-    font-family: 'Oswald', sans-serif;
-    font-size: 7pt;
-    font-weight: 500;
-    color: var(--gray-light);
-  }
+  .cover-address { font-family: 'Oswald', sans-serif; font-size: 6.5pt; font-weight: 500; color: var(--gray-light); }
 
-  /* PÁGINA DE CONSÓRCIO */
+  /* PÁGINA CONSÓRCIO */
   .consortium-page { background: linear-gradient(135deg, #B20000 0%, #7A0000 100%); }
   .consortium-hero {
     background: rgba(0,0,0,0.25);
-    padding: 10mm 8mm;
+    padding: 8mm 6mm;
     text-align: center;
     border-bottom: 3px solid var(--yellow-accent);
   }
   .consortium-title {
     font-family: 'Anton', sans-serif;
-    font-size: 34pt;
+    font-size: 30pt;
     color: var(--white);
   }
   .consortium-title span { color: var(--yellow-accent); }
   .consortium-sub {
     font-family: 'Oswald', sans-serif;
-    font-size: 16pt;
+    font-size: 14pt;
     font-weight: 800;
     color: var(--yellow-bright);
-    margin-top: 4mm;
+    margin-top: 3mm;
   }
   .consortium-price {
     background: var(--black);
     display: inline-block;
-    padding: 4mm 12mm;
-    margin: 8mm auto;
-    border-radius: 50px;
+    padding: 3mm 10mm;
+    margin: 6mm auto;
+    border-radius: 40px;
     border: 2px solid var(--yellow-accent);
   }
   .consortium-price .big-price {
     font-family: 'Anton', sans-serif;
-    font-size: 32pt;
+    font-size: 28pt;
     color: var(--yellow-accent);
   }
   .table-examples {
     display: flex;
     justify-content: center;
-    gap: 12mm;
-    margin: 8mm 0;
+    gap: 8mm;
+    margin: 6mm 0;
   }
   .example-card {
     background: rgba(0,0,0,0.5);
-    padding: 6mm 10mm;
-    border-radius: 12px;
+    padding: 4mm 8mm;
+    border-radius: 10px;
     text-align: center;
   }
   .example-card h3 {
     font-family: 'Anton', sans-serif;
-    font-size: 16pt;
+    font-size: 14pt;
     color: var(--yellow-accent);
   }
   .example-card p {
     font-family: 'Oswald', sans-serif;
-    font-size: 18pt;
+    font-size: 16pt;
     font-weight: 800;
     color: white;
   }
+  .services-row {
+    display: flex;
+    justify-content: center;
+    gap: 4mm;
+    margin: 5mm;
+    flex-wrap: wrap;
+  }
+  .service-badge {
+    background: rgba(0,0,0,0.5);
+    padding: 2mm 5mm;
+    border-radius: 20px;
+    color: white;
+    font-size: 7pt;
+    font-weight: 600;
+  }
+  .service-badge i { color: var(--yellow-accent); margin-right: 2mm; }
   .consortium-footer {
     margin-top: auto;
     background: var(--black);
-    padding: 4mm;
+    padding: 3mm;
     text-align: center;
     border-top: 2px solid var(--yellow-accent);
   }
@@ -359,47 +362,43 @@
   }
   .backcover-logo .big-logo {
     font-family: 'Anton', sans-serif;
-    font-size: 52pt;
+    font-size: 46pt;
     color: var(--yellow-accent);
     background: var(--black);
-    padding: 4mm 12mm;
+    padding: 3mm 10mm;
     display: inline-block;
-    letter-spacing: 4px;
+    letter-spacing: 3px;
   }
   .backcover-whatsapp {
     font-family: 'Anton', sans-serif;
-    font-size: 28pt;
+    font-size: 24pt;
     color: var(--white);
-    background: #25D366;
-    padding: 5mm 12mm;
-    border-radius: 60px;
-    margin: 8mm 0;
+    background: var(--whatsapp);
+    padding: 4mm 10mm;
+    border-radius: 50px;
+    margin: 6mm 0;
     display: inline-flex;
     align-items: center;
-    gap: 6mm;
+    gap: 4mm;
   }
+  .backcover-whatsapp i { font-size: 28pt; }
   .qrcode-placeholder {
-    width: 55mm;
-    height: 55mm;
+    width: 50mm;
+    height: 50mm;
     background: white;
-    margin: 8mm auto;
+    margin: 6mm auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 12px;
-    padding: 4mm;
+    border-radius: 10px;
+    padding: 3mm;
   }
   .qrcode-placeholder img { width: 100%; height: auto; }
-  .section-label {
-    background: var(--black);
+  .backcover-site {
+    font-family: 'Oswald', sans-serif;
+    font-size: 11pt;
     color: var(--yellow-accent);
-    font-family: 'Anton', sans-serif;
-    font-size: 10pt;
-    letter-spacing: 3px;
-    padding: 2mm 6mm;
-    margin-bottom: 4mm;
-    display: inline-block;
-    align-self: flex-start;
+    margin-top: 3mm;
   }
 
   @media print {
@@ -425,11 +424,10 @@
       <div class="cover-img-area">
         <img src="https://s3.carro57.com.br/FC/5526/7913974_0_W_80e64a6b07.jpeg" alt="Honda Sahara 300 Rally" onerror="this.src='https://s3.carro57.com.br/FC/5526/7351548_0_W_d43fc1fb48.jpeg'">
       </div>
-      
-      <!-- BLOCO CORRIGIDO: Até 48x sem entrada + Aceitamos troca -->
       <div class="financing-box">
         <p>✅ FINANCIAMENTO <span>ATÉ 48 VEZES</span> SEM ENTRADA ✅</p>
-        <p style="font-size: 10pt; margin-top: 2mm;">✅ ACEITAMOS SEU VEÍCULO NA TROCA ✅</p>
+        <p style="font-size: 9pt; margin-top: 1.5mm;">✅ ACEITAMOS SEU VEÍCULO NA TROCA ✅</p>
+        <p style="font-size: 8pt; margin-top: 1mm;">✅ CARTÃO DE CRÉDITO ATÉ 24X ✅ CONSÓRCIO ✅</p>
       </div>
     </div>
     <div class="cover-bottom">
@@ -455,33 +453,44 @@
       <div class="consortium-price"><span class="big-price">Parcelas a partir de R$ 299/mês*</span></div>
     </div>
     <div class="table-examples">
-      <div class="example-card"><h3>HONDA CG 160</h3><p>R$ 349/mês</p><small style="color:#FFD700;">*exemplo consórcio</small></div>
-      <div class="example-card"><h3>HONDA XRE 300</h3><p>R$ 499/mês</p><small style="color:#FFD700;">*exemplo consórcio</small></div>
-      <div class="example-card"><h3>YAMAHA LANDER</h3><p>R$ 479/mês</p><small style="color:#FFD700;">*taxa administrativa</small></div>
+      <div class="example-card"><h3>HONDA CG 160</h3><p>R$ 349/mês</p><small style="color:#FFD700;">*exemplo</small></div>
+      <div class="example-card"><h3>HONDA XRE 300</h3><p>R$ 499/mês</p><small style="color:#FFD700;">*exemplo</small></div>
+      <div class="example-card"><h3>YAMAHA LANDER</h3><p>R$ 479/mês</p><small style="color:#FFD700;">*exemplo</small></div>
     </div>
-    <div style="background: rgba(0,0,0,0.4); padding: 5mm; margin: 5mm; border-radius: 12px; text-align: center;">
-      <p style="color: white; font-size: 9pt; font-weight: 600;">✅ Sem juros bancários ✅ Entrega rápida ✅ Parcelas reduzidas</p>
-      <p style="color: #FFD700; font-size: 8pt;">Consulte condições para sua moto dos sonhos</p>
+    <div class="services-row">
+      <div class="service-badge"><i class="fas fa-check-circle"></i> Sem juros bancários</div>
+      <div class="service-badge"><i class="fas fa-rocket"></i> Entrega rápida</div>
+      <div class="service-badge"><i class="fas fa-chart-line"></i> Parcelas reduzidas</div>
+      <div class="service-badge"><i class="fas fa-handshake"></i> Aceitamos seu veículo na troca</div>
     </div>
-    <div class="consortium-footer"><span style="color: white;">📞 (31) 3551-2202 | WhatsApp (31) 98751-2118</span></div>
+    <div style="background: rgba(0,0,0,0.4); padding: 3mm; margin: 3mm; border-radius: 8px; text-align: center;">
+      <p style="color: white; font-size: 8pt;"><i class="fas fa-store"></i> Lojas em Ouro Preto, Mariana, Itabirito e Ouro Branco</p>
+      <p style="color: #FFD700; font-size: 8pt;">Peças e acessórios originais | Aluguel de motos e carros</p>
+    </div>
+    <div class="consortium-footer"><span style="color: white;">📞 (31) 3551-2202 | WhatsApp (31) 98751-2118 | ouromotos.com.br</span></div>
   </div>
 </div>
 
 <!-- ================= CONTRACAPA ================= -->
 <div class="page backcover-page">
-  <div style="flex:1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 8mm;">
+  <div style="flex:1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 6mm;">
     <div class="backcover-logo"><div class="big-logo">OURO MOTOS</div></div>
-    <div class="backcover-whatsapp">📱 (31) 98751-2118</div>
+    <div class="backcover-whatsapp">
+      <i class="fab fa-whatsapp"></i> (31) 98751-2118
+    </div>
     <div class="qrcode-placeholder">
       <img src="https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=https://wa.me/5531987512118?text=Olá,%20vim%20pelo%20catálogo%20e%20quero%20comprar%20minha%20moto!" alt="QR Code WhatsApp">
     </div>
-    <p style="color: white; font-size: 8pt; margin-top: 5mm;">Aponte a câmera e fale diretamente com a gente</p>
-    <p style="color: #FFD700; font-size: 7pt; margin-top: 4mm;">ouromotos.com.br</p>
+    <p style="color: white; font-size: 7pt; margin-top: 3mm;">Aponte a câmera e fale diretamente com a gente</p>
+    <div class="backcover-site">ouromotos.com.br</div>
+    <div style="margin-top: 5mm; font-size: 6pt; color: rgba(255,255,255,0.7);">
+      <i class="fas fa-map-marker-alt"></i> Rua Vitório Zanetti, Ouro Preto - MG
+    </div>
   </div>
 </div>
 
 <script>
-// DADOS DAS MOTOS (mesmo CSV, sem duplicação)
+// DADOS DAS MOTOS (todas do CSV)
 const motos = [
   {title:"HONDA CG 160 TITAN EX 2017", year:"2017", img:"https://s3.carro57.com.br/FC/5526/7962610_0_W_0dc1293d1b.jpeg"},
   {title:"HONDA XRE 300 2017", year:"2017", img:"https://s3.carro57.com.br/FC/5526/7943604_2_W_248ccdeaef.jpeg"},
@@ -570,13 +579,12 @@ const motos = [
   {title:"HONDA NC 750X 2022", year:"2022", img:"https://s3.carro57.com.br/FC/5526/7808564_1_W_45c10b3e2d.jpeg"}
 ];
 
-// Função para identificar modelos mais procurados
 function isTopModel(title) {
   const upper = title.toUpperCase();
   return upper.includes('CG') || upper.includes('XRE') || upper.includes('PCX') || upper.includes('LANDER') || upper.includes('SAHARA') || upper.includes('CB 500') || upper.includes('TITAN');
 }
 
-const PER_PAGE = 16; // 4x4 = 16 motos por página (máximo aproveitamento)
+const PER_PAGE = 20; // 5 colunas x 4 linhas = 20 motos por página
 const container = document.getElementById('moto-pages');
 const totalPages = Math.ceil(motos.length / PER_PAGE);
 
@@ -587,7 +595,6 @@ for (let p = 0; p < totalPages; p++) {
   const page = document.createElement('div');
   page.className = 'page';
 
-  // Header padrão
   const header = document.createElement('div');
   header.className = 'page-header';
   header.innerHTML = `
@@ -617,7 +624,7 @@ for (let p = 0; p < totalPages; p++) {
     card.innerHTML = `
       <div class="card-img-wrap">
         <div class="card-badge">${isTop ? '⭐ MAIS PROCURADA' : 'DISPONÍVEL'}</div>
-        <img src="${moto.img}" alt="${displayTitle}" loading="lazy" onerror="this.src='https://placehold.co/400x280/CC0000/white?text=OURO+MOTOS'">
+        <img src="${moto.img}" alt="${displayTitle}" loading="lazy" onerror="this.src='https://placehold.co/300x200/CC0000/white?text=OURO+MOTOS'">
       </div>
       <div class="card-info">
         <div class="card-title">${displayTitle}</div>
