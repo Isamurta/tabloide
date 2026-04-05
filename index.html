@@ -3,307 +3,589 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OURO MOTOS - Tabloide de Estoque | Carta de Consórcio</title>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+<title>OURO MOTOS - Catálogo Oficial | Consórcio + Estoque</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Oswald:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
   :root {
-    --red: #CC0000;
+    --red-primary: #CC0000;
     --red-dark: #990000;
-    --red-light: #FF1A1A;
-    --yellow: #FFD700;
-    --yellow-light: #FFE84D;
-    --black: #111111;
+    --red-bg: #B20000;
+    --yellow-accent: #FFD700;
+    --yellow-bright: #FFE500;
     --white: #FFFFFF;
-    --gray-light: #F5F5F5;
+    --black: #111111;
+    --gray-light: #F8F8F8;
   }
 
   body {
-    background: #888;
-    font-family: 'Oswald', sans-serif;
+    background: #2a2a2a;
+    font-family: 'Oswald', 'Anton', 'Bebas Neue', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
   }
 
+  /* PÁGINAS */
   .page {
     width: 210mm;
     height: 297mm;
-    background: var(--white);
-    margin: 8mm auto;
+    background: var(--red-bg);
+    margin: 10mm auto;
     position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
     page-break-after: always;
     break-after: page;
   }
 
-  /* HEADER */
+  /* CABEÇALHO PADRONIZADO */
   .page-header {
-    background: var(--red);
-    padding: 2mm 5mm;
+    background: var(--red-primary);
+    padding: 4mm 6mm;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 3px solid var(--yellow);
+    border-bottom: 3px solid var(--yellow-accent);
     flex-shrink: 0;
   }
-  .logo-area { display: flex; align-items: center; gap: 3mm; }
+
+  .logo-area {
+    display: flex;
+    align-items: baseline;
+    gap: 3mm;
+  }
+
   .logo-badge {
-    background: var(--yellow);
+    background: var(--yellow-accent);
     color: var(--black);
     font-family: 'Anton', sans-serif;
-    font-size: 16pt;
-    padding: 1mm 3mm;
+    font-size: 22pt;
+    padding: 1mm 5mm;
+    letter-spacing: 2px;
     line-height: 1;
+    font-weight: 800;
   }
+
   .logo-sub {
     color: var(--white);
-    font-size: 6pt;
+    font-family: 'Oswald', sans-serif;
+    font-size: 7pt;
     font-weight: 600;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    line-height: 1.2;
   }
+
   .header-tag {
-    background: var(--yellow);
+    background: var(--yellow-accent);
     color: var(--black);
     font-family: 'Anton', sans-serif;
-    font-size: 7pt;
-    padding: 1mm 3mm;
+    font-size: 9pt;
+    padding: 2mm 5mm;
+    letter-spacing: 1.5px;
   }
+
   .header-phone {
-    color: var(--yellow);
-    font-weight: 700;
-    font-size: 7pt;
+    color: var(--yellow-accent);
+    font-family: 'Oswald', sans-serif;
+    font-weight: 800;
+    font-size: 9pt;
     text-align: right;
+    line-height: 1.3;
   }
+
   .header-phone span {
     display: block;
     color: var(--white);
-    font-size: 5pt;
+    font-size: 6pt;
+    font-weight: 500;
   }
 
-  /* CONTEÚDO */
+  /* CONTEÚDO PRINCIPAL */
   .page-content {
     flex: 1;
-    padding: 3mm 4mm 2mm;
+    padding: 4mm 5mm 3mm;
     display: flex;
     flex-direction: column;
-    min-height: 0;
-  }
-  .section-label {
-    background: var(--black);
-    color: var(--yellow);
-    font-family: 'Anton', sans-serif;
-    font-size: 8pt;
-    letter-spacing: 2px;
-    padding: 1mm 4mm;
-    margin-bottom: 3mm;
-    display: inline-block;
-    align-self: flex-start;
+    background: var(--red-bg);
   }
 
-  /* GRID COM CARDS MENORES (12 por página) */
+  /* GRID DE MOTOS (4 por linha = 8 por página) */
   .moto-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: auto;
-    gap: 3mm;
+    gap: 4mm;
     flex: 1;
+    align-content: start;
   }
+
+  /* CARD DE MOTO - IMAGEM GRANDE (70% do card) */
   .moto-card {
-    border: 1.5px solid var(--black);
-    background: white;
+    background: var(--white);
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    position: relative;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.1s ease;
   }
+
   .card-img-wrap {
-    height: 70px;
-    overflow: hidden;
-    background: #f0f0f0;
+    flex: 0 0 auto;
+    height: 0;
+    padding-bottom: 70%; /* 70% da largura = imagem ocupa 70% do card */
     position: relative;
+    background: #1a1a1a;
+    overflow: hidden;
   }
+
   .card-img-wrap img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
+    display: block;
   }
+
   .card-badge {
     position: absolute;
-    top: 1mm;
-    left: 1mm;
-    background: var(--red);
-    color: var(--yellow);
-    font-family: 'Anton', sans-serif;
-    font-size: 5pt;
-    padding: 0.5mm 2mm;
-    z-index: 2;
-  }
-  .card-badge.procurada {
-    background: var(--yellow);
+    top: 3mm;
+    left: 3mm;
+    background: var(--yellow-accent);
     color: var(--black);
+    font-family: 'Anton', sans-serif;
+    font-size: 8pt;
+    padding: 2mm 4mm;
+    letter-spacing: 1px;
+    z-index: 2;
+    font-weight: bold;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
   }
+
   .card-info {
     background: var(--black);
-    padding: 1mm 2mm;
+    padding: 3mm 3mm;
+    text-align: center;
   }
+
   .card-title {
-    font-weight: 700;
-    font-size: 6.5pt;
-    color: white;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 800;
+    font-size: 9pt;
+    color: var(--white);
     text-transform: uppercase;
+    letter-spacing: 0.5px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
   .card-year {
     font-family: 'Anton', sans-serif;
-    font-size: 8pt;
-    color: var(--yellow);
-    line-height: 1;
-  }
-  .card-stripe {
-    height: 2px;
-    background: repeating-linear-gradient(90deg, var(--red) 0, var(--red) 4mm, var(--yellow) 4mm, var(--yellow) 8mm);
-  }
-
-  /* RODAPÉ CARTA CONSÓRCIO */
-  .footer-consortium {
-    background: linear-gradient(135deg, var(--red-dark) 0%, var(--red) 100%);
-    border-top: 3px solid var(--yellow);
-    padding: 2mm 4mm;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2mm;
-    flex-shrink: 0;
-  }
-  .footer-title {
-    font-family: 'Anton', sans-serif;
-    font-size: 8pt;
-    color: var(--yellow);
-    white-space: nowrap;
-  }
-  .parcela-exemplo {
-    background: var(--black);
-    color: white;
-    font-size: 6pt;
-    padding: 1mm 3mm;
-    border-radius: 4px;
-    font-weight: bold;
-  }
-  .footer-cta {
-    font-size: 6pt;
-    color: white;
-    text-align: right;
-    line-height: 1.3;
-  }
-  .qrcode {
-    width: 30px;
-    height: 30px;
-    background: white;
-    padding: 2px;
-    border-radius: 4px;
+    font-size: 11pt;
+    color: var(--yellow-accent);
+    line-height: 1.2;
+    margin-top: 2px;
+    letter-spacing: 1px;
   }
 
   /* CAPA */
-  .cover-page .page-content { padding: 0; }
+  .cover-page .page-content {
+    padding: 0;
+    background: var(--red-primary);
+  }
+
   .cover-hero {
-    background: linear-gradient(135deg, var(--red-dark) 0%, var(--red) 100%);
+    background: linear-gradient(145deg, var(--red-primary) 0%, #8B0000 100%);
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 6mm;
+    padding: 8mm 8mm;
+    position: relative;
   }
+
   .cover-main-title {
     font-family: 'Anton', sans-serif;
-    font-size: 38pt;
-    color: white;
+    font-size: 48pt;
+    color: var(--white);
     text-align: center;
-    line-height: 0.9;
-    text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
-  }
-  .cover-main-title span { color: var(--yellow); }
-  .cover-sub {
-    font-size: 10pt;
-    font-weight: 700;
-    color: white;
+    line-height: 0.85;
     letter-spacing: 3px;
+    text-shadow: 4px 4px 0 rgba(0,0,0,0.4);
+    margin-bottom: 4mm;
   }
+
+  .cover-main-title span {
+    color: var(--yellow-accent);
+  }
+
+  .cover-sub {
+    font-family: 'Oswald', sans-serif;
+    font-size: 14pt;
+    font-weight: 800;
+    color: var(--yellow-bright);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    background: rgba(0,0,0,0.3);
+    padding: 2mm 8mm;
+    display: inline-block;
+    margin-bottom: 6mm;
+  }
+
   .cover-img-area {
-    width: 130mm;
-    height: 45mm;
-    border: 2px solid var(--yellow);
+    width: 140mm;
+    height: 70mm;
+    border: 3px solid var(--yellow-accent);
     margin: 4mm auto;
     overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
   }
-  .cover-img-area img { width: 100%; height: 100%; object-fit: cover; }
+
+  .cover-img-area img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
   .cover-stats {
     display: flex;
-    gap: 3mm;
-    margin-top: 4mm;
+    gap: 5mm;
+    margin-top: 6mm;
   }
+
   .cover-stat {
-    background: rgba(0,0,0,0.5);
-    padding: 2mm 3mm;
+    background: rgba(0,0,0,0.55);
+    padding: 3mm 6mm;
     text-align: center;
-    color: white;
+    border-radius: 6px;
+    border-left: 3px solid var(--yellow-accent);
   }
+
   .cover-stat-num {
     font-family: 'Anton', sans-serif;
-    font-size: 14pt;
-    color: var(--yellow);
+    font-size: 20pt;
+    color: var(--yellow-accent);
+    display: block;
   }
+
+  .cover-stat-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 7pt;
+    font-weight: 600;
+    color: white;
+  }
+
   .cover-bottom {
     background: var(--black);
-    padding: 2mm 4mm;
+    padding: 3mm 6mm;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid var(--yellow-accent);
+  }
+
+  .cover-address {
+    font-family: 'Oswald', sans-serif;
+    font-size: 7pt;
+    font-weight: 500;
+    color: var(--gray-light);
+  }
+
+  /* PÁGINA DE CONSÓRCIO */
+  .consortium-page {
+    background: linear-gradient(135deg, #B20000 0%, #7A0000 100%);
+  }
+
+  .consortium-hero {
+    background: rgba(0,0,0,0.25);
+    padding: 10mm 8mm;
+    text-align: center;
+    border-bottom: 3px solid var(--yellow-accent);
+  }
+
+  .consortium-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 34pt;
+    color: var(--white);
+    letter-spacing: 2px;
+  }
+
+  .consortium-title span {
+    color: var(--yellow-accent);
+  }
+
+  .consortium-sub {
+    font-family: 'Oswald', sans-serif;
+    font-size: 16pt;
+    font-weight: 800;
+    color: var(--yellow-bright);
+    margin-top: 4mm;
+  }
+
+  .consortium-price {
+    background: var(--black);
+    display: inline-block;
+    padding: 4mm 12mm;
+    margin: 8mm auto;
+    border-radius: 50px;
+    border: 2px solid var(--yellow-accent);
+  }
+
+  .consortium-price .big-price {
+    font-family: 'Anton', sans-serif;
+    font-size: 32pt;
+    color: var(--yellow-accent);
+  }
+
+  .table-examples {
+    display: flex;
+    justify-content: center;
+    gap: 12mm;
+    margin: 8mm 0;
+  }
+
+  .example-card {
+    background: rgba(0,0,0,0.5);
+    padding: 6mm 10mm;
+    border-radius: 12px;
+    text-align: center;
+    min-width: 100px;
+  }
+
+  .example-card h3 {
+    font-family: 'Anton', sans-serif;
+    font-size: 16pt;
+    color: var(--yellow-accent);
+  }
+
+  .example-card p {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18pt;
+    font-weight: 800;
+    color: white;
+  }
+
+  .consortium-footer {
+    margin-top: auto;
+    background: var(--black);
+    padding: 4mm;
+    text-align: center;
+    border-top: 2px solid var(--yellow-accent);
+  }
+
+  /* CONTRACAPA */
+  .backcover-page {
+    background: var(--red-primary);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .backcover-logo {
+    margin-bottom: 15mm;
+  }
+
+  .backcover-logo .big-logo {
+    font-family: 'Anton', sans-serif;
+    font-size: 52pt;
+    color: var(--yellow-accent);
+    background: var(--black);
+    padding: 4mm 12mm;
+    display: inline-block;
+    letter-spacing: 4px;
+  }
+
+  .backcover-whatsapp {
+    font-family: 'Anton', sans-serif;
+    font-size: 28pt;
+    color: var(--white);
+    background: #25D366;
+    padding: 5mm 12mm;
+    border-radius: 60px;
+    margin: 8mm 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 6mm;
+  }
+
+  .backcover-site {
+    font-family: 'Oswald', sans-serif;
+    font-size: 14pt;
+    color: var(--yellow-accent);
+    margin: 4mm 0;
+  }
+
+  .qrcode-placeholder {
+    width: 55mm;
+    height: 55mm;
+    background: white;
+    margin: 8mm auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    padding: 4mm;
+  }
+
+  .qrcode-placeholder img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* UTILITÁRIOS */
+  .section-label {
+    background: var(--black);
+    color: var(--yellow-accent);
+    font-family: 'Anton', sans-serif;
+    font-size: 10pt;
+    letter-spacing: 3px;
+    padding: 2mm 6mm;
+    margin-bottom: 4mm;
+    display: inline-block;
+    align-self: flex-start;
   }
 
   @media print {
-    @page { size: A4; margin: 0; }
-    body { background: none; margin: 0; }
-    .page { margin: 0; box-shadow: none; }
+    @page {
+      size: A4;
+      margin: 0;
+    }
+    body {
+      background: none;
+      margin: 0;
+    }
+    .page {
+      margin: 0;
+      box-shadow: none;
+    }
   }
 </style>
 </head>
 <body>
 
-<!-- CAPA -->
+<!-- ================= CAPA ================= -->
 <div class="page cover-page">
   <div class="page-header">
-    <div class="logo-area"><div class="logo-badge">OURO MOTOS</div><div class="logo-sub">MULTIMARCAS<br>OURO PRETO • MG</div></div>
-    <div class="header-tag">EDIÇÃO ESPECIAL</div>
-    <div class="header-phone">(31) 3551-2202<span>LIGUE E CONSULTE</span></div>
+    <div class="logo-area">
+      <div class="logo-badge">OURO MOTOS</div>
+      <div class="logo-sub">MULTIMARCAS<br>OURO PRETO • MG</div>
+    </div>
+    <div class="header-tag">EDIÇÃO OFICIAL</div>
+    <div class="header-phone">(31) 3551-2202<span>CONSULTE JÁ</span></div>
   </div>
   <div class="page-content">
     <div class="cover-hero">
       <div class="cover-main-title">OURO<br><span>MOTOS</span></div>
-      <div class="cover-sub">ESTOQUE COMPLETO + CARTA CONSÓRCIO</div>
-      <div class="cover-img-area"><img src="https://s3.carro57.com.br/FC/5526/7913974_0_W_80e64a6b07.jpeg" alt="destaque" onerror="this.src='https://s3.carro57.com.br/FC/5526/7351548_0_W_d43fc1fb48.jpeg'"></div>
+      <div class="cover-sub">ESTOQUE COMPLETO + CARTA DE CONSÓRCIO</div>
+      <div class="cover-img-area">
+        <img src="https://s3.carro57.com.br/FC/5526/7913974_0_W_80e64a6b07.jpeg" alt="Honda Sahara 300 Rally" onerror="this.src='https://s3.carro57.com.br/FC/5526/7351548_0_W_d43fc1fb48.jpeg'">
+      </div>
       <div class="cover-stats">
-        <div class="cover-stat"><span class="cover-stat-num">100+</span><span>Motos</span></div>
-        <div class="cover-stat"><span class="cover-stat-num">12x</span><span>sem juros</span></div>
-        <div class="cover-stat"><span class="cover-stat-num">CARTA</span><span>Consórcio</span></div>
+        <div class="cover-stat"><span class="cover-stat-num">100+</span><span class="cover-stat-label">MOTOS EM ESTOQUE</span></div>
+        <div class="cover-stat"><span class="cover-stat-num">12x</span><span class="cover-stat-label">SEM JUROS</span></div>
+        <div class="cover-stat"><span class="cover-stat-num">CARTA</span><span class="cover-stat-label">CONSÓRCIO</span></div>
       </div>
     </div>
     <div class="cover-bottom">
-      <div><strong>CARTA DE CONSÓRCIO DISPONÍVEL</strong><br>Parcelas a partir de R$ 299/mês</div>
-      <div>Rua Vitório Zanetti, Ouro Preto – MG<br>ouromotos.com.br</div>
+      <div class="cover-address"><strong>Rua Vitório Zanetti, Ouro Preto – MG</strong> | ouromotos.com.br</div>
     </div>
   </div>
 </div>
 
-<!-- PÁGINAS DE MOTOS -->
+<!-- ================= PÁGINAS DE ESTOQUE ================= -->
 <div id="moto-pages"></div>
 
+<!-- ================= PÁGINA DE CONSÓRCIO (PENÚLTIMA) ================= -->
+<div class="page consortium-page">
+  <div class="page-header">
+    <div class="logo-area">
+      <div class="logo-badge">OURO MOTOS</div>
+      <div class="logo-sub">MULTIMARCAS<br>OURO PRETO • MG</div>
+    </div>
+    <div class="header-tag">CONSÓRCIO</div>
+    <div class="header-phone">(31) 3551-2202<span>FALE CONOSCO</span></div>
+  </div>
+  <div class="page-content" style="justify-content: space-between;">
+    <div class="consortium-hero">
+      <div class="consortium-title">CARTA DE <span>CONSÓRCIO</span></div>
+      <div class="consortium-sub">DISPONÍVEL IMEDIATA</div>
+      <div class="consortium-price">
+        <span class="big-price">Parcelas a partir de R$ 299/mês*</span>
+      </div>
+    </div>
+
+    <div class="table-examples">
+      <div class="example-card">
+        <h3>HONDA CG 160</h3>
+        <p>R$ 349/mês</p>
+        <small style="color:#FFD700;">*exemplo consórcio</small>
+      </div>
+      <div class="example-card">
+        <h3>HONDA XRE 300</h3>
+        <p>R$ 499/mês</p>
+        <small style="color:#FFD700;">*exemplo consórcio</small>
+      </div>
+      <div class="example-card">
+        <h3>YAMAHA LANDER</h3>
+        <p>R$ 479/mês</p>
+        <small style="color:#FFD700;">*taxa administrativa</small>
+      </div>
+    </div>
+
+    <div style="background: rgba(0,0,0,0.4); padding: 5mm; margin: 5mm; border-radius: 12px; text-align: center;">
+      <p style="color: white; font-size: 9pt; font-weight: 600;">✅ Sem juros bancários ✅ Entrega rápida ✅ Parcelas reduzidas</p>
+      <p style="color: #FFD700; font-size: 8pt;">Consulte condições para sua moto dos sonhos</p>
+    </div>
+
+    <div class="consortium-footer">
+      <span style="color: white;">📞 (31) 3551-2202 | WhatsApp (31) 98751-2118</span>
+    </div>
+  </div>
+</div>
+
+<!-- ================= CONTRACAPA (ÚLTIMA) ================= -->
+<div class="page backcover-page">
+  <div style="flex:1; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 8mm;">
+    <div class="backcover-logo">
+      <div class="big-logo">OURO MOTOS</div>
+    </div>
+    
+    <div class="backcover-whatsapp">
+      📱 (31) 98751-2116
+    </div>
+    
+    <div class="backcover-site">
+      ouromotos.com.br
+    </div>
+
+    <div class="qrcode-placeholder">
+      <img src="https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl=https://wa.me/5531987512116?text=Olá%20vim%20pelo%20catálogo%20e%20quero%20comprar%20minha%20moto!&choe=UTF-8" alt="QR Code WhatsApp" style="width:100%;">
+    </div>
+    <p style="color: white; font-size: 7pt; margin-top: 5mm;">Aponte a câmera e fale diretamente com a gente</p>
+  </div>
+</div>
+
 <script>
-// Dados extraídos do CSV (apenas motos com imagem e título, sem duplicar)
-const motosRaw = [
+// DADOS DAS MOTOS (CSV processado)
+const motos = [
   {title:"HONDA CG 160 TITAN EX 2017", year:"2017", img:"https://s3.carro57.com.br/FC/5526/7962610_0_W_0dc1293d1b.jpeg"},
   {title:"HONDA XRE 300 2017", year:"2017", img:"https://s3.carro57.com.br/FC/5526/7943604_2_W_248ccdeaef.jpeg"},
   {title:"HONDA XRE 300 2018", year:"2018", img:"https://s3.carro57.com.br/FC/5526/7785051_0_W_9b73930e47.jpeg"},
@@ -391,35 +673,39 @@ const motosRaw = [
   {title:"HONDA NC 750X 2022", year:"2022", img:"https://s3.carro57.com.br/FC/5526/7808564_1_W_45c10b3e2d.jpeg"}
 ];
 
-// Função para detectar motos mais procuradas (CG, XRE, PCX, Lander, Sahara)
+// Função para identificar modelos mais procurados
 function isTopModel(title) {
   const upper = title.toUpperCase();
   return upper.includes('CG') || upper.includes('XRE') || upper.includes('PCX') || upper.includes('LANDER') || upper.includes('SAHARA') || upper.includes('CB 500') || upper.includes('TITAN');
 }
 
-const PER_PAGE = 12; // mais motos por página = menos páginas
+const PER_PAGE = 8; // 4x2 = 8 motos por página (cards maiores e imagem destacada)
 const container = document.getElementById('moto-pages');
-const totalPages = Math.ceil(motosRaw.length / PER_PAGE);
+const totalPages = Math.ceil(motos.length / PER_PAGE);
 
 for (let p = 0; p < totalPages; p++) {
-  const slice = motosRaw.slice(p * PER_PAGE, (p + 1) * PER_PAGE);
+  const slice = motos.slice(p * PER_PAGE, (p + 1) * PER_PAGE);
   const pageNum = p + 1;
 
   const page = document.createElement('div');
   page.className = 'page';
 
-  // Header
+  // Header padrão
   const header = document.createElement('div');
   header.className = 'page-header';
   header.innerHTML = `
-    <div class="logo-area"><div class="logo-badge">OURO MOTOS</div><div class="logo-sub">MULTIMARCAS<br>OURO PRETO • MG</div></div>
-    <div class="header-tag">ESTOQUE 2025</div>
+    <div class="logo-area">
+      <div class="logo-badge">OURO MOTOS</div>
+      <div class="logo-sub">MULTIMARCAS<br>OURO PRETO • MG</div>
+    </div>
+    <div class="header-tag">ESTOQUE OFICIAL</div>
     <div class="header-phone">(31) 3551-2202<span>PÁG. ${pageNum} DE ${totalPages}</span></div>
   `;
   page.appendChild(header);
 
   const content = document.createElement('div');
   content.className = 'page-content';
+  
   const label = document.createElement('div');
   label.className = 'section-label';
   label.textContent = `🏍 MOTOS DISPONÍVEIS — CARTA DE CONSÓRCIO`;
@@ -428,20 +714,20 @@ for (let p = 0; p < totalPages; p++) {
   const grid = document.createElement('div');
   grid.className = 'moto-grid';
 
-  slice.forEach(m => {
-    let displayTitle = m.title.replace(/\s+\d{4}$/, '').trim();
-    const isTop = isTopModel(m.title);
+  slice.forEach(moto => {
+    let displayTitle = moto.title.replace(/\s+\d{4}$/, '').trim();
+    const isTop = isTopModel(moto.title);
+    
     const card = document.createElement('div');
     card.className = 'moto-card';
     card.innerHTML = `
-      <div class="card-stripe"></div>
       <div class="card-img-wrap">
-        <div class="card-badge ${isTop ? 'procurada' : ''}">${isTop ? '⭐ MAIS PROCURADA' : 'DISPONÍVEL'}</div>
-        <img src="${m.img}" alt="${m.title}" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'200\' height=\'100\'%3E%3Crect fill=\'%23ddd\' width=\'200\' height=\'100\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' fill=\'%23999\' font-size=\'12\' text-anchor=\'middle\'%3ESem Foto%3C/text%3E%3C/svg%3E'">
+        <div class="card-badge">${isTop ? '⭐ MAIS PROCURADA' : 'DISPONÍVEL'}</div>
+        <img src="${moto.img}" alt="${displayTitle}" loading="lazy" onerror="this.src='https://placehold.co/400x280/CC0000/white?text=OURO+MOTOS'">
       </div>
       <div class="card-info">
         <div class="card-title">${displayTitle}</div>
-        <div class="card-year">ANO ${m.year}</div>
+        <div class="card-year">ANO ${moto.year}</div>
       </div>
     `;
     grid.appendChild(card);
@@ -449,24 +735,6 @@ for (let p = 0; p < totalPages; p++) {
 
   content.appendChild(grid);
   page.appendChild(content);
-
-  // Rodapé com CARTA DE CONSÓRCIO e QR Code WhatsApp
-  const footer = document.createElement('div');
-  footer.className = 'footer-consortium';
-  // QR Code para WhatsApp (número de vendas do CSV: 553135512202)
-  const whatsappNumber = '553135512202';
-  const qrUrl = `https://chart.googleapis.com/chart?chs=100x100&cht=qr&chl=https://wa.me/${whatsappNumber}?text=Olá%20vim%20pelo%20tabloide%20e%20tenho%20interesse%20em%20uma%20moto!&choe=UTF-8`;
-  footer.innerHTML = `
-    <div class="footer-title">🏍 CARTA DE CONSÓRCIO</div>
-    <div class="parcela-exemplo">Ex: CG 160 → R$ 349/mês*</div>
-    <div class="parcela-exemplo">XRE 300 → R$ 499/mês*</div>
-    <img src="${qrUrl}" class="qrcode" alt="QR Code WhatsApp">
-    <div class="footer-cta">
-      WHATSAPP (31) 98751-2118<br>
-      ouromotos.com.br
-    </div>
-  `;
-  page.appendChild(footer);
   container.appendChild(page);
 }
 </script>
