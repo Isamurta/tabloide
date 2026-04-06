@@ -542,7 +542,6 @@
 
 <script>
 // ================= TODOS OS VEÍCULOS (MOTOS + CARROS) DO CSV =================
-// Extraídos do arquivo CSV completo
 const allVehicles = [
   {title:"HONDA CG 160 TITAN EX 2017", year:"2017", img:"https://s3.carro57.com.br/FC/5526/7962610_0_W_0dc1293d1b.jpeg"},
   {title:"HONDA XRE 300 2017", year:"2017", img:"https://s3.carro57.com.br/FC/5526/7943604_2_W_248ccdeaef.jpeg"},
@@ -629,7 +628,7 @@ const allVehicles = [
   {title:"HONDA CB 300R LIMITED 2014", year:"2014", img:"https://s3.carro57.com.br/FC/5526/7457800_0_W_c88b527574.jpeg"},
   {title:"HAOJUE NK 150 2027", year:"2027", img:"https://s3.carro57.com.br/FC/5526/7926390_2_W_8107e26f53.jpeg"},
   {title:"HONDA NC 750X 2022", year:"2022", img:"https://s3.carro57.com.br/FC/5526/7808564_1_W_45c10b3e2d.jpeg"},
-  // ================= CARROS (adicionados do CSV) =================
+  // ================= CARROS =================
   {title:"VOLKSWAGEN POLO SEDAN 1.6 2009", year:"2009", img:"https://s3.carro57.com.br/FC/5526/7961826_0_W_c9df808b96.jpeg"},
   {title:"CHEVROLET ONIX 1.4AT LTZ 2019", year:"2019", img:"https://s3.carro57.com.br/FC/5526/7895522_8_W_899e18b970.jpeg"},
   {title:"TOYOTA HILUX SWSRXA4FD 2023", year:"2023", img:"https://s3.carro57.com.br/FC/5526/7958049_1_W_22c7eaffe9.jpeg"},
@@ -689,7 +688,7 @@ for (let p = 0; p < totalPages; p++) {
   
   const title = document.createElement('div');
   title.className = 'section-title';
-  title.textContent = `VEÍCULOS DISPONÍVEIS (${slice.length} unidades)`;
+  title.textContent = 'ESTOQUE COMPLETO';
   content.appendChild(title);
 
   const grid = document.createElement('div');
