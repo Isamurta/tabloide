@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ouro Motos - Catálogo Completo | Todas as Motos</title>
+<title>Ouro Motos - Catálogo Completo | Todos os Veículos</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
@@ -103,7 +103,8 @@
     flex-shrink: 0;
   }
 
-  .moto-grid {
+  /* GRID 4x5 = 20 VEÍCULOS POR PÁGINA */
+  .vehicle-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(5, 1fr);
@@ -112,7 +113,7 @@
     min-height: 0;
   }
 
-  .moto-card {
+  .vehicle-card {
     background: var(--white);
     border-radius: 10px;
     overflow: hidden;
@@ -430,7 +431,7 @@
   </div>
   <div class="page-content">
     <div class="hero-section">
-      <img src="capa_hero.jpg" alt="Moto Destaque" class="hero-image" onerror="this.src='https://placehold.co/800x500/CC0000/white?text=MOTO+DESTAQUE'">
+      <img src="capa_hero.jpg" alt="Veículo Destaque" class="hero-image" onerror="this.src='https://placehold.co/800x500/CC0000/white?text=VEÍCULO+DESTAQUE'">
       <div class="hero-overlay">
         <div class="hero-title">OURO <span>MOTOS</span></div>
         <div class="hero-sub">O MAIOR ESTOQUE DA REGIÃO</div>
@@ -454,8 +455,8 @@
   </div>
 </div>
 
-<!-- PÁGINAS DE MOTOS -->
-<div id="moto-pages"></div>
+<!-- PÁGINAS DE VEÍCULOS (TODOS) -->
+<div id="vehicle-pages"></div>
 
 <!-- PÁGINA CONSÓRCIO -->
 <div class="page consorcio-page">
@@ -522,10 +523,10 @@
       <div class="backcover-overlay"><h2>25 ANOS DE ESTRADA</h2></div>
     </div>
     <div class="backcover-detail">
-      <div class="detail-art"><img src="detalhe_moto.jpg" alt="Detalhe" onerror="this.src='https://placehold.co/300x200/CC0000/white?text=MOTOS'"></div>
+      <div class="detail-art"><img src="detalhe_moto.jpg" alt="Detalhe" onerror="this.src='https://placehold.co/300x200/CC0000/white?text=VEÍCULOS'"></div>
       <div class="contact-info">
         <div class="whatsapp"><i class="fab fa-whatsapp"></i> (31) 98751-2118</div>
-        <div class="qrcode"><img src="https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=https://wa.me/5531987512118?text=Olá,%20vim%20pelo%20catálogo%20e%20quero%20comprar%20minha%20moto!" alt="QR Code"></div>
+        <div class="qrcode"><img src="https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=https://wa.me/5531987512118?text=Olá,%20vim%20pelo%20catálogo%20e%20quero%20comprar%20meu%20veículo!" alt="QR Code"></div>
         <p><i class="fas fa-map-marker-alt"></i> Rua Vitório Zanetti, Ouro Preto - MG</p>
         <p><i class="fas fa-store"></i> Lojas em Mariana, Itabirito e Ouro Branco</p>
         <div class="site">ouromotos.com.br</div>
@@ -540,9 +541,9 @@
 </div>
 
 <script>
-// ================= TODAS AS MOTOS (COMPLETAS DO CSV) =================
-// TOTAL: 102 MOTOS
-const motosData = [
+// ================= TODOS OS VEÍCULOS (MOTOS + CARROS) DO CSV =================
+// Extraídos do arquivo CSV completo
+const allVehicles = [
   {title:"HONDA CG 160 TITAN EX 2017", year:"2017", img:"https://s3.carro57.com.br/FC/5526/7962610_0_W_0dc1293d1b.jpeg"},
   {title:"HONDA XRE 300 2017", year:"2017", img:"https://s3.carro57.com.br/FC/5526/7943604_2_W_248ccdeaef.jpeg"},
   {title:"HONDA XRE 300 2018", year:"2018", img:"https://s3.carro57.com.br/FC/5526/7785051_0_W_9b73930e47.jpeg"},
@@ -628,33 +629,45 @@ const motosData = [
   {title:"HONDA CB 300R LIMITED 2014", year:"2014", img:"https://s3.carro57.com.br/FC/5526/7457800_0_W_c88b527574.jpeg"},
   {title:"HAOJUE NK 150 2027", year:"2027", img:"https://s3.carro57.com.br/FC/5526/7926390_2_W_8107e26f53.jpeg"},
   {title:"HONDA NC 750X 2022", year:"2022", img:"https://s3.carro57.com.br/FC/5526/7808564_1_W_45c10b3e2d.jpeg"},
-  // ADICIONANDO MAIS MOTOS FALTANTES
-  {title:"HONDA CG 160 FAN 2021", year:"2021", img:"https://s3.carro57.com.br/FC/5526/7072085_0_W_140cdb94f4.jpeg"},
-  {title:"YAMAHA FACTOR 150 2022", year:"2022", img:"https://s3.carro57.com.br/FC/5526/7285475_0_W_1235c9957c.jpeg"},
-  {title:"HONDA BIZ 125 2020", year:"2020", img:"https://s3.carro57.com.br/FC/5526/7909051_0_W_56de826322.jpeg"},
-  {title:"HAOJUE DR 160 2026", year:"2026", img:"https://s3.carro57.com.br/FC/5526/7832758_0_W_077245c685.jpeg"},
-  {title:"ZONTES V350 2026", year:"2026", img:"https://s3.carro57.com.br/FC/5526/7910882_2_W_05352edf7b.jpeg"},
-  {title:"HONDA XRE 190 2025", year:"2025", img:"https://s3.carro57.com.br/FC/5526/7546132_0_W_676686f1c5.jpeg"},
-  {title:"YAMAHA CROSSER 150 2024", year:"2024", img:"https://s3.carro57.com.br/FC/5526/6539264_0_W_15f7acde6d.jpeg"},
-  {title:"HAOJUE MASTER RIDE 2025", year:"2025", img:"https://s3.carro57.com.br/FC/5526/7787254_2_W_da576383ec.jpeg"},
-  {title:"HONDA CB 500F 2022", year:"2022", img:"https://s3.carro57.com.br/FC/5526/7561561_0_W_cdfa1b8283.jpeg"},
-  {title:"BMW G 310 R 2021", year:"2021", img:"https://s3.carro57.com.br/FC/5526/5401496_0_W_71be4b771a.jpeg"},
-  {title:"SUZUKI VSTROM 650XT", year:"2014", img:"https://s3.carro57.com.br/FC/5526/7400207_0_W_160be42f0b.jpeg"},
-  {title:"YAMAHA TENERE 250 2020", year:"2020", img:"https://s3.carro57.com.br/FC/5526/7395499_0_W_bceab7831f.jpeg"},
-  {title:"HONDA NX200 SAHARA", year:"2024", img:"https://s3.carro57.com.br/FC/5526/7888849_0_W_ce4ef6fc81.jpeg"},
-  {title:"HAOJUE NK 150 2026", year:"2026", img:"https://s3.carro57.com.br/FC/5526/7926358_0_W_67650d8100.jpeg"}
+  // ================= CARROS (adicionados do CSV) =================
+  {title:"VOLKSWAGEN POLO SEDAN 1.6 2009", year:"2009", img:"https://s3.carro57.com.br/FC/5526/7961826_0_W_c9df808b96.jpeg"},
+  {title:"CHEVROLET ONIX 1.4AT LTZ 2019", year:"2019", img:"https://s3.carro57.com.br/FC/5526/7895522_8_W_899e18b970.jpeg"},
+  {title:"TOYOTA HILUX SWSRXA4FD 2023", year:"2023", img:"https://s3.carro57.com.br/FC/5526/7958049_1_W_22c7eaffe9.jpeg"},
+  {title:"VOLKSWAGEN NOVO GOL 1.0 2014", year:"2014", img:"https://s3.carro57.com.br/FC/5526/7826135_1_W_4ce14b8e7f.jpeg"},
+  {title:"VOLKSWAGEN GOL 1.6 POWER 2007", year:"2007", img:"https://s3.carro57.com.br/FC/5526/7651972_5_W_57a48c97a5.jpeg"},
+  {title:"TROLLER T4 XLT 3.2 2015", year:"2015", img:"https://s3.carro57.com.br/FC/5526/6028332_0_W_94ba60cf68.jpeg"},
+  {title:"FIAT PUNTO ESSENCE 1.6 2014", year:"2014", img:"https://s3.carro57.com.br/FC/5526/7292932_0_W_38781c987a.jpeg"},
+  {title:"FORD KA FLEX 2012", year:"2012", img:"https://s3.carro57.com.br/FC/5526/7920650_0_W_8ee57c0082.jpeg"},
+  {title:"VOLKSWAGEN GOL MPI 2023", year:"2023", img:"https://s3.carro57.com.br/FC/5526/7912362_1_W_6cc381c56b.jpeg"},
+  {title:"VOLKSWAGEN POLO SENSE TSI 1.0 2026", year:"2026", img:"https://s3.carro57.com.br/FC/5526/7838385_0_W_6a9dd2b44f.jpeg"},
+  {title:"FORD ECOSPORT SE 1.5 2021", year:"2021", img:"https://s3.carro57.com.br/FC/5526/7813340_1_W_4c03112e83.jpeg"},
+  {title:"CITROEN C3 EXC 16 A FLEX 2012", year:"2012", img:"https://s3.carro57.com.br/FC/5526/7790883_1_W_7ee73cad4a.jpeg"},
+  {title:"CHEVROLET CRUZE LT HB AT 2014", year:"2014", img:"https://s3.carro57.com.br/FC/5526/7769855_0_W_f396b45015.jpeg"},
+  {title:"PEUGEOT 208 LIKE MT 2023", year:"2023", img:"https://s3.carro57.com.br/FC/5526/4178361_0_W_e60c91d884.jpeg"},
+  {title:"JEEP COMPASS SPORT F 4X4 2018", year:"2018", img:"https://s3.carro57.com.br/FC/5526/7171221_5_W_64f4500b79.jpeg"},
+  {title:"FIAT STRADA FREEDOM CD13 2025", year:"2025", img:"https://s3.carro57.com.br/FC/5526/7734030_2_W_b3698325cd.jpeg"},
+  {title:"TOYOTA HILUX CDSRXA4FD 2017", year:"2017", img:"https://s3.carro57.com.br/FC/5526/7790033_0_W_8310e17e55.jpeg"},
+  {title:"FIAT TITANO RANCH 2025", year:"2025", img:"https://s3.carro57.com.br/FC/5526/7556385_3_W_82537d0601.jpeg"},
+  {title:"VOLKSWAGEN FOX 1.6 PLUS 2006", year:"2006", img:"https://s3.carro57.com.br/FC/5526/7733939_2_W_f45a76a1e5.jpeg"},
+  {title:"VOLKSWAGEN FOX 1.0 2010", year:"2010", img:"https://s3.carro57.com.br/FC/5526/7017530_0_W_7fb3f6a5a1.jpeg"},
+  {title:"RENAULT KWID ZEN 1.0 2022", year:"2022", img:"https://s3.carro57.com.br/FC/5526/4825349_0_W_8fa66d9567.jpeg"},
+  {title:"RENAULT DUSTER 16 D 4X2 2016", year:"2016", img:"https://s3.carro57.com.br/FC/5526/7315669_1_W_a8a3124a04.jpeg"},
+  {title:"FIAT STRADA HD WK CD E 2020", year:"2020", img:"https://s3.carro57.com.br/FC/5526/7464652_3_W_c17f14fb50.jpeg"},
+  {title:"VOLKSWAGEN FUSCA 1300 L 1979", year:"1979", img:"https://s3.carro57.com.br/FC/5526/6891834_0_W_3d42333719.jpeg"},
+  {title:"FORD KA 1.0 2019", year:"2019", img:"https://s3.carro57.com.br/FC/5526/4896067_0_W_d4af8b0fad.jpeg"},
+  {title:"NISSAN VERSA 16SL FLEX 2014", year:"2014", img:"https://s3.carro57.com.br/FC/5526/7747219_1_W_14fa73a7d3.jpeg"}
 ];
 
-console.log(`✅ Total de motos carregadas: ${motosData.length}`);
+console.log(`✅ Total de veículos carregados: ${allVehicles.length}`);
 
-const PER_PAGE = 20; // 4 colunas x 5 linhas
-const container = document.getElementById('moto-pages');
-const totalPages = Math.ceil(motosData.length / PER_PAGE);
+const PER_PAGE = 20;
+const container = document.getElementById('vehicle-pages');
+const totalPages = Math.ceil(allVehicles.length / PER_PAGE);
 
-console.log(`📄 Total de páginas de motos: ${totalPages}`);
+console.log(`📄 Total de páginas de veículos: ${totalPages}`);
 
 for (let p = 0; p < totalPages; p++) {
-  const slice = motosData.slice(p * PER_PAGE, (p + 1) * PER_PAGE);
+  const slice = allVehicles.slice(p * PER_PAGE, (p + 1) * PER_PAGE);
   const pageNum = p + 2;
 
   const page = document.createElement('div');
@@ -676,24 +689,24 @@ for (let p = 0; p < totalPages; p++) {
   
   const title = document.createElement('div');
   title.className = 'section-title';
-  title.textContent = `MOTOS DISPONÍVEIS (${slice.length} unidades)`;
+  title.textContent = `VEÍCULOS DISPONÍVEIS (${slice.length} unidades)`;
   content.appendChild(title);
 
   const grid = document.createElement('div');
-  grid.className = 'moto-grid';
+  grid.className = 'vehicle-grid';
 
-  slice.forEach(moto => {
-    let displayTitle = moto.title.replace(/\s+\d{4}$/, '').trim();
+  slice.forEach(vehicle => {
+    let displayTitle = vehicle.title.replace(/\s+\d{4}$/, '').trim();
     const card = document.createElement('div');
-    card.className = 'moto-card';
+    card.className = 'vehicle-card';
     card.innerHTML = `
       <div class="card-img-wrap">
         <div class="card-badge"><i class="fas fa-check"></i> DISPONÍVEL</div>
-        <img src="${moto.img}" alt="${displayTitle}" loading="lazy" onerror="this.src='https://placehold.co/300x200/CC0000/white?text=OURO+MOTOS'">
+        <img src="${vehicle.img}" alt="${displayTitle}" loading="lazy" onerror="this.src='https://placehold.co/300x200/CC0000/white?text=OURO+MOTOS'">
       </div>
       <div class="card-info">
         <div class="card-title">${displayTitle}</div>
-        <div class="card-year">ANO ${moto.year}</div>
+        <div class="card-year">ANO ${vehicle.year}</div>
       </div>
     `;
     grid.appendChild(card);
