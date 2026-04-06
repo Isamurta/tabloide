@@ -34,7 +34,6 @@
     padding: 10px 0;
   }
 
-  /* PÁGINAS */
   .page {
     width: 210mm;
     height: 297mm;
@@ -49,7 +48,7 @@
     break-after: page;
   }
 
-  /* CABEÇALHO PADRONIZADO */
+  /* CABEÇALHO */
   .page-header {
     background: var(--red-primary);
     padding: 3mm 5mm;
@@ -112,26 +111,31 @@
     font-weight: 500;
   }
 
-  /* CONTEÚDO PRINCIPAL */
+  /* CONTEÚDO */
   .page-content {
     flex: 1;
     padding: 3mm 4mm 2mm;
     display: flex;
     flex-direction: column;
     background: var(--red-bg);
+    min-height: 0;
   }
 
-  /* GRID 4x5 = 20 MOTOS POR PÁGINA (4 colunas, 5 linhas) */
+  /* GRID PERFEITAMENTE PROPORCIONAL - 4 colunas x 5 linhas */
   .moto-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(5, auto);
+    display: flex;
+    flex-direction: column;
     gap: 3mm;
     flex: 1;
-    align-content: stretch;
   }
 
-  /* CARD COMPACTO - SEM ESPAÇOS VAZIOS */
+  .grid-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3mm;
+    flex: 1;
+  }
+
   .moto-card {
     background: var(--white);
     display: flex;
@@ -144,7 +148,8 @@
 
   .card-img-wrap {
     position: relative;
-    padding-bottom: 65%;
+    flex: 1;
+    min-height: 0;
     background: #1a1a1a;
     overflow: hidden;
   }
@@ -178,6 +183,7 @@
     background: var(--black);
     padding: 1.5mm 2mm;
     text-align: center;
+    flex-shrink: 0;
   }
 
   .card-title {
@@ -209,6 +215,7 @@
     margin-bottom: 3mm;
     display: inline-block;
     align-self: flex-start;
+    flex-shrink: 0;
   }
 
   /* CAPA */
@@ -492,7 +499,7 @@
 </div>
 
 <script>
-// DADOS DAS MOTOS (todas do CSV)
+// DADOS DAS MOTOS
 const motos = [
   {title:"HONDA CG 160 TITAN EX 2017", year:"2017", img:"https://s3.carro57.com.br/FC/5526/7962610_0_W_0dc1293d1b.jpeg"},
   {title:"HONDA XRE 300 2017", year:"2017", img:"https://s3.carro57.com.br/FC/5526/7943604_2_W_248ccdeaef.jpeg"},
@@ -586,7 +593,7 @@ function isTopModel(title) {
   return upper.includes('CG') || upper.includes('XRE') || upper.includes('PCX') || upper.includes('LANDER') || upper.includes('SAHARA') || upper.includes('CB 500') || upper.includes('TITAN');
 }
 
-const PER_PAGE = 20; // 4 colunas x 5 linhas = 20 motos por página
+const PER_PAGE = 20; // 4 colunas x 5 linhas
 const container = document.getElementById('moto-pages');
 const totalPages = Math.ceil(motos.length / PER_PAGE);
 
@@ -597,6 +604,7 @@ for (let p = 0; p < totalPages; p++) {
   const page = document.createElement('div');
   page.className = 'page';
 
+  // Header
   const header = document.createElement('div');
   header.className = 'page-header';
   header.innerHTML = `
@@ -614,27 +622,46 @@ for (let p = 0; p < totalPages; p++) {
   label.textContent = `🏍 MOTOS DISPONÍVEIS — CARTA DE CONSÓRCIO`;
   content.appendChild(label);
 
+  // Grid com 5 linhas proporcionais
   const grid = document.createElement('div');
   grid.className = 'moto-grid';
 
-  slice.forEach(moto => {
-    let displayTitle = moto.title.replace(/\s+\d{4}$/, '').trim();
-    const isTop = isTopModel(moto.title);
+  // Dividir em 5 linhas de 4 motos cada
+  for (let row = 0; row < 5; row++) {
+    const rowDiv = document.createElement('div');
+    rowDiv.className = 'grid-row';
     
-    const card = document.createElement('div');
-    card.className = 'moto-card';
-    card.innerHTML = `
-      <div class="card-img-wrap">
-        <div class="card-badge">${isTop ? '⭐ MAIS PROCURADA' : 'DISPONÍVEL'}</div>
-        <img src="${moto.img}" alt="${displayTitle}" loading="lazy" onerror="this.src='https://placehold.co/300x200/CC0000/white?text=OURO+MOTOS'">
-      </div>
-      <div class="card-info">
-        <div class="card-title">${displayTitle}</div>
-        <div class="card-year">ANO ${moto.year}</div>
-      </div>
-    `;
-    grid.appendChild(card);
-  });
+    for (let col = 0; col < 4; col++) {
+      const idx = row * 4 + col;
+      if (idx < slice.length) {
+        const moto = slice[idx];
+        let displayTitle = moto.title.replace(/\s+\d{4}$/, '').trim();
+        const isTop = isTopModel(moto.title);
+        
+        const card = document.createElement('div');
+        card.className = 'moto-card';
+        card.innerHTML = `
+          <div class="card-img-wrap">
+            <div class="card-badge">${isTop ? '⭐ MAIS PROCURADA' : 'DISPONÍVEL'}</div>
+            <img src="${moto.img}" alt="${displayTitle}" loading="lazy" onerror="this.src='https://placehold.co/300x200/CC0000/white?text=OURO+MOTOS'">
+          </div>
+          <div class="card-info">
+            <div class="card-title">${displayTitle}</div>
+            <div class="card-year">ANO ${moto.year}</div>
+          </div>
+        `;
+        rowDiv.appendChild(card);
+      } else {
+        // Card vazio para manter proporção (não será visível pois não há mais motos)
+        const emptyCard = document.createElement('div');
+        emptyCard.style.visibility = 'hidden';
+        emptyCard.style.height = '0';
+        emptyCard.style.padding = '0';
+        rowDiv.appendChild(emptyCard);
+      }
+    }
+    grid.appendChild(rowDiv);
+  }
 
   content.appendChild(grid);
   page.appendChild(content);
