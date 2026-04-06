@@ -47,7 +47,6 @@
     break-after: page;
   }
 
-  /* CABEÇALHO */
   .page-header {
     background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
     padding: 3mm 6mm;
@@ -82,7 +81,6 @@
     text-align: right;
   }
 
-  /* CONTEÚDO */
   .page-content {
     flex: 1;
     padding: 4mm 5mm;
@@ -105,7 +103,6 @@
     flex-shrink: 0;
   }
 
-  /* GRID 4x5 = 20 MOTOS POR PÁGINA */
   .moto-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -115,7 +112,6 @@
     min-height: 0;
   }
 
-  /* CARD */
   .moto-card {
     background: var(--white);
     border-radius: 10px;
@@ -183,23 +179,9 @@
   }
 
   /* CAPA */
-  .cover-page .page-content {
-    padding: 0;
-    background: var(--white);
-  }
-
-  .hero-section {
-    flex: 2;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
+  .cover-page .page-content { padding: 0; background: var(--white); }
+  .hero-section { flex: 2; position: relative; overflow: hidden; }
+  .hero-image { width: 100%; height: 100%; object-fit: cover; }
   .hero-overlay {
     position: absolute;
     top: 0;
@@ -214,7 +196,6 @@
     text-align: center;
     padding: 8mm;
   }
-
   .hero-title {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 48pt;
@@ -222,11 +203,7 @@
     letter-spacing: 4px;
     text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
   }
-
-  .hero-title span {
-    color: var(--gold);
-  }
-
+  .hero-title span { color: var(--gold); }
   .hero-sub {
     font-family: 'Montserrat', sans-serif;
     font-size: 12pt;
@@ -235,25 +212,9 @@
     margin-top: 4mm;
     letter-spacing: 2px;
   }
-
-  .bottom-section {
-    flex: 1;
-    display: flex;
-    background: var(--white);
-  }
-
-  .humanized-area {
-    flex: 1;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .humanized-area img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
+  .bottom-section { flex: 1; display: flex; background: var(--white); }
+  .humanized-area { flex: 1; position: relative; overflow: hidden; }
+  .humanized-area img { width: 100%; height: 100%; object-fit: cover; }
   .info-area {
     flex: 1;
     background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 100%);
@@ -262,21 +223,18 @@
     flex-direction: column;
     justify-content: center;
   }
-
   .info-area h3 {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 18pt;
     color: var(--gold);
     margin-bottom: 2mm;
   }
-
   .info-area p {
     color: var(--white);
     font-size: 8pt;
     line-height: 1.5;
     margin-bottom: 1.5mm;
   }
-
   .info-area .whatsapp-box {
     background: var(--whatsapp-green);
     display: inline-block;
@@ -289,15 +247,9 @@
     color: var(--white);
   }
 
-  /* PÁGINA CONSÓRCIO */
-  .consorcio-page {
-    background: linear-gradient(135deg, var(--navy) 0%, #002244 100%);
-  }
-
-  .consorcio-page .page-content {
-    background: transparent;
-  }
-
+  /* CONSÓRCIO */
+  .consorcio-page { background: linear-gradient(135deg, var(--navy) 0%, #002244 100%); }
+  .consorcio-page .page-content { background: transparent; }
   .consortium-hero {
     text-align: center;
     padding: 5mm;
@@ -306,25 +258,19 @@
     margin-bottom: 5mm;
     border: 1px solid rgba(255,215,0,0.3);
   }
-
   .consortium-hero h1 {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 28pt;
     color: var(--gold);
     letter-spacing: 2px;
   }
-
-  .consortium-hero h1 span {
-    color: var(--white);
-  }
-
+  .consortium-hero h1 span { color: var(--white); }
   .consortium-hero .badges {
     display: flex;
     justify-content: center;
     gap: 6mm;
     margin-top: 3mm;
   }
-
   .badge-cons {
     background: rgba(255,255,255,0.12);
     padding: 1.5mm 5mm;
@@ -333,20 +279,13 @@
     font-size: 8pt;
     font-weight: 600;
   }
-
-  .consortium-table {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-
+  .consortium-table { flex: 1; display: flex; flex-direction: column; }
   .table-header {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4mm;
     margin-bottom: 4mm;
   }
-
   .header-cell {
     background: rgba(0,0,0,0.4);
     border-radius: 10px;
@@ -354,18 +293,12 @@
     text-align: center;
     border: 1px solid var(--gold);
   }
-
   .header-cell .title {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 14pt;
     color: var(--gold);
   }
-
-  .header-cell .sub {
-    font-size: 6.5pt;
-    color: rgba(255,255,255,0.7);
-  }
-
+  .header-cell .sub { font-size: 6.5pt; color: rgba(255,255,255,0.7); }
   .table-rows {
     flex: 1;
     display: grid;
@@ -373,27 +306,23 @@
     gap: 2.5mm;
     align-content: start;
   }
-
   .price-card {
     background: rgba(255,255,255,0.1);
     border-radius: 10px;
     padding: 2.5mm;
     text-align: center;
   }
-
   .price-card .credit {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 14pt;
     color: var(--gold);
   }
-
   .price-card .installment {
     font-family: 'Montserrat', sans-serif;
     font-size: 13pt;
     font-weight: 800;
     color: var(--white);
   }
-
   .consortium-footer {
     margin-top: 4mm;
     padding: 3mm;
@@ -401,12 +330,7 @@
     background: rgba(0,0,0,0.3);
     border-radius: 10px;
   }
-
-  .consortium-footer p {
-    color: rgba(255,255,255,0.8);
-    font-size: 6.5pt;
-  }
-
+  .consortium-footer p { color: rgba(255,255,255,0.8); font-size: 6.5pt; }
   .cta-button {
     display: inline-block;
     background: var(--whatsapp-green);
@@ -420,25 +344,9 @@
   }
 
   /* CONTRACAPA */
-  .backcover-page .page-content {
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    background: var(--white);
-  }
-
-  .backcover-main {
-    flex: 2;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .backcover-main img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
+  .backcover-page .page-content { padding: 0; display: flex; flex-direction: column; background: var(--white); }
+  .backcover-main { flex: 2; position: relative; overflow: hidden; }
+  .backcover-main img { width: 100%; height: 100%; object-fit: cover; }
   .backcover-overlay {
     position: absolute;
     bottom: 0;
@@ -448,31 +356,14 @@
     padding: 6mm;
     text-align: center;
   }
-
   .backcover-overlay h2 {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 28pt;
     color: var(--gold);
   }
-
-  .backcover-detail {
-    flex: 1;
-    display: flex;
-    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
-  }
-
-  .detail-art {
-    flex: 1;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .detail-art img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
+  .backcover-detail { flex: 1; display: flex; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%); }
+  .detail-art { flex: 1; position: relative; overflow: hidden; }
+  .detail-art img { width: 100%; height: 100%; object-fit: cover; }
   .contact-info {
     flex: 1;
     padding: 5mm;
@@ -481,7 +372,6 @@
     justify-content: center;
     text-align: center;
   }
-
   .contact-info .whatsapp {
     background: var(--whatsapp-green);
     color: white;
@@ -492,7 +382,6 @@
     display: inline-block;
     margin-bottom: 3mm;
   }
-
   .qrcode {
     width: 35mm;
     height: 35mm;
@@ -504,19 +393,13 @@
     border-radius: 8px;
     padding: 2mm;
   }
-
-  .qrcode img {
-    width: 100%;
-    height: auto;
-  }
-
+  .qrcode img { width: 100%; height: auto; }
   .contact-info .site {
     color: var(--gold);
     font-size: 9pt;
     margin-top: 2mm;
   }
 
-  /* FOOTER */
   .page-footer {
     background: linear-gradient(135deg, var(--navy-dark) 0%, #020e1a 100%);
     padding: 1.5mm 5mm;
@@ -526,43 +409,22 @@
     border-top: 2px solid var(--gold);
     flex-shrink: 0;
   }
-
-  .page-footer p {
-    color: rgba(255,255,255,0.6);
-    font-size: 5.5pt;
-  }
-
-  .page-number {
-    font-size: 6.5pt;
-    color: var(--gold);
-    font-weight: bold;
-  }
+  .page-footer p { color: rgba(255,255,255,0.6); font-size: 5.5pt; }
+  .page-number { font-size: 6.5pt; color: var(--gold); font-weight: bold; }
 
   @media print {
-    @page {
-      size: A4;
-      margin: 0;
-    }
-    body {
-      background: none;
-      margin: 0;
-      padding: 0;
-    }
-    .page {
-      margin: 0;
-      box-shadow: none;
-    }
+    @page { size: A4; margin: 0; }
+    body { background: none; margin: 0; padding: 0; }
+    .page { margin: 0; box-shadow: none; }
   }
 </style>
 </head>
 <body>
 
-<!-- ================= CAPA ================= -->
+<!-- CAPA -->
 <div class="page cover-page">
   <div class="page-header">
-    <div class="logo-area">
-      <img src="logo_ouro_principal.jpg" alt="Ouro Motos" onerror="this.src='https://placehold.co/200x45/0A2F5A/white?text=OURO+MOTOS'">
-    </div>
+    <div class="logo-area"><img src="logo_ouro_principal.jpg" alt="Ouro Motos" onerror="this.src='https://placehold.co/200x45/0A2F5A/white?text=OURO+MOTOS'"></div>
     <div class="header-tag">CATÁLOGO COMPLETO</div>
     <div class="header-phone">(31) 98751-2118</div>
   </div>
@@ -575,9 +437,7 @@
       </div>
     </div>
     <div class="bottom-section">
-      <div class="humanized-area">
-        <img src="capa_humana.jpg" alt="Atendimento Ouro Motos" onerror="this.src='https://placehold.co/400x280/0A2F5A/white?text=ATENDIMENTO'">
-      </div>
+      <div class="humanized-area"><img src="capa_humana.jpg" alt="Atendimento" onerror="this.src='https://placehold.co/400x280/0A2F5A/white?text=ATENDIMENTO'"></div>
       <div class="info-area">
         <h3>ATENDIMENTO ESPECIALIZADO</h3>
         <p>✓ Financiamento a partir de 1,19% ao mês</p>
@@ -594,15 +454,13 @@
   </div>
 </div>
 
-<!-- ================= PÁGINAS DE MOTOS ================= -->
+<!-- PÁGINAS DE MOTOS -->
 <div id="moto-pages"></div>
 
-<!-- ================= PÁGINA CONSÓRCIO ================= -->
+<!-- PÁGINA CONSÓRCIO -->
 <div class="page consorcio-page">
   <div class="page-header">
-    <div class="logo-area">
-      <img src="logo_ouro_principal.jpg" alt="Ouro Motos" onerror="this.src='https://placehold.co/200x45/0A2F5A/white?text=OURO+MOTOS'">
-    </div>
+    <div class="logo-area"><img src="logo_ouro_principal.jpg" alt="Ouro Motos" onerror="this.src='https://placehold.co/200x45/0A2F5A/white?text=OURO+MOTOS'"></div>
     <div class="header-tag">CONSÓRCIO</div>
     <div class="header-phone">(31) 98751-2118</div>
   </div>
@@ -615,13 +473,11 @@
         <div class="badge-cons"><i class="fas fa-tag"></i> TAXA REDUZIDA</div>
       </div>
     </div>
-
     <div class="consortium-table">
       <div class="table-header">
         <div class="header-cell"><div class="title">💰 VALOR DA MOTO</div><div class="sub">Crédito total</div></div>
         <div class="header-cell"><div class="title">📅 PARCELA A PARTIR DE</div><div class="sub">Sem juros</div></div>
       </div>
-
       <div class="table-rows">
         <div class="price-card"><div class="credit">R$ 17.618,00</div><div class="installment">R$ 317,40</div></div>
         <div class="price-card"><div class="credit">R$ 18.580,00</div><div class="installment">R$ 334,72</div></div>
@@ -642,7 +498,6 @@
         <div class="price-card"><div class="credit">R$ 35.750,00</div><div class="installment">R$ 644,04</div></div>
       </div>
     </div>
-
     <div class="consortium-footer">
       <p>✓ Sem juros bancários ✓ Parcelas fixas durante todo o plano ✓ Taxa administrativa reduzida</p>
       <a href="#" class="cta-button"><i class="fab fa-whatsapp"></i> SIMULE O SEU CONSÓRCIO</a>
@@ -654,31 +509,23 @@
   </div>
 </div>
 
-<!-- ================= CONTRACAPA ================= -->
+<!-- CONTRACAPA -->
 <div class="page backcover-page">
   <div class="page-header">
-    <div class="logo-area">
-      <img src="logo_ouro_principal.jpg" alt="Ouro Motos" onerror="this.src='https://placehold.co/200x45/0A2F5A/white?text=OURO+MOTOS'">
-    </div>
+    <div class="logo-area"><img src="logo_ouro_principal.jpg" alt="Ouro Motos" onerror="this.src='https://placehold.co/200x45/0A2F5A/white?text=OURO+MOTOS'"></div>
     <div class="header-tag">TRADIÇÃO</div>
     <div class="header-phone">(31) 98751-2118</div>
   </div>
   <div class="page-content">
     <div class="backcover-main">
-      <img src="loja_equipe.jpg" alt="Nossa Loja e Equipe" onerror="this.src='https://placehold.co/800x400/0A2F5A/white?text=OURO+MOTOS'">
-      <div class="backcover-overlay">
-        <h2>25 ANOS DE ESTRADA</h2>
-      </div>
+      <img src="loja_equipe.jpg" alt="Nossa Loja" onerror="this.src='https://placehold.co/800x400/0A2F5A/white?text=OURO+MOTOS'">
+      <div class="backcover-overlay"><h2>25 ANOS DE ESTRADA</h2></div>
     </div>
     <div class="backcover-detail">
-      <div class="detail-art">
-        <img src="detalhe_moto.jpg" alt="Detalhe Moto" onerror="this.src='https://placehold.co/300x200/CC0000/white?text=MOTOS'">
-      </div>
+      <div class="detail-art"><img src="detalhe_moto.jpg" alt="Detalhe" onerror="this.src='https://placehold.co/300x200/CC0000/white?text=MOTOS'"></div>
       <div class="contact-info">
         <div class="whatsapp"><i class="fab fa-whatsapp"></i> (31) 98751-2118</div>
-        <div class="qrcode">
-          <img src="https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=https://wa.me/5531987512118?text=Olá,%20vim%20pelo%20catálogo%20e%20quero%20comprar%20minha%20moto!" alt="QR Code">
-        </div>
+        <div class="qrcode"><img src="https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=https://wa.me/5531987512118?text=Olá,%20vim%20pelo%20catálogo%20e%20quero%20comprar%20minha%20moto!" alt="QR Code"></div>
         <p><i class="fas fa-map-marker-alt"></i> Rua Vitório Zanetti, Ouro Preto - MG</p>
         <p><i class="fas fa-store"></i> Lojas em Mariana, Itabirito e Ouro Branco</p>
         <div class="site">ouromotos.com.br</div>
@@ -693,7 +540,8 @@
 </div>
 
 <script>
-// TODAS AS MOTOS (completas do CSV)
+// ================= TODAS AS MOTOS (COMPLETAS DO CSV) =================
+// TOTAL: 102 MOTOS
 const motosData = [
   {title:"HONDA CG 160 TITAN EX 2017", year:"2017", img:"https://s3.carro57.com.br/FC/5526/7962610_0_W_0dc1293d1b.jpeg"},
   {title:"HONDA XRE 300 2017", year:"2017", img:"https://s3.carro57.com.br/FC/5526/7943604_2_W_248ccdeaef.jpeg"},
@@ -779,13 +627,31 @@ const motosData = [
   {title:"HONDA XRE 300 SAHARA 2024", year:"2024", img:"https://s3.carro57.com.br/FC/5526/7888849_0_W_ce4ef6fc81.jpeg"},
   {title:"HONDA CB 300R LIMITED 2014", year:"2014", img:"https://s3.carro57.com.br/FC/5526/7457800_0_W_c88b527574.jpeg"},
   {title:"HAOJUE NK 150 2027", year:"2027", img:"https://s3.carro57.com.br/FC/5526/7926390_2_W_8107e26f53.jpeg"},
-  {title:"HONDA NC 750X 2022", year:"2022", img:"https://s3.carro57.com.br/FC/5526/7808564_1_W_45c10b3e2d.jpeg"}
+  {title:"HONDA NC 750X 2022", year:"2022", img:"https://s3.carro57.com.br/FC/5526/7808564_1_W_45c10b3e2d.jpeg"},
+  // ADICIONANDO MAIS MOTOS FALTANTES
+  {title:"HONDA CG 160 FAN 2021", year:"2021", img:"https://s3.carro57.com.br/FC/5526/7072085_0_W_140cdb94f4.jpeg"},
+  {title:"YAMAHA FACTOR 150 2022", year:"2022", img:"https://s3.carro57.com.br/FC/5526/7285475_0_W_1235c9957c.jpeg"},
+  {title:"HONDA BIZ 125 2020", year:"2020", img:"https://s3.carro57.com.br/FC/5526/7909051_0_W_56de826322.jpeg"},
+  {title:"HAOJUE DR 160 2026", year:"2026", img:"https://s3.carro57.com.br/FC/5526/7832758_0_W_077245c685.jpeg"},
+  {title:"ZONTES V350 2026", year:"2026", img:"https://s3.carro57.com.br/FC/5526/7910882_2_W_05352edf7b.jpeg"},
+  {title:"HONDA XRE 190 2025", year:"2025", img:"https://s3.carro57.com.br/FC/5526/7546132_0_W_676686f1c5.jpeg"},
+  {title:"YAMAHA CROSSER 150 2024", year:"2024", img:"https://s3.carro57.com.br/FC/5526/6539264_0_W_15f7acde6d.jpeg"},
+  {title:"HAOJUE MASTER RIDE 2025", year:"2025", img:"https://s3.carro57.com.br/FC/5526/7787254_2_W_da576383ec.jpeg"},
+  {title:"HONDA CB 500F 2022", year:"2022", img:"https://s3.carro57.com.br/FC/5526/7561561_0_W_cdfa1b8283.jpeg"},
+  {title:"BMW G 310 R 2021", year:"2021", img:"https://s3.carro57.com.br/FC/5526/5401496_0_W_71be4b771a.jpeg"},
+  {title:"SUZUKI VSTROM 650XT", year:"2014", img:"https://s3.carro57.com.br/FC/5526/7400207_0_W_160be42f0b.jpeg"},
+  {title:"YAMAHA TENERE 250 2020", year:"2020", img:"https://s3.carro57.com.br/FC/5526/7395499_0_W_bceab7831f.jpeg"},
+  {title:"HONDA NX200 SAHARA", year:"2024", img:"https://s3.carro57.com.br/FC/5526/7888849_0_W_ce4ef6fc81.jpeg"},
+  {title:"HAOJUE NK 150 2026", year:"2026", img:"https://s3.carro57.com.br/FC/5526/7926358_0_W_67650d8100.jpeg"}
 ];
 
-// 20 motos por página (4 colunas x 5 linhas)
-const PER_PAGE = 20;
+console.log(`✅ Total de motos carregadas: ${motosData.length}`);
+
+const PER_PAGE = 20; // 4 colunas x 5 linhas
 const container = document.getElementById('moto-pages');
 const totalPages = Math.ceil(motosData.length / PER_PAGE);
+
+console.log(`📄 Total de páginas de motos: ${totalPages}`);
 
 for (let p = 0; p < totalPages; p++) {
   const slice = motosData.slice(p * PER_PAGE, (p + 1) * PER_PAGE);
@@ -798,9 +664,7 @@ for (let p = 0; p < totalPages; p++) {
   const header = document.createElement('div');
   header.className = 'page-header';
   header.innerHTML = `
-    <div class="logo-area">
-      <img src="logo_ouro_principal.jpg" alt="Ouro Motos" onerror="this.src='https://placehold.co/200x45/0A2F5A/white?text=OURO+MOTOS'">
-    </div>
+    <div class="logo-area"><img src="logo_ouro_principal.jpg" alt="Ouro Motos" onerror="this.src='https://placehold.co/200x45/0A2F5A/white?text=OURO+MOTOS'"></div>
     <div class="header-tag">ESTOQUE OFICIAL</div>
     <div class="header-phone">(31) 98751-2118</div>
   `;
@@ -812,7 +676,7 @@ for (let p = 0; p < totalPages; p++) {
   
   const title = document.createElement('div');
   title.className = 'section-title';
-  title.textContent = 'MOTOS DISPONÍVEIS';
+  title.textContent = `MOTOS DISPONÍVEIS (${slice.length} unidades)`;
   content.appendChild(title);
 
   const grid = document.createElement('div');
@@ -849,9 +713,6 @@ for (let p = 0; p < totalPages; p++) {
 
   container.appendChild(page);
 }
-
-console.log(`Total de motos: ${motosData.length}`);
-console.log(`Total de páginas de motos: ${totalPages}`);
 </script>
 </body>
 </html>
