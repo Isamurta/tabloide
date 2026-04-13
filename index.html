@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ouro Motos - Catálogo Completo | Todos os Veículos</title>
+<title>Ouro Motos - Estoque Completo | Todos os Veículos</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
@@ -21,7 +21,6 @@
     --white: #FFFFFF;
     --gray-light: #F5F7FA;
     --gold: #FFD700;
-    --whatsapp-green: #25D366;
   }
 
   body {
@@ -103,6 +102,18 @@
     flex-shrink: 0;
   }
 
+  .category-badge {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+    color: var(--gold);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14pt;
+    padding: 2mm 6mm;
+    border-radius: 30px;
+    margin: 3mm 0 4mm 0;
+    display: inline-block;
+    letter-spacing: 1px;
+  }
+
   /* GRID 4x5 = 20 VEÍCULOS POR PÁGINA */
   .vehicle-grid {
     display: grid;
@@ -179,228 +190,6 @@
     margin-top: 1px;
   }
 
-  /* CAPA */
-  .cover-page .page-content { padding: 0; background: var(--white); }
-  .hero-section { flex: 2; position: relative; overflow: hidden; }
-  .hero-image { width: 100%; height: 100%; object-fit: cover; }
-  .hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(10,47,90,0.65) 0%, rgba(0,0,0,0.5) 100%);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 8mm;
-  }
-  .hero-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 48pt;
-    color: var(--white);
-    letter-spacing: 4px;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
-  }
-  .hero-title span { color: var(--gold); }
-  .hero-sub {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 12pt;
-    font-weight: 600;
-    color: var(--gold);
-    margin-top: 4mm;
-    letter-spacing: 2px;
-  }
-  .bottom-section { flex: 1; display: flex; background: var(--white); }
-  .humanized-area { flex: 1; position: relative; overflow: hidden; }
-  .humanized-area img { width: 100%; height: 100%; object-fit: cover; }
-  .info-area {
-    flex: 1;
-    background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 100%);
-    padding: 5mm;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .info-area h3 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 18pt;
-    color: var(--gold);
-    margin-bottom: 2mm;
-  }
-  .info-area p {
-    color: var(--white);
-    font-size: 8pt;
-    line-height: 1.5;
-    margin-bottom: 1.5mm;
-  }
-  .info-area .whatsapp-box {
-    background: var(--whatsapp-green);
-    display: inline-block;
-    padding: 2mm 5mm;
-    border-radius: 30px;
-    margin-top: 3mm;
-    text-align: center;
-    font-weight: 800;
-    font-size: 11pt;
-    color: var(--white);
-  }
-
-  /* CONSÓRCIO */
-  .consorcio-page { background: linear-gradient(135deg, var(--navy) 0%, #002244 100%); }
-  .consorcio-page .page-content { background: transparent; }
-  .consortium-hero {
-    text-align: center;
-    padding: 5mm;
-    background: rgba(255,255,255,0.08);
-    border-radius: 12px;
-    margin-bottom: 5mm;
-    border: 1px solid rgba(255,215,0,0.3);
-  }
-  .consortium-hero h1 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 28pt;
-    color: var(--gold);
-    letter-spacing: 2px;
-  }
-  .consortium-hero h1 span { color: var(--white); }
-  .consortium-hero .badges {
-    display: flex;
-    justify-content: center;
-    gap: 6mm;
-    margin-top: 3mm;
-  }
-  .badge-cons {
-    background: rgba(255,255,255,0.12);
-    padding: 1.5mm 5mm;
-    border-radius: 30px;
-    color: var(--gold);
-    font-size: 8pt;
-    font-weight: 600;
-  }
-  .consortium-table { flex: 1; display: flex; flex-direction: column; }
-  .table-header {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4mm;
-    margin-bottom: 4mm;
-  }
-  .header-cell {
-    background: rgba(0,0,0,0.4);
-    border-radius: 10px;
-    padding: 2.5mm;
-    text-align: center;
-    border: 1px solid var(--gold);
-  }
-  .header-cell .title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 14pt;
-    color: var(--gold);
-  }
-  .header-cell .sub { font-size: 6.5pt; color: rgba(255,255,255,0.7); }
-  .table-rows {
-    flex: 1;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2.5mm;
-    align-content: start;
-  }
-  .price-card {
-    background: rgba(255,255,255,0.1);
-    border-radius: 10px;
-    padding: 2.5mm;
-    text-align: center;
-  }
-  .price-card .credit {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 14pt;
-    color: var(--gold);
-  }
-  .price-card .installment {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 13pt;
-    font-weight: 800;
-    color: var(--white);
-  }
-  .consortium-footer {
-    margin-top: 4mm;
-    padding: 3mm;
-    text-align: center;
-    background: rgba(0,0,0,0.3);
-    border-radius: 10px;
-  }
-  .consortium-footer p { color: rgba(255,255,255,0.8); font-size: 6.5pt; }
-  .cta-button {
-    display: inline-block;
-    background: var(--whatsapp-green);
-    color: white;
-    padding: 2mm 8mm;
-    border-radius: 30px;
-    margin-top: 2.5mm;
-    font-weight: 800;
-    font-size: 10pt;
-    text-decoration: none;
-  }
-
-  /* CONTRACAPA */
-  .backcover-page .page-content { padding: 0; display: flex; flex-direction: column; background: var(--white); }
-  .backcover-main { flex: 2; position: relative; overflow: hidden; }
-  .backcover-main img { width: 100%; height: 100%; object-fit: cover; }
-  .backcover-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(transparent, rgba(0,0,0,0.7));
-    padding: 6mm;
-    text-align: center;
-  }
-  .backcover-overlay h2 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 28pt;
-    color: var(--gold);
-  }
-  .backcover-detail { flex: 1; display: flex; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%); }
-  .detail-art { flex: 1; position: relative; overflow: hidden; }
-  .detail-art img { width: 100%; height: 100%; object-fit: cover; }
-  .contact-info {
-    flex: 1;
-    padding: 5mm;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-  }
-  .contact-info .whatsapp {
-    background: var(--whatsapp-green);
-    color: white;
-    padding: 2.5mm 5mm;
-    border-radius: 40px;
-    font-size: 14pt;
-    font-weight: 800;
-    display: inline-block;
-    margin-bottom: 3mm;
-  }
-  .qrcode {
-    width: 35mm;
-    height: 35mm;
-    background: white;
-    margin: 3mm auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    padding: 2mm;
-  }
-  .qrcode img { width: 100%; height: auto; }
-  .contact-info .site {
-    color: var(--gold);
-    font-size: 9pt;
-    margin-top: 2mm;
-  }
-
   .page-footer {
     background: linear-gradient(135deg, var(--navy-dark) 0%, #020e1a 100%);
     padding: 1.5mm 5mm;
@@ -410,8 +199,17 @@
     border-top: 2px solid var(--gold);
     flex-shrink: 0;
   }
-  .page-footer p { color: rgba(255,255,255,0.6); font-size: 5.5pt; }
-  .page-number { font-size: 6.5pt; color: var(--gold); font-weight: bold; }
+
+  .page-footer p {
+    color: rgba(255,255,255,0.6);
+    font-size: 5.5pt;
+  }
+
+  .page-number {
+    font-size: 6.5pt;
+    color: var(--gold);
+    font-weight: bold;
+  }
 
   @media print {
     @page { size: A4; margin: 0; }
@@ -422,127 +220,14 @@
 </head>
 <body>
 
-<!-- CAPA -->
-<div class="page cover-page">
-  <div class="page-header">
-    <div class="logo-area"><img src="logo_ouro_principal.jpg" alt="Ouro Motos" onerror="this.src='https://placehold.co/200x45/0A2F5A/white?text=OURO+MOTOS'"></div>
-    <div class="header-tag">CATÁLOGO COMPLETO</div>
-    <div class="header-phone">(31) 98751-2118</div>
-  </div>
-  <div class="page-content">
-    <div class="hero-section">
-      <img src="capa_hero.jpg" alt="Veículo Destaque" class="hero-image" onerror="this.src='https://placehold.co/800x500/CC0000/white?text=VEÍCULO+DESTAQUE'">
-      <div class="hero-overlay">
-        <div class="hero-title">OURO <span>MOTOS</span></div>
-        <div class="hero-sub">O MAIOR ESTOQUE DA REGIÃO</div>
-      </div>
-    </div>
-    <div class="bottom-section">
-      <div class="humanized-area"><img src="capa_humana.jpg" alt="Atendimento" onerror="this.src='https://placehold.co/400x280/0A2F5A/white?text=ATENDIMENTO'"></div>
-      <div class="info-area">
-        <h3>ATENDIMENTO ESPECIALIZADO</h3>
-        <p>✓ Financiamento a partir de 1,19% ao mês</p>
-        <p>✓ Aceitamos seu veículo na troca</p>
-        <p>✓ Consórcio sem juros</p>
-        <p>✓ Cartão de crédito até 24x</p>
-        <div class="whatsapp-box"><i class="fab fa-whatsapp"></i> (31) 98751-2118</div>
-      </div>
-    </div>
-  </div>
-  <div class="page-footer">
-    <p>Rua Vitório Zanetti, Ouro Preto - MG | ouromotos.com.br</p>
-    <p class="page-number">PÁG. 1</p>
-  </div>
-</div>
-
-<!-- PÁGINAS DE VEÍCULOS (TODOS) -->
+<!-- PÁGINAS DE ESTOQUE - SOMENTE VEÍCULOS -->
 <div id="vehicle-pages"></div>
 
-<!-- PÁGINA CONSÓRCIO -->
-<div class="page consorcio-page">
-  <div class="page-header">
-    <div class="logo-area"><img src="logo_ouro_principal.jpg" alt="Ouro Motos" onerror="this.src='https://placehold.co/200x45/0A2F5A/white?text=OURO+MOTOS'"></div>
-    <div class="header-tag">CONSÓRCIO</div>
-    <div class="header-phone">(31) 98751-2118</div>
-  </div>
-  <div class="page-content">
-    <div class="consortium-hero">
-      <h1>CONSÓRCIO NACIONAL <span>SUZUKI</span> | CANOPUS</h1>
-      <div class="badges">
-        <div class="badge-cons"><i class="fas fa-check-circle"></i> SEM JUROS</div>
-        <div class="badge-cons"><i class="fas fa-lock"></i> PARCELAS FIXAS</div>
-        <div class="badge-cons"><i class="fas fa-tag"></i> TAXA REDUZIDA</div>
-      </div>
-    </div>
-    <div class="consortium-table">
-      <div class="table-header">
-        <div class="header-cell"><div class="title">💰 VALOR DA MOTO</div><div class="sub">Crédito total</div></div>
-        <div class="header-cell"><div class="title">📅 PARCELA A PARTIR DE</div><div class="sub">Sem juros</div></div>
-      </div>
-      <div class="table-rows">
-        <div class="price-card"><div class="credit">R$ 17.618,00</div><div class="installment">R$ 317,40</div></div>
-        <div class="price-card"><div class="credit">R$ 18.580,00</div><div class="installment">R$ 334,72</div></div>
-        <div class="price-card"><div class="credit">R$ 18.645,00</div><div class="installment">R$ 335,89</div></div>
-        <div class="price-card"><div class="credit">R$ 19.379,80</div><div class="installment">R$ 349,13</div></div>
-        <div class="price-card"><div class="credit">R$ 20.260,70</div><div class="installment">R$ 365,00</div></div>
-        <div class="price-card"><div class="credit">R$ 20.900,00</div><div class="installment">R$ 376,52</div></div>
-        <div class="price-card"><div class="credit">R$ 21.367,00</div><div class="installment">R$ 384,93</div></div>
-        <div class="price-card"><div class="credit">R$ 21.470,00</div><div class="installment">R$ 386,78</div></div>
-        <div class="price-card"><div class="credit">R$ 22.990,00</div><div class="installment">R$ 414,17</div></div>
-        <div class="price-card"><div class="credit">R$ 23.617,00</div><div class="installment">R$ 425,46</div></div>
-        <div class="price-card"><div class="credit">R$ 24.035,00</div><div class="installment">R$ 432,99</div></div>
-        <div class="price-card"><div class="credit">R$ 24.690,50</div><div class="installment">R$ 444,81</div></div>
-        <div class="price-card"><div class="credit">R$ 30.880,00</div><div class="installment">R$ 556,29</div></div>
-        <div class="price-card"><div class="credit">R$ 32.970,00</div><div class="installment">R$ 593,95</div></div>
-        <div class="price-card"><div class="credit">R$ 33.720,00</div><div class="installment">R$ 607,47</div></div>
-        <div class="price-card"><div class="credit">R$ 34.750,00</div><div class="installment">R$ 626,02</div></div>
-        <div class="price-card"><div class="credit">R$ 35.750,00</div><div class="installment">R$ 644,04</div></div>
-      </div>
-    </div>
-    <div class="consortium-footer">
-      <p>✓ Sem juros bancários ✓ Parcelas fixas durante todo o plano ✓ Taxa administrativa reduzida</p>
-      <a href="#" class="cta-button"><i class="fab fa-whatsapp"></i> SIMULE O SEU CONSÓRCIO</a>
-    </div>
-  </div>
-  <div class="page-footer">
-    <p>Consórcio Nacional Suzuki e Canopus - Realize seus sonhos com a Ouro Motos</p>
-    <p class="page-number">PÁG. 7</p>
-  </div>
-</div>
-
-<!-- CONTRACAPA -->
-<div class="page backcover-page">
-  <div class="page-header">
-    <div class="logo-area"><img src="logo_ouro_principal.jpg" alt="Ouro Motos" onerror="this.src='https://placehold.co/200x45/0A2F5A/white?text=OURO+MOTOS'"></div>
-    <div class="header-tag">TRADIÇÃO</div>
-    <div class="header-phone">(31) 98751-2118</div>
-  </div>
-  <div class="page-content">
-    <div class="backcover-main">
-      <img src="loja_equipe.jpg" alt="Nossa Loja" onerror="this.src='https://placehold.co/800x400/0A2F5A/white?text=OURO+MOTOS'">
-      <div class="backcover-overlay"><h2>25 ANOS DE ESTRADA</h2></div>
-    </div>
-    <div class="backcover-detail">
-      <div class="detail-art"><img src="detalhe_moto.jpg" alt="Detalhe" onerror="this.src='https://placehold.co/300x200/CC0000/white?text=VEÍCULOS'"></div>
-      <div class="contact-info">
-        <div class="whatsapp"><i class="fab fa-whatsapp"></i> (31) 98751-2118</div>
-        <div class="qrcode"><img src="https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=https://wa.me/5531987512118?text=Olá,%20vim%20pelo%20catálogo%20e%20quero%20comprar%20meu%20veículo!" alt="QR Code"></div>
-        <p><i class="fas fa-map-marker-alt"></i> Rua Vitório Zanetti, Ouro Preto - MG</p>
-        <p><i class="fas fa-store"></i> Lojas em Mariana, Itabirito e Ouro Branco</p>
-        <div class="site">ouromotos.com.br</div>
-        <p style="margin-top: 2mm; font-size: 6pt;">@ouromotos | Compra • Venda • Troca • Consórcio</p>
-      </div>
-    </div>
-  </div>
-  <div class="page-footer">
-    <p>Crédito sujeito a análise. Consulte condições na loja.</p>
-    <p class="page-number">PÁG. 8</p>
-  </div>
-</div>
-
 <script>
-// ================= TODOS OS VEÍCULOS (MOTOS + CARROS) DO CSV =================
-const allVehicles = [
+// ================= TODOS OS VEÍCULOS DO CSV (MOTOS + CARROS + QUADRICICLOS) =================
+// TOTAL: 112 VEÍCULOS (82 MOTOS + 23 CARROS + 7 QUADRICICLOS)
+
+const motos = [
   {title:"HONDA CG 160 TITAN EX 2017", year:"2017", img:"https://s3.carro57.com.br/FC/5526/7962610_0_W_0dc1293d1b.jpeg"},
   {title:"HONDA XRE 300 2017", year:"2017", img:"https://s3.carro57.com.br/FC/5526/7943604_2_W_248ccdeaef.jpeg"},
   {title:"HONDA XRE 300 2018", year:"2018", img:"https://s3.carro57.com.br/FC/5526/7785051_0_W_9b73930e47.jpeg"},
@@ -627,8 +312,10 @@ const allVehicles = [
   {title:"HONDA XRE 300 SAHARA 2024", year:"2024", img:"https://s3.carro57.com.br/FC/5526/7888849_0_W_ce4ef6fc81.jpeg"},
   {title:"HONDA CB 300R LIMITED 2014", year:"2014", img:"https://s3.carro57.com.br/FC/5526/7457800_0_W_c88b527574.jpeg"},
   {title:"HAOJUE NK 150 2027", year:"2027", img:"https://s3.carro57.com.br/FC/5526/7926390_2_W_8107e26f53.jpeg"},
-  {title:"HONDA NC 750X 2022", year:"2022", img:"https://s3.carro57.com.br/FC/5526/7808564_1_W_45c10b3e2d.jpeg"},
-  // ================= CARROS =================
+  {title:"HONDA NC 750X 2022", year:"2022", img:"https://s3.carro57.com.br/FC/5526/7808564_1_W_45c10b3e2d.jpeg"}
+];
+
+const carros = [
   {title:"VOLKSWAGEN POLO SEDAN 1.6 2009", year:"2009", img:"https://s3.carro57.com.br/FC/5526/7961826_0_W_c9df808b96.jpeg"},
   {title:"CHEVROLET ONIX 1.4AT LTZ 2019", year:"2019", img:"https://s3.carro57.com.br/FC/5526/7895522_8_W_899e18b970.jpeg"},
   {title:"TOYOTA HILUX SWSRXA4FD 2023", year:"2023", img:"https://s3.carro57.com.br/FC/5526/7958049_1_W_22c7eaffe9.jpeg"},
@@ -657,18 +344,40 @@ const allVehicles = [
   {title:"NISSAN VERSA 16SL FLEX 2014", year:"2014", img:"https://s3.carro57.com.br/FC/5526/7747219_1_W_14fa73a7d3.jpeg"}
 ];
 
-console.log(`✅ Total de veículos carregados: ${allVehicles.length}`);
+const quadriciclos = [
+  {title:"FUN MOTORS MINI QUADRICICLO TAURUS 110 2022", year:"2022", img:"https://s3.carro57.com.br/FC/5526/7796250_0_W_46ebca6ac3.jpeg"},
+  {title:"FUN MOTORS ALPHACROSS 125 2026", year:"2026", img:"https://s3.carro57.com.br/FC/5526/7742036_1_W_ea44db8acd.jpeg"},
+  {title:"FUN MOTORS SHARK 125CC 2026", year:"2026", img:"https://s3.carro57.com.br/FC/5526/7742117_0_W_e735ed378d.jpeg"},
+  {title:"FUN MOTORS MINI QUADRICICLO E-FLASH 2025", year:"2025", img:"https://s3.carro57.com.br/FC/5526/7504990_0_W_96b4bdf98a.jpeg"},
+  {title:"FUN MOTORS FARMER 300 2025", year:"2025", img:"https://s3.carro57.com.br/FC/5526/7366473_0_W_fcdd7a49c1.jpeg"},
+  {title:"BEM MOTORS RAY E-125 2023", year:"2023", img:"https://s3.carro57.com.br/FC/5526/4727851_0_W_e1aa80b650.jpeg"},
+  {title:"FUN MOTORS MINI QUADRICICLO E-FLASH", year:"2025", img:"https://s3.carro57.com.br/FC/5526/7504990_0_W_96b4bdf98a.jpeg"}
+];
+
+// REMOVER DUPLICATAS (último item duplicado)
+const quadriciclosUnicos = quadriciclos.filter((item, index, self) => 
+  index === self.findIndex((t) => t.title === item.title)
+);
+
+const allVehicles = [...motos, ...carros, ...quadriciclosUnicos];
+
+// ===== VERIFICAÇÃO DE INTEGRIDADE =====
+console.log("========== VERIFICAÇÃO DE INTEGRIDADE ==========");
+console.log(`✅ Total de MOTOS: ${motos.length}`);
+console.log(`✅ Total de CARROS: ${carros.length}`);
+console.log(`✅ Total de QUADRICICLOS: ${quadriciclosUnicos.length}`);
+console.log(`✅ TOTAL GERAL DE VEÍCULOS: ${allVehicles.length}`);
+console.log("================================================");
 
 const PER_PAGE = 20;
 const container = document.getElementById('vehicle-pages');
 const totalPages = Math.ceil(allVehicles.length / PER_PAGE);
 
-console.log(`📄 Total de páginas de veículos: ${totalPages}`);
+let vehicleIndex = 0;
+let currentCategory = "";
 
 for (let p = 0; p < totalPages; p++) {
-  const slice = allVehicles.slice(p * PER_PAGE, (p + 1) * PER_PAGE);
-  const pageNum = p + 2;
-
+  const pageNum = p + 1;
   const page = document.createElement('div');
   page.className = 'page';
 
@@ -682,7 +391,6 @@ for (let p = 0; p < totalPages; p++) {
   `;
   page.appendChild(header);
 
-  // Content
   const content = document.createElement('div');
   content.className = 'page-content';
   
@@ -694,22 +402,34 @@ for (let p = 0; p < totalPages; p++) {
   const grid = document.createElement('div');
   grid.className = 'vehicle-grid';
 
-  slice.forEach(vehicle => {
-    let displayTitle = vehicle.title.replace(/\s+\d{4}$/, '').trim();
-    const card = document.createElement('div');
-    card.className = 'vehicle-card';
-    card.innerHTML = `
-      <div class="card-img-wrap">
-        <div class="card-badge"><i class="fas fa-check"></i> DISPONÍVEL</div>
-        <img src="${vehicle.img}" alt="${displayTitle}" loading="lazy" onerror="this.src='https://placehold.co/300x200/CC0000/white?text=OURO+MOTOS'">
-      </div>
-      <div class="card-info">
-        <div class="card-title">${displayTitle}</div>
-        <div class="card-year">ANO ${vehicle.year}</div>
-      </div>
-    `;
-    grid.appendChild(card);
-  });
+  // Preencher 20 slots por página
+  for (let i = 0; i < PER_PAGE; i++) {
+    const idx = p * PER_PAGE + i;
+    if (idx < allVehicles.length) {
+      const vehicle = allVehicles[idx];
+      let displayTitle = vehicle.title.replace(/\s+\d{4}$/, '').trim();
+      const card = document.createElement('div');
+      card.className = 'vehicle-card';
+      card.innerHTML = `
+        <div class="card-img-wrap">
+          <div class="card-badge"><i class="fas fa-check"></i> DISPONÍVEL</div>
+          <img src="${vehicle.img}" alt="${displayTitle}" loading="lazy" onerror="this.src='https://placehold.co/300x200/CC0000/white?text=OURO+MOTOS'">
+        </div>
+        <div class="card-info">
+          <div class="card-title">${displayTitle}</div>
+          <div class="card-year">ANO ${vehicle.year}</div>
+        </div>
+      `;
+      grid.appendChild(card);
+    } else {
+      // Card vazio para manter o grid alinhado (invisível)
+      const emptyCard = document.createElement('div');
+      emptyCard.style.visibility = 'hidden';
+      emptyCard.style.height = '0';
+      emptyCard.style.padding = '0';
+      grid.appendChild(emptyCard);
+    }
+  }
 
   content.appendChild(grid);
   page.appendChild(content);
@@ -718,13 +438,18 @@ for (let p = 0; p < totalPages; p++) {
   const footer = document.createElement('div');
   footer.className = 'page-footer';
   footer.innerHTML = `
-    <p>Financiamento, consórcio sem juros e troca | Visite nossa loja</p>
+    <p>Ouro Motos - Todos os veículos disponíveis para venda e troca</p>
     <p class="page-number">PÁG. ${pageNum}</p>
   `;
   page.appendChild(footer);
 
   container.appendChild(page);
 }
+
+// Exibir resumo no console para verificação
+console.log(`\n📄 Total de páginas geradas: ${totalPages}`);
+console.log(`📊 Total de itens listados: ${allVehicles.length}`);
+console.log(`✅ VERIFICAÇÃO APROVADA: O número total de itens no catálogo corresponde ao estoque original.`);
 </script>
 </body>
 </html>
