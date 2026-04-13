@@ -102,19 +102,6 @@
     flex-shrink: 0;
   }
 
-  /* Cabeçalho de categoria (ex: MOTOS) */
-  .category-header {
-    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
-    color: var(--gold);
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 16pt;
-    padding: 2mm 6mm;
-    border-radius: 30px;
-    margin: 2mm 0 4mm 0;
-    display: inline-block;
-    letter-spacing: 1px;
-  }
-
   .vehicle-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -224,7 +211,7 @@
 
 <script>
 // ================= BASE DE DADOS =================
-// Motos (82 itens)
+// Motos (82 itens) - ordenadas por modelo (alfabético)
 const motos = [
   {title:"BMW F750 GS 2023", year:"2023", img:"https://s3.carro57.com.br/FC/5526/7195725_0_W_d5855ba9fe.jpeg"},
   {title:"BMW G 310 GS 2020", year:"2020", img:"https://s3.carro57.com.br/FC/5526/5401496_0_W_71be4b771a.jpeg"},
@@ -323,7 +310,7 @@ const motos = [
   {title:"ZONTES V350 2025", year:"2025", img:"https://s3.carro57.com.br/FC/5526/7910882_2_W_05352edf7b.jpeg"}
 ];
 
-// Carros (26 itens)
+// Carros (26 itens) - ordenados por modelo
 const carros = [
   {title:"CHEVROLET CRUZE LT HB AT 2014", year:"2014", img:"https://s3.carro57.com.br/FC/5526/7769855_0_W_f396b45015.jpeg"},
   {title:"CHEVROLET ONIX 1.4AT LTZ 2019", year:"2019", img:"https://s3.carro57.com.br/FC/5526/7895522_8_W_899e18b970.jpeg"},
@@ -354,7 +341,7 @@ const carros = [
   {title:"VOLKSWAGEN POLO SENSE TSI 1.0 2026", year:"2026", img:"https://s3.carro57.com.br/FC/5526/7838385_0_W_6a9dd2b44f.jpeg"}
 ];
 
-// Quadriciclos (6 itens)
+// Quadriciclos (6 itens) - ordenados por modelo
 const quadriciclos = [
   {title:"BEM MOTORS RAY E-125 2023", year:"2023", img:"https://s3.carro57.com.br/FC/5526/4727851_0_W_e1aa80b650.jpeg"},
   {title:"FUN MOTORS ALPHACROSS 125 2026", year:"2026", img:"https://s3.carro57.com.br/FC/5526/7742036_1_W_ea44db8acd.jpeg"},
@@ -364,7 +351,7 @@ const quadriciclos = [
   {title:"FUN MOTORS SHARK 125CC 2026", year:"2026", img:"https://s3.carro57.com.br/FC/5526/7742117_0_W_e735ed378d.jpeg"}
 ];
 
-// ===== ORDENAÇÃO POR MODELO (alfabética) =====
+// Função para ordenar alfabeticamente pelo modelo (ignorando ano)
 function ordenarPorModelo(arr) {
   return arr.sort((a, b) => {
     let modeloA = a.title.replace(/\s+\d{4}$/, '').trim().toLowerCase();
@@ -377,7 +364,7 @@ const motosOrdenadas = ordenarPorModelo([...motos]);
 const carrosOrdenados = ordenarPorModelo([...carros]);
 const quadriciclosOrdenados = ordenarPorModelo([...quadriciclos]);
 
-// ===== CONCATENAR NA ORDEM: MOTOS, CARROS, QUADRICICLOS =====
+// Concatena na ordem: Motos, Carros, Quadriciclos
 const allVehicles = [
   ...motosOrdenadas,
   ...carrosOrdenados,
@@ -397,8 +384,7 @@ const PER_PAGE = 20;
 const container = document.getElementById('vehicle-pages');
 const totalPages = Math.ceil(allVehicles.length / PER_PAGE);
 
-// Função para criar uma página
-function criarPagina(veiculosDaPagina, numeroPagina, exibirCategoria = false, nomeCategoria = "") {
+function criarPagina(veiculosDaPagina, numeroPagina) {
   const page = document.createElement('div');
   page.className = 'page';
 
@@ -420,14 +406,6 @@ function criarPagina(veiculosDaPagina, numeroPagina, exibirCategoria = false, no
   title.textContent = 'ESTOQUE COMPLETO';
   content.appendChild(title);
 
-  // Exibir cabeçalho da categoria se necessário (primeira página de cada bloco)
-  if (exibirCategoria) {
-    const catHeader = document.createElement('div');
-    catHeader.className = 'category-header';
-    catHeader.innerHTML = `<i class="fas fa-tag"></i> ${nomeCategoria}`;
-    content.appendChild(catHeader);
-  }
-
   const grid = document.createElement('div');
   grid.className = 'vehicle-grid';
 
@@ -448,7 +426,7 @@ function criarPagina(veiculosDaPagina, numeroPagina, exibirCategoria = false, no
     grid.appendChild(card);
   });
 
-  // Preencher slots vazios (caso a última página não tenha 20 itens)
+  // Preenche com cards invisíveis para manter o grid (sem espaços brancos)
   const slotsRestantes = PER_PAGE - veiculosDaPagina.length;
   for (let i = 0; i < slotsRestantes; i++) {
     const emptyCard = document.createElement('div');
@@ -461,7 +439,6 @@ function criarPagina(veiculosDaPagina, numeroPagina, exibirCategoria = false, no
   content.appendChild(grid);
   page.appendChild(content);
 
-  // Footer
   const footer = document.createElement('div');
   footer.className = 'page-footer';
   footer.innerHTML = `
@@ -473,40 +450,14 @@ function criarPagina(veiculosDaPagina, numeroPagina, exibirCategoria = false, no
   return page;
 }
 
-// Gerar páginas respeitando a ordem: Motos, Carros, Quadriciclos
-let currentPageNumber = 1;
-let currentIndex = 0;
-
-// Função auxiliar para processar um bloco de veículos
-function processarBloco(veiculos, nomeCategoria) {
-  const paginasGeradas = [];
-  const totalItens = veiculos.length;
-  let inicioBloco = true;
-
-  for (let i = 0; i < totalItens; i += PER_PAGE) {
-    const slice = veiculos.slice(i, i + PER_PAGE);
-    const pagina = criarPagina(slice, currentPageNumber++, inicioBloco, nomeCategoria);
-    paginasGeradas.push(pagina);
-    inicioBloco = false;
-  }
-  return paginasGeradas;
+// Gerar páginas sequencialmente
+for (let i = 0; i < totalPages; i++) {
+  const slice = allVehicles.slice(i * PER_PAGE, (i + 1) * PER_PAGE);
+  const pagina = criarPagina(slice, i + 1);
+  container.appendChild(pagina);
 }
 
-// Processar Motos
-const paginasMotos = processarBloco(motosOrdenadas, "🏍 MOTOS");
-
-// Processar Carros
-const paginasCarros = processarBloco(carrosOrdenados, "🚗 CARROS");
-
-// Processar Quadriciclos
-const paginasQuadriciclos = processarBloco(quadriciclosOrdenados, "🛺 QUADRICICLOS");
-
-// Adicionar todas as páginas ao container
-[...paginasMotos, ...paginasCarros, ...paginasQuadriciclos].forEach(pagina => {
-  container.appendChild(pagina);
-});
-
-console.log(`\n📄 Total de páginas geradas: ${currentPageNumber - 1}`);
+console.log(`\n📄 Total de páginas geradas: ${totalPages}`);
 console.log(`📊 Total de itens listados: ${allVehicles.length}`);
 console.log(`✅ VERIFICAÇÃO APROVADA: O número total de itens no catálogo corresponde ao estoque original.`);
 </script>
